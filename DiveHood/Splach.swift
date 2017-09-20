@@ -30,11 +30,14 @@ class Splach: UIViewController {
         SetupContainer(Container)
         let FooterLabel = UILabel(frame: CGRect(x: view.frame.width*0.10, y: view.bounds.height-view.frame.height*1/40-20, width: view.frame.width - view.frame.width*0.1*2, height: view.frame.height*1/30))
         FooterLabel.text = "Copyright © 2017 Divey Inc. All rights reserved."
+          FooterLabel.font = UIFont(name: "OpenSans", size: 24)
         FooterLabel.textColor = .white
         FooterLabel.textAlignment = .center
-        
-        FooterLabel.font = UIFont(name: "OpenSans", size: 12)
         FooterLabel.adjustsFontSizeToFitWidth = true
+        FooterLabel.minimumScaleFactor = 0.5
+        FooterLabel.numberOfLines = 1
+        FooterLabel.baselineAdjustment = .alignCenters
+        FooterLabel.textAlignment = .center
         view.addSubview(FooterLabel)
         
     
@@ -50,20 +53,24 @@ class Splach: UIViewController {
         let waveimg = #imageLiteral(resourceName: "waves")
         let WaveImage = UIImageView()
         
+        let label = UILabel()
         
         
-        let label = UILabel(frame: CGRect(x: view.frame.width*0.05, y: contanier.frame.origin.y+contanier.frame.height*0.7, width: view.frame.width - view.frame.width*0.05*2, height: 32))
+     
+        
+        label.frame.origin = CGPoint(x: view.frame.width*0.05, y: contanier.frame.origin.y+contanier.frame.height*0.7)
         label.text = "The Best diving Booking Services"
         label.textColor = .white
-        label.textAlignment = .center
-        label.font = UIFont(name: "OpenSans-Bold", size: 16)
+       
+        label.font = UIFont(name: "OpenSans-Bold", size: 34)
+        
         label.adjustsFontSizeToFitWidth = true
-        
-        
-        
-        print(view.frame.height)
-        
+        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 1
+        label.frame.size.width =  view.frame.width - view.frame.width*0.05*2
+        label.frame.size.height = contanier.frame.height*0.2
         label.baselineAdjustment = .alignCenters
+        label.textAlignment = .center
         view.addSubview(label)
 
     
@@ -89,6 +96,8 @@ class Splach: UIViewController {
     }
  
 
+ 
+    
     /*
     // MARK: - Navigation
 
