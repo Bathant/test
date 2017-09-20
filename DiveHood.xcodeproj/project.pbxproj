@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */; };
-		0E0F024E1F71B9EF00E2C6C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F024D1F71B9EF00E2C6C2 /* ViewController.swift */; };
 		0E0F02511F71B9EF00E2C6C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */; };
 		0E0F02531F71B9EF00E2C6C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */; };
 		0E0F02561F71B9EF00E2C6C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */; };
 		0E0F02611F71B9EF00E2C6C2 /* DiveHoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F02601F71B9EF00E2C6C2 /* DiveHoodTests.swift */; };
 		0E0F026C1F71B9EF00E2C6C2 /* DiveHoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F026B1F71B9EF00E2C6C2 /* DiveHoodUITests.swift */; };
+		0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F027A1F71BB3400E2C6C2 /* RaderAnimation.swift */; };
+		0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */; };
+		0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F027E1F71BCF800E2C6C2 /* Splach.swift */; };
+		0E0F02811F71EA8800E2C6C2 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02801F71E92D00E2C6C2 /* OpenSans-Bold.ttf */; };
+		0E0F02831F71F7D300E2C6C2 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */; };
+		0E0F02861F71FBB800E2C6C2 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */; };
+		0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,6 @@
 /* Begin PBXFileReference section */
 		0E0F02481F71B9EF00E2C6C2 /* DiveHood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiveHood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0E0F024D1F71B9EF00E2C6C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E0F02501F71B9EF00E2C6C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E0F02551F71B9EF00E2C6C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +52,13 @@
 		0E0F02671F71B9EF00E2C6C2 /* DiveHoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiveHoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E0F026B1F71B9EF00E2C6C2 /* DiveHoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveHoodUITests.swift; sourceTree = "<group>"; };
 		0E0F026D1F71B9EF00E2C6C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E0F027A1F71BB3400E2C6C2 /* RaderAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaderAnimation.swift; sourceTree = "<group>"; };
+		0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		0E0F027E1F71BCF800E2C6C2 /* Splach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Splach.swift; sourceTree = "<group>"; };
+		0E0F02801F71E92D00E2C6C2 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +109,18 @@
 		0E0F024A1F71B9EF00E2C6C2 /* DiveHood */ = {
 			isa = PBXGroup;
 			children = (
+				0E0F02791F71BB1900E2C6C2 /* Animation */,
 				0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */,
-				0E0F024D1F71B9EF00E2C6C2 /* ViewController.swift */,
+				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
 				0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */,
+				0E0F02801F71E92D00E2C6C2 /* OpenSans-Bold.ttf */,
+				0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */,
+				0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */,
 				0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */,
 				0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */,
 				0E0F02571F71B9EF00E2C6C2 /* Info.plist */,
+				0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */,
+				0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */,
 			);
 			path = DiveHood;
 			sourceTree = "<group>";
@@ -123,6 +141,14 @@
 				0E0F026D1F71B9EF00E2C6C2 /* Info.plist */,
 			);
 			path = DiveHoodUITests;
+			sourceTree = "<group>";
+		};
+		0E0F02791F71BB1900E2C6C2 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				0E0F027A1F71BB3400E2C6C2 /* RaderAnimation.swift */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +258,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E0F02811F71EA8800E2C6C2 /* OpenSans-Bold.ttf in Resources */,
+				0E0F02831F71F7D300E2C6C2 /* OpenSans-Light.ttf in Resources */,
+				0E0F02861F71FBB800E2C6C2 /* OpenSans-Regular.ttf in Resources */,
 				0E0F02561F71B9EF00E2C6C2 /* LaunchScreen.storyboard in Resources */,
 				0E0F02531F71B9EF00E2C6C2 /* Assets.xcassets in Resources */,
 				0E0F02511F71B9EF00E2C6C2 /* Main.storyboard in Resources */,
@@ -259,7 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E0F024E1F71B9EF00E2C6C2 /* ViewController.swift in Sources */,
+				0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */,
+				0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */,
+				0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */,
+				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
 				0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				INFOPLIST_FILE = DiveHood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.DiveHood;
@@ -426,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				INFOPLIST_FILE = DiveHood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.DiveHood;
