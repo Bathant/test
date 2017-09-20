@@ -90,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				0E0F024A1F71B9EF00E2C6C2 /* DiveHood */,
+				0E0F028B1F728CE600E2C6C2 /* New Group */,
 				0E0F025F1F71B9EF00E2C6C2 /* DiveHoodTests */,
 				0E0F026A1F71B9EF00E2C6C2 /* DiveHoodUITests */,
 				0E0F02491F71B9EF00E2C6C2 /* Products */,
@@ -109,13 +110,11 @@
 		0E0F024A1F71B9EF00E2C6C2 /* DiveHood */ = {
 			isa = PBXGroup;
 			children = (
+				0E0F028C1F728D0700E2C6C2 /* Fonts */,
 				0E0F02791F71BB1900E2C6C2 /* Animation */,
 				0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */,
 				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
 				0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */,
-				0E0F02801F71E92D00E2C6C2 /* OpenSans-Bold.ttf */,
-				0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */,
-				0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */,
 				0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */,
 				0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */,
 				0E0F02571F71B9EF00E2C6C2 /* Info.plist */,
@@ -149,6 +148,23 @@
 				0E0F027A1F71BB3400E2C6C2 /* RaderAnimation.swift */,
 			);
 			name = Animation;
+			sourceTree = "<group>";
+		};
+		0E0F028B1F728CE600E2C6C2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		0E0F028C1F728D0700E2C6C2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0E0F02801F71E92D00E2C6C2 /* OpenSans-Bold.ttf */,
+				0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */,
+				0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
