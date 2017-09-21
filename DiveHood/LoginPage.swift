@@ -45,13 +45,55 @@ class LoginPage: UIViewController {
         print(waveImage.frame.maxY)
         print(waveImage.frame.height+waveImage.frame.origin.y)
         form(waveImage.frame.maxY)
+        lastPart()
         
         
     }
     
     func lastPart(){
-    let AccountLabel = UILabel(frame: CGRect(x: RememberMe.frame.minX, y: button.frame.maxY+view.frame.height*0.05, width: view.frame.width-(RememberMe.frame.minX), height: view.frame.height*0.025))
+    let AccountLabel = UIView(frame: CGRect(x: RememberMe.frame.origin.x*2, y: button.frame.maxY+view.frame.height*0.04, width: view.frame.width-(RememberMe.frame.minX*4), height: view.frame.height*0.04))
+        //AccountLabel.backgroundColor = .gray
+        print( RememberMe.frame.origin.x)
+    let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width*0.8, height: AccountLabel.frame.height))
+        firsttext.font = UIFont(name: "OpenSans-Light", size: view.frame.height*0.04)
+        firsttext.textAlignment = .center
+        firsttext.baselineAdjustment = .alignCenters
+        firsttext.textColor = .white
+        firsttext.text = "Don’t Have a Divehood account? "
+         firsttext.adjustsFontSizeToFitWidth = true
     
+        AccountLabel.addSubview(firsttext)
+        
+        let Secondtext = UILabel(frame: CGRect(x: firsttext.frame.maxX, y: 0, width: AccountLabel.frame.width*0.2, height: AccountLabel.frame.height))
+        Secondtext.font = UIFont(name: "OpenSans-Light", size: view.frame.height*0.04)
+        Secondtext.textAlignment = .center
+        Secondtext.textColor = Colors().blue
+        Secondtext.baselineAdjustment = .alignCenters
+
+        Secondtext.text = "Sign Up."
+        Secondtext.adjustsFontSizeToFitWidth = true
+        
+        AccountLabel.addSubview(firsttext)
+         AccountLabel.addSubview(Secondtext)
+        
+        
+        var img = #imageLiteral(resourceName: "or")
+        let orimage = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: AccountLabel.frame.maxY+view.frame.height*0.02, width: img.size.width, height: img.size.height))
+        orimage.image = img
+        view.addSubview(orimage)
+        
+        
+         img = #imageLiteral(resourceName: "Login-Facebook")
+        let facebookimg = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: orimage.frame.maxY+view.frame.height*0.02*2, width: img.size.width, height: img.size.height))
+        facebookimg.image = img
+        view.addSubview(facebookimg)
+        
+    /*    img = #imageLiteral(resourceName: "Tiny-Diver")
+        let manimg = UIImageView(frame: CGRect(x: button.frame.origin.x, y: AccountLabel.frame.maxY, width: view.frame.width-button.frame.origin.x, height: img.size.height))
+        manimg.image = img
+        view.addSubview(manimg)*/
+
+        
     view.addSubview(AccountLabel)
     
     
@@ -79,6 +121,8 @@ class LoginPage: UIViewController {
           //  checkbox.contentMode = .scaleAspectFit
         ForgetPasswordcontainer.addSubview(checkbox)
          RememberMe = UILabel(frame: CGRect(x: checkbox.frame.maxX + view.frame.width*0.05, y: 0, width: ForgetPasswordcontainer.frame.width*0.3, height: view.frame.height*0.03))
+            //RememberMe.backgroundColor = .gray
+            print(checkbox.frame.maxX + view.frame.width*0.05)
             RememberMe.text = "Remember Me"
             RememberMe.font = UIFont(name: "OpenSans-Light", size: view.frame.height*0.02)
             RememberMe.textColor = Colors().blue
