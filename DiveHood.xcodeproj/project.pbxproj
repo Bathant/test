@@ -23,6 +23,7 @@
 		0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F028E1F72E59700E2C6C2 /* Colors.swift */; };
 		0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */; };
 		0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */; };
+		0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0E0F028E1F72E59700E2C6C2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTextField.swift; sourceTree = "<group>"; };
 		0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithGradient.swift; sourceTree = "<group>"; };
+		0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			children = (
 				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
 				0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */,
+				0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */,
 				0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */,
 				0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */,
+				0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */,
 				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
 				0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */,
 				0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */,
