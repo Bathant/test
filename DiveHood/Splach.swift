@@ -18,7 +18,7 @@ class Splach: UIViewController {
         
         setUpAll()
     
-        //  Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.splashTimeOut(sender:)), userInfo: nil, repeats: false)
+          Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.splashTimeOut(sender:)), userInfo: nil, repeats: false)
         // Do any additional setup after loading the view.
     }
   
@@ -28,19 +28,24 @@ class Splach: UIViewController {
         //Container.backgroundColor = .red
         view.addSubview(Container)
         SetupContainer(Container)
-        let FooterLabel = UILabel(frame: CGRect(x: view.frame.width*0.10, y: view.bounds.height-view.frame.height*1/40-20, width: view.frame.width - view.frame.width*0.1*2, height: view.frame.height*1/30))
-        FooterLabel.text = "Copyright © 2017 Divey Inc. All rights reserved."
-          FooterLabel.font = UIFont(name: "OpenSans", size: 24)
-        FooterLabel.textColor = .white
-        FooterLabel.textAlignment = .center
-        FooterLabel.adjustsFontSizeToFitWidth = true
-        FooterLabel.minimumScaleFactor = 0.5
-        FooterLabel.numberOfLines = 1
-        FooterLabel.baselineAdjustment = .alignCenters
-        FooterLabel.textAlignment = .center
-        view.addSubview(FooterLabel)
         
-    
+        
+        let CopyrightLabel = UILabel()
+        CopyrightLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(CopyrightLabel)
+        CopyrightLabel.centerXAnchor.isEqual(view.centerXAnchor)
+        view.addConstraint(NSLayoutConstraint(item: CopyrightLabel, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 0.8, constant: 0))
+         view.addConstraint(NSLayoutConstraint(item: CopyrightLabel, attribute: .bottom , relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -1*(view.frame.height*0.02) ))
+         view.addConstraint(NSLayoutConstraint(item: CopyrightLabel, attribute: .centerX , relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant:0 ))
+        CopyrightLabel.text = "Copyright © 2017 Divey Inc. All rights reserved."
+        CopyrightLabel.font = UIFont(name: "OpenSans", size: 24)
+        CopyrightLabel.textColor = .white
+        CopyrightLabel.textAlignment = .center
+        CopyrightLabel.adjustsFontSizeToFitWidth = true
+        CopyrightLabel.numberOfLines = 1
+        CopyrightLabel.baselineAdjustment = .alignCenters
+        CopyrightLabel.textAlignment = .center
+        
     }
     func SetupContainer(_ contanier:UIView){
         //backImage
@@ -65,7 +70,7 @@ class Splach: UIViewController {
         label.font = UIFont(name: "OpenSans-Bold", size: 34)
         
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
+        
         label.numberOfLines = 1
         label.frame.size.width =  view.frame.width - view.frame.width*0.05*2
         label.frame.size.height = contanier.frame.height*0.2

@@ -20,6 +20,9 @@
 		0E0F02831F71F7D300E2C6C2 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */; };
 		0E0F02861F71FBB800E2C6C2 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */; };
 		0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */; };
+		0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F028E1F72E59700E2C6C2 /* Colors.swift */; };
+		0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */; };
+		0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperWindow.swift; sourceTree = "<group>"; };
+		0E0F028E1F72E59700E2C6C2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTextField.swift; sourceTree = "<group>"; };
+		0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithGradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,16 +116,17 @@
 		0E0F024A1F71B9EF00E2C6C2 /* DiveHood */ = {
 			isa = PBXGroup;
 			children = (
+				0E963B381F731E8D0036EBA4 /* CustomizedShapes */,
+				0E0F028D1F72DE4600E2C6C2 /* Pages */,
 				0E0F028C1F728D0700E2C6C2 /* Fonts */,
 				0E0F02791F71BB1900E2C6C2 /* Animation */,
 				0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */,
-				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
 				0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */,
 				0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */,
 				0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */,
 				0E0F02571F71B9EF00E2C6C2 /* Info.plist */,
-				0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */,
 				0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */,
+				0E0F028E1F72E59700E2C6C2 /* Colors.swift */,
 			);
 			path = DiveHood;
 			sourceTree = "<group>";
@@ -165,6 +172,24 @@
 				0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		0E0F028D1F72DE4600E2C6C2 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
+				0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */,
+			);
+			name = Pages;
+			sourceTree = "<group>";
+		};
+		0E963B381F731E8D0036EBA4 /* CustomizedShapes */ = {
+			isa = PBXGroup;
+			children = (
+				0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */,
+				0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */,
+			);
+			name = CustomizedShapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,10 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */,
+				0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */,
+				0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */,
 				0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */,
 				0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */,
 				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
 				0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */,
+				0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +585,7 @@
 				0E0F02721F71B9EF00E2C6C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E0F02731F71B9EF00E2C6C2 /* Build configuration list for PBXNativeTarget "DiveHoodTests" */ = {
 			isa = XCConfigurationList;
@@ -565,6 +594,7 @@
 				0E0F02751F71B9EF00E2C6C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E0F02761F71B9EF00E2C6C2 /* Build configuration list for PBXNativeTarget "DiveHoodUITests" */ = {
 			isa = XCConfigurationList;
@@ -573,6 +603,7 @@
 				0E0F02781F71B9EF00E2C6C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
