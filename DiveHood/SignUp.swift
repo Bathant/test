@@ -19,9 +19,11 @@ class SignUp: UIViewController {
         Controllers = [DiverController() , BusinessOwnerController()]
         setbackground()
         let height = markableLabel()
+        let scrollview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 2000))
         
+        view.addSubview(scrollview)
         
-        var frame = CGRect(x: view.frame.width/2-(view.frame.width*0.625/2), y: view.frame.height*0.06+height, width: view.frame.width*0.625, height: view.frame.height*0.06)
+        var frame = CGRect(x: scrollview.frame.width/2-(scrollview.frame.width*0.625/2), y: scrollview.frame.height*0.06+height, width: view.frame.width*0.625, height: view.frame.height*0.06)
         let welcomelabel = CustomeLabel(frame: frame, text: "Welcome!", adjustTofit: true, size: view.frame.height*0.04, fontName: "OpenSans-Bold")
         view.addSubview(welcomelabel)
         frame = CGRect(x: welcomelabel.frame.minX, y: welcomelabel.frame.maxY, width: welcomelabel.frame.width, height: welcomelabel.frame.height/2)
