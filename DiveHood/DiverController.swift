@@ -42,8 +42,9 @@ class DiverController: UIViewController {
         
         
        
-        let container2 = UIView(frame: CGRect(x: view.frame.width*0.09, y: container1.frame.maxY+view.frame.height*0.0239, width: img.size.width, height: img.size.height))
-        labelwithCheck(container: container2, text: "Agree to our terms and and confirms that you have", adjustToFit : false)
+        let container2 = UIView(frame: CGRect(x: view.frame.width*0.09, y: container1.frame.maxY+view.frame.height*0.0239, width: img.size.width, height: view.frame.height*0.05))
+        labelwithCheck(container: container2, text: "Agree to our terms and confirms that you have read our policy", adjustToFit : false)
+        
         view.addSubview(container2)
         
         
@@ -59,8 +60,11 @@ class DiverController: UIViewController {
         let checkbox = UIImageView(frame: CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height))
         checkbox.image = #imageLiteral(resourceName: "Check_Box")
         container.addSubview(checkbox)
-        let frame = CGRect(x: checkbox.frame.maxX+view.frame.width*0.0426 , y: 0, width: view.frame.width*0.5, height: container.frame.height)
+        let frame = CGRect(x: checkbox.frame.maxX+view.frame.width*0.0426 , y: 0, width: view.frame.width*0.7, height: container.frame.height)
         let title = CustomeLabel(frame: frame, text: text, adjustTofit: adjustToFit, size: view.frame.height*0.017, fontName: "OpenSans")
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
+        title.textAlignment = .left
         title.textColor = Colors().blue
         container.addSubview(title)
         

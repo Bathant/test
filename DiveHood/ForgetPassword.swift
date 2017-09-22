@@ -41,7 +41,7 @@ class ForgetPassword: UIViewController {
         welcomelabel.baselineAdjustment = .alignCenters
          //welcomelabel.backgroundColor = .red
         view.addSubview(welcomelabel)
-        let waveimg = #imageLiteral(resourceName: "or")
+        let waveimg = #imageLiteral(resourceName: "waves")
         let waveImage = UIImageView(frame: CGRect(x: view.frame.width/2-waveimg.size.width/2, y: welcomelabel.frame.origin.y+welcomelabel.frame.height+view.frame.height*0.015, width: waveimg.size.width, height: waveimg.size.height))
         waveImage.image = waveimg
         print(waveimg.size)

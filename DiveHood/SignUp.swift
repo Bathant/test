@@ -12,33 +12,33 @@ class SignUp: UIViewController {
     
     var container : UIView!
     var Controllers : [UIViewController]!
-    
-    
-    override func viewDidLoad() {
+    var   scrollview : UIScrollView!
+       override func viewDidLoad() {
         super.viewDidLoad()
         Controllers = [DiverController() , BusinessOwnerController()]
-        setbackground()
-        let height = markableLabel()
-        let scrollview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 2000))
         
+        scrollview = UIScrollView(frame: CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        //scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 3000)
         view.addSubview(scrollview)
         
-        var frame = CGRect(x: scrollview.frame.width/2-(scrollview.frame.width*0.625/2), y: scrollview.frame.height*0.06+height, width: view.frame.width*0.625, height: view.frame.height*0.06)
+        setbackground()
+        let height = markableLabel()
+        var frame = CGRect(x: scrollview.frame.width/2-(view.frame.width*0.625/2), y: view.frame.height*0.06+height, width: view.frame.width*0.625, height: view.frame.height*0.06)
         let welcomelabel = CustomeLabel(frame: frame, text: "Welcome!", adjustTofit: true, size: view.frame.height*0.04, fontName: "OpenSans-Bold")
-        view.addSubview(welcomelabel)
+        scrollview.addSubview(welcomelabel)
         frame = CGRect(x: welcomelabel.frame.minX, y: welcomelabel.frame.maxY, width: welcomelabel.frame.width, height: welcomelabel.frame.height/2)
         let secondlabel = CustomeLabel(frame: frame, text: "Become A Divehoodian", adjustTofit: true, size: view.frame.height*0.025, fontName: "OpenSans-Bold")
         
-        view.addSubview(secondlabel)
-        let waveimg = #imageLiteral(resourceName: "or")
+        scrollview.addSubview(secondlabel)
+        let waveimg = #imageLiteral(resourceName: "waves")
         let waveImage = UIImageView(frame: CGRect(x: view.frame.width/2-waveimg.size.width/2, y: secondlabel.frame.origin.y+secondlabel.frame.height+view.frame.height*0.015, width: waveimg.size.width, height: waveimg.size.height))
         waveImage.image = waveimg
         print(waveimg.size)
-        view.addSubview(waveImage)
+        scrollview.addSubview(waveImage)
         print(waveImage.frame.maxY)
         print(waveImage.frame.height+waveImage.frame.origin.y)
         
-    setupSegmentedControl(view.frame.height*0.048+waveImage.frame.maxY)
+        setupSegmentedControl(view.frame.height*0.048+waveImage.frame.maxY)
         
     }
     func setbackground(){
@@ -48,31 +48,72 @@ class SignUp: UIViewController {
     }
     
     func setupSegmentedControl(_ y : CGFloat){
-    
-   
+        
+        
         let items = ["Diver", "Business Owner"]
         let segment  = UISegmentedControl(items: items)
         segment.frame = CGRect(x: view.frame.width*0.05, y: y, width: view.frame.width-(view.frame.width*0.05*2), height: view.frame.height*0.0445)
         segment.selectedSegmentIndex = 0
         segment.tintColor = Colors().blue
-        view.addSubview(segment)
+        scrollview.addSubview(segment)
         
         
-        container = UIView(frame: CGRect(x: view.frame.width*0.05, y: view.frame.height*0.048+segment.frame.maxY, width: segment.frame.width, height: view.frame.height*0.55))
-        view.addSubview(container)
+        container = UIView(frame: CGRect(x: 0, y: view.frame.height*0.048+segment.frame.maxY, width: view.frame.width, height: view.frame.height*0.57))
+       // container.backgroundColor = .gray
+        scrollview.addSubview(container)
         DiverControllerfunc(0)
-    BusinessOwnerControllerfunc(container.frame.width)
+        BusinessOwnerControllerfunc(container.frame.width)
         
         segment.addTarget(self, action: #selector(segmentChange), for: .valueChanged)
+       
+       let  signupBtn = ButtonWithGradient(frame: CGRect(x: view.frame.width*0.09, y: container.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(view.frame.width*0.09*2), height: view.frame.height*0.07), title: "VERFIY YOUR ACCOUNT", view: self.view)
+        signupBtn.addTarget(self, action: #selector(signUp_Pressed), for: .touchUpInside)
         
+        
+        scrollview.addSubview(signupBtn)
+        
+        
+        
+        var img = #imageLiteral(resourceName: "Check_Box")
+        let x = view.frame.width*0.0426+img.size.width+view.frame.width*0.09
+        let AccountLabel = UIView(frame: CGRect(x: x, y: signupBtn.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(x*2), height: view.frame.height*0.025))
+       
+        let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
+        firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*0.032)
+        firsttext.textAlignment = .left
+        firsttext.baselineAdjustment = .alignCenters
+        firsttext.textColor = .white
+        firsttext.text = "Already Have A DiveHood Account?Sign In"
+        firsttext.adjustsFontSizeToFitWidth = true
+        AccountLabel.addSubview(firsttext)
+        
+      scrollview.addSubview(AccountLabel)
+    
+        
+        
+         img = #imageLiteral(resourceName: "or")
+        let orimage = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: AccountLabel.frame.maxY+view.frame.height*0.0239, width: img.size.width, height: img.size.height))
+        orimage.image = img
+        scrollview.addSubview(orimage)
+        
+        
+        img = #imageLiteral(resourceName: "Login-Facebook")
+        let facebookimg = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: orimage.frame.maxY+view.frame.height*0.0426, width: img.size.width, height: img.size.height))
+        facebookimg.image = img
+        scrollview.addSubview(facebookimg)
+        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width, height: facebookimg.frame.maxY+view.frame.height*0.0426)
+        
+        
+    }
+    func signUp_Pressed(){
+    
     
     
     
     }
     
-    
     func segmentChange(sender:UISegmentedControl) {
-    
+        
         switch sender.selectedSegmentIndex{
         case 0:
             setupControllers(0, 0)
@@ -80,15 +121,15 @@ class SignUp: UIViewController {
         case 1:
             setupControllers(0, container.frame.width)
             setupControllers(1, 0)
-
+            
         default:
             break
-        
-        
+            
+            
         }
-    
-    
-    
+        
+        
+        
     }
     func setupControllers(_ Index:Int, _ x:CGFloat){
         
@@ -124,7 +165,7 @@ class SignUp: UIViewController {
         textlabel.textAlignment = .center
         textlabel.textColor = .black
         markableContainer.addSubview(textlabel)
-        view.addSubview(markableContainer)
+        scrollview.addSubview(markableContainer)
         return markableContainer.frame.origin.y+markableContainer.frame.height
     }
     
@@ -135,29 +176,29 @@ class SignUp: UIViewController {
     }
     
     func DiverControllerfunc(_ x:CGFloat){
-    
-    
+        
+        
         let controller = DiverController()
         controller.view.frame = CGRect(x: x, y:  0 , width: container.frame.width, height: container.frame.height)
-       
+        
         addChildViewController(controller)
         container.addSubview((controller.view)!)
         controller.didMove(toParentViewController: self)
         Controllers[0] = controller
-
-    
+        
+        
     }
     
     func BusinessOwnerControllerfunc(_ x:CGFloat){
         let controller = BusinessOwnerController()
         controller.view.frame = CGRect(x: x, y:  0 , width: container.frame.width, height: container.frame.height)
-                addChildViewController(controller)
+        addChildViewController(controller)
         container.addSubview((controller.view)!)
         controller.didMove(toParentViewController: self)
-       
+        
         Controllers[1] = controller
-    
-    
+        
+        
     }
     
     
