@@ -14,10 +14,15 @@ class LoginPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       setbackground()
         SetupUi()
         // Do any additional setup after loading the view.
     }
-    
+    func setbackground(){
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "splashbg")
+        self.view.insertSubview(backgroundImage, at: 0)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,7 +62,7 @@ class LoginPage: UIViewController {
        // AccountLabel.backgroundColor = .gray
         print( RememberMe.frame.origin.x)
     let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width*0.8, height: AccountLabel.frame.height))
-        firsttext.font = UIFont(name: "OpenSans", size: AccountLabel.frame.width*0.8)
+        firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: AccountLabel.frame.width*0.8)
         firsttext.textAlignment = .left
         firsttext.baselineAdjustment = .alignCenters
         firsttext.textColor = .white
@@ -67,7 +72,7 @@ class LoginPage: UIViewController {
         AccountLabel.addSubview(firsttext)
         
         let Secondtext = UILabel(frame: CGRect(x: firsttext.frame.maxX, y: 0, width: AccountLabel.frame.width*0.2, height: AccountLabel.frame.height))
-        Secondtext.font = UIFont(name: "OpenSans", size: AccountLabel.frame.width*0.2)
+        Secondtext.font = UIFont(name: "OpenSans-SemiboldItalic", size: AccountLabel.frame.width*0.2)
         Secondtext.textAlignment = .left
         Secondtext.textColor = Colors().blue
         Secondtext.baselineAdjustment = .alignCenters

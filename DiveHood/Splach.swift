@@ -15,11 +15,19 @@ class Splach: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setbackground()
+        print("##############****************################")
+        print(UIScreen.main.bounds.width*2)
+        print(UIScreen.main.bounds.height*2)
         setUpAll()
     
           Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.splashTimeOut(sender:)), userInfo: nil, repeats: false)
         // Do any additional setup after loading the view.
+    }
+    func setbackground(){
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "splashbg")
+        self.view.insertSubview(backgroundImage, at: 0)
     }
   
     func setUpAll(){

@@ -12,7 +12,8 @@ class ForgetPassword: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SetupUi()
+        setbackground()
+                  SetupUi()
 
     }
 
@@ -20,18 +21,25 @@ class ForgetPassword: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func setbackground(){
+    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+    backgroundImage.image = UIImage(named: "splashbg")
+    self.view.insertSubview(backgroundImage, at: 0)
+    }
     func SetupUi(){
     
     let height = markableLabel()
-        let welcomelabel = UILabel(frame: CGRect(x: view.frame.width/2-(view.frame.width*0.625/2), y: view.frame.height*0.065+height, width: view.frame.width*0.625, height: view.frame.height*0.1))
+        let welcomelabel = UILabel(frame: CGRect(x: view.frame.width/2-(view.frame.width*0.625/2), y: view.frame.height*0.217, width: view.frame.width*0.625, height: view.frame.height*0.13))
         welcomelabel.text = "Having trouble logging in?"
     welcomelabel.adjustsFontSizeToFitWidth = true
         welcomelabel.textColor = .white
         welcomelabel.font = UIFont(name: "OpenSans-Bold", size: view.frame.width*0.625)
-        welcomelabel.numberOfLines = 2
+        welcomelabel.numberOfLines = 0
         welcomelabel.textAlignment = .center
         welcomelabel.baselineAdjustment = .alignCenters
-        // welcomelabel.backgroundColor = .red
+         //welcomelabel.backgroundColor = .red
         view.addSubview(welcomelabel)
         let waveimg = #imageLiteral(resourceName: "or")
         let waveImage = UIImageView(frame: CGRect(x: view.frame.width/2-waveimg.size.width/2, y: welcomelabel.frame.origin.y+welcomelabel.frame.height+view.frame.height*0.015, width: waveimg.size.width, height: waveimg.size.height))
@@ -44,7 +52,7 @@ class ForgetPassword: UIViewController {
         let Email = CustomizedTextField(frame: CGRect(x: view.frame.width*0.09, y: waveImage.frame.maxY+view.frame.height*0.04, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "  * Your E-mail" , view: view)
           view.addSubview(Email)
         
-         let button = ButtonWithGradient(frame: CGRect(x: Email.frame.origin.x, y: Email.frame.maxY+view.frame.height*0.05, width: Email.frame.width, height: view.frame.height*0.07), title: "Recover Password", view: self.view)
+         let button = ButtonWithGradient(frame: CGRect(x: Email.frame.origin.x, y: Email.frame.maxY+view.frame.height*0.05, width: Email.frame.width, height: view.frame.height*0.07), title: "RECOVER PASSWORD", view: self.view)
         button.addTarget(self, action: #selector(recovery_Pressed), for: .touchUpInside)
         view.addSubview(button)
     
@@ -55,8 +63,9 @@ class ForgetPassword: UIViewController {
         // RememberMe.backgroundColor = .gray
       
         Firsttext.text = "Log In To Your Account"
-        Firsttext.font = UIFont(name: "OpenSans", size:LabelsContainer.frame.width*0.45)
-        Firsttext.textColor = Colors().blue
+        Firsttext.font =
+        UIFont(name: "OpenSans-SemiboldItalic", size: LabelsContainer.frame.width*0.45)
+        Firsttext.textColor = .white
         Firsttext.adjustsFontSizeToFitWidth = true
        
         Firsttext.baselineAdjustment = .alignCenters
@@ -66,14 +75,16 @@ class ForgetPassword: UIViewController {
         
         
         let SecondText = UILabel(frame: CGRect(x: LabelsContainer.frame.maxX - LabelsContainer.frame.width*0.55, y: 0, width: LabelsContainer.frame.width*0.45, height: view.frame.height*0.03))
-        SecondText.text = "Don't Have Any Sign Up"
+        SecondText.text = "Don't Have Any? Sign Up"
         // ForgetLabel.font = UIFont.systemFont(ofSize: RememberMe.font.pointSize)
-        SecondText.font = UIFont(name: "OpenSans", size:LabelsContainer.frame.width*0.45)
-        SecondText.textColor = Colors().blue
+        SecondText.font =  UIFont(name: "OpenSans-SemiboldItalic", size: LabelsContainer.frame.width*0.45)
+        SecondText.textColor = .white
         SecondText.adjustsFontSizeToFitWidth = true
         SecondText.baselineAdjustment = .alignCenters
+        SecondText.isUserInteractionEnabled = true
         SecondText.textAlignment = .right
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signup_Pressed))
+        SecondText.addGestureRecognizer(tap)
         SecondText.isUserInteractionEnabled = true
         LabelsContainer.addSubview(SecondText)
         //ForgetLabel.backgroundColor = .gray
@@ -83,18 +94,19 @@ class ForgetPassword: UIViewController {
         view.addSubview(LabelsContainer)
         
         
-        let lastParagraph = UILabel(frame: CGRect(x: LabelsContainer.frame.origin.x, y:  LabelsContainer.frame.maxY +  view.frame.height*0.06, width: view.frame.width - (LabelsContainer.frame.origin.x*2), height: view.frame.height-(LabelsContainer.frame.maxY +  view.frame.height*0.06)))
+        let lastParagraph = UILabel(frame: CGRect(x: LabelsContainer.frame.origin.x-10, y:  LabelsContainer.frame.maxY , width: view.frame.width - ((LabelsContainer.frame.origin.x-10)*2), height: view.frame.height*0.2 ))
         lastParagraph.text = "Enter your E-mail to recover your password. You will receive an email with instructions.if you are experiencing problems recovering your password send us email."
-        lastParagraph.textColor = .white
+        lastParagraph.textColor = Colors().blue
        lastParagraph.baselineAdjustment = .alignCenters
         lastParagraph.lineBreakMode = .byWordWrapping
-        lastParagraph.font =
-        UIFont(name: "OpenSans", size:view.frame.width*0.045)
-        lastParagraph.sizeToFit()
+        lastParagraph.font = UIFont.systemFont(ofSize: view.frame.width*0.034)
+     
+        //lastParagraph.sizeToFit()
         lastParagraph.lineBreakMode = .byWordWrapping
-        lastParagraph.numberOfLines = 4
+        lastParagraph.numberOfLines = 0
         lastParagraph.adjustsFontSizeToFitWidth = true
         lastParagraph.textAlignment = .center
+       // lastParagraph.backgroundColor = .gray
         view.addSubview(lastParagraph)
 
         
@@ -104,7 +116,12 @@ class ForgetPassword: UIViewController {
         
         
     }
+    func signup_Pressed(){
+    present(SignUp(), animated: true, completion: nil)
     
+    
+    
+    }
     func recovery_Pressed(){
     
     
@@ -123,7 +140,7 @@ class ForgetPassword: UIViewController {
         let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
         textlabel.font = UIFont(name: "OpenSans-Bold", size: 66)
         
-        let boldText  = "Password "
+        let boldText  = "PASSWORD "
         let attrs = [NSFontAttributeName :  UIFont(name: "OpenSans-Bold", size: 66) ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
         
