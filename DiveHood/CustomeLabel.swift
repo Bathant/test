@@ -28,8 +28,22 @@ class CustomeLabel: UILabel {
         self.adjustsFontSizeToFitWidth = adjustTofit
         self.textColor = .white
         self.font = UIFont(name: fontName, size: size)
-        self.numberOfLines = 1
+        self.numberOfLines = 0
         self.textAlignment = .center
+        self.baselineAdjustment = .alignCenters
+
+    }
+    
+    
+    func OneLine(fontName : String , FontSize: CGFloat , text : String , textColor : UIColor){
+       
+        self.text = text
+        self.adjustsFontSizeToFitWidth = true
+        self.textColor = textColor
+        self.font = UIFont(name: fontName, size: FontSize)
+        
+        self.sizeToFit()
+        self.textAlignment = .left
         self.baselineAdjustment = .alignCenters
 
     }

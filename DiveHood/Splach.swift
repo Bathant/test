@@ -75,9 +75,9 @@ class Splach: UIViewController {
         label.text = "The Best diving Booking Services"
         label.textColor = .white
        
-        label.font = UIFont(name: "OpenSans-Bold", size: 34)
+        label.font = UIFont(name: "OpenSans-Bold", size: view.frame.height*0.024)
         
-        label.adjustsFontSizeToFitWidth = true
+        //label.adjustsFontSizeToFitWidth = true
         
         label.numberOfLines = 1
         label.frame.size.width =  view.frame.width - view.frame.width*0.05*2

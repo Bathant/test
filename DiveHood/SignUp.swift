@@ -30,10 +30,18 @@ class SignUp: UIViewController {
         let secondlabel = CustomeLabel(frame: frame, text: "Become A Divehoodian", adjustTofit: true, size: view.frame.height*0.025, fontName: "OpenSans-Bold")
         
         scrollview.addSubview(secondlabel)
-        let waveimg = #imageLiteral(resourceName: "waves")
-        let waveImage = UIImageView(frame: CGRect(x: view.frame.width/2-waveimg.size.width/2, y: secondlabel.frame.origin.y+secondlabel.frame.height+view.frame.height*0.015, width: waveimg.size.width, height: waveimg.size.height))
-        waveImage.image = waveimg
-        print(waveimg.size)
+      
+        let waveImage = UIImageView(frame: CGRect(x: view.frame.width/2-(#imageLiteral(resourceName: "waves").size.width/2), y: secondlabel.frame.origin.y+secondlabel.frame.height+view.frame.height*0.015, width: #imageLiteral(resourceName: "waves").size.width, height: #imageLiteral(resourceName: "waves").size.height))
+       
+        waveImage.image = #imageLiteral(resourceName: "waves")
+       
+        
+        waveImage.contentMode = .scaleToFill
+        
+         waveImage.frame.origin = CGPoint(x: view.frame.width/2-waveImage.frame.width/2, y: secondlabel.frame.origin.y+secondlabel.frame.height+view.frame.height*0.015)
+        
+        print("wave image size is \(waveImage.frame.size)")
+         print("wave image origin is \(waveImage.frame.origin)")
         scrollview.addSubview(waveImage)
         print(waveImage.frame.maxY)
         print(waveImage.frame.height+waveImage.frame.origin.y)
@@ -67,7 +75,7 @@ class SignUp: UIViewController {
         segment.addTarget(self, action: #selector(segmentChange), for: .valueChanged)
        
        let  signupBtn = ButtonWithGradient(frame: CGRect(x: view.frame.width*0.09, y: container.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(view.frame.width*0.09*2), height: view.frame.height*0.07), title: "VERFIY YOUR ACCOUNT", view: self.view)
-        signupBtn.addTarget(self, action: #selector(signUp_Pressed), for: .touchUpInside)
+        signupBtn.addTarget(self, action: #selector(Verfication_Pressed), for: .touchUpInside)
         
         
         scrollview.addSubview(signupBtn)
@@ -77,14 +85,25 @@ class SignUp: UIViewController {
         var img = #imageLiteral(resourceName: "Check_Box")
         let x = view.frame.width*0.0426+img.size.width+view.frame.width*0.09
         let AccountLabel = UIView(frame: CGRect(x: x, y: signupBtn.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(x*2), height: view.frame.height*0.025))
+        
        
         let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
         firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*0.032)
         firsttext.textAlignment = .left
         firsttext.baselineAdjustment = .alignCenters
         firsttext.textColor = .white
-        firsttext.text = "Already Have A DiveHood Account?Sign In"
+        let boldText  = "Already Have A DiveHood Account?"
+        let attrs = [NSForegroundColorAttributeName:UIColor.white ]
+        let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+        let normalText = "Sign In"
+        let attrs2 = [NSForegroundColorAttributeName:Colors().blue]
+        let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
+        attributedString.append(normalString)
+        firsttext.attributedText = attributedString
         firsttext.adjustsFontSizeToFitWidth = true
+        let tab = UITapGestureRecognizer(target: self, action: #selector( SignIn_Pressed))
+        firsttext.isUserInteractionEnabled = true
+        firsttext.addGestureRecognizer(tab)
         AccountLabel.addSubview(firsttext)
         
       scrollview.addSubview(AccountLabel)
@@ -105,9 +124,15 @@ class SignUp: UIViewController {
         
         
     }
-    func signUp_Pressed(){
-    
-    
+    func Verfication_Pressed(){
+        let controller = Controllers[0] as! DiverController
+        if controller.verficationChecked {
+                present(VerficationViaPhone(), animated: true, completion: nil)
+        }
+        else{
+        present(VerficationViaMail(), animated: true, completion: nil)
+        
+        }
     
     
     }
@@ -200,7 +225,26 @@ class SignUp: UIViewController {
         
         
     }
+    //actions
     
+    
+    func SignIn_Pressed(_ sender : UITapGestureRecognizer){
+        
+        present(LoginPage(), animated: true, completion: nil)
+        
+    }
+    
+    func ForgerPasseord_Pressed(_ sender : UITapGestureRecognizer){
+        present(ForgetPassword(), animated: true, completion: nil)
+    }
+    
+    
+    func SignUp_Pressed(_ sender : UITapGestureRecognizer){
+        
+        present(SignUp(), animated: true, completion: nil)
+        
+        
+    }
     
     /*
      // MARK: - Navigation

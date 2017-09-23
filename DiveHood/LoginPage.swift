@@ -59,29 +59,29 @@ class LoginPage: UIViewController {
         let img1 = #imageLiteral(resourceName: "Check_Box")
         let x = view.frame.width*0.09+view.frame.width*0.05+img1.size.width
     let AccountLabel = UIView(frame: CGRect(x: x, y: button.frame.maxY+view.frame.height*0.04, width: view.frame.width-(x*2), height: view.frame.height*0.04))
-       // AccountLabel.backgroundColor = .gray
         print( RememberMe.frame.origin.x)
-    let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width*0.8, height: AccountLabel.frame.height))
+    let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
         firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: AccountLabel.frame.width*0.8)
         firsttext.textAlignment = .left
         firsttext.baselineAdjustment = .alignCenters
-        firsttext.textColor = .white
-        firsttext.text = "Don’t Have a Divehood account?"
+       
+        
+        let boldText  = "Don’t Have a Divehood account?"
+        let attrs = [NSForegroundColorAttributeName:UIColor.white ]
+        let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+        let normalText = "Sign Up"
+        let attrs2 = [NSForegroundColorAttributeName:Colors().blue]
+        let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
+        attributedString.append(normalString)
+        firsttext.attributedText = attributedString
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector( SignUp_Pressed))
+        firsttext.addGestureRecognizer(tap)
+        firsttext.isUserInteractionEnabled = true
         firsttext.adjustsFontSizeToFitWidth = true
      // firsttext.backgroundColor = .red
         AccountLabel.addSubview(firsttext)
-        
-        let Secondtext = UILabel(frame: CGRect(x: firsttext.frame.maxX, y: 0, width: AccountLabel.frame.width*0.2, height: AccountLabel.frame.height))
-        Secondtext.font = UIFont(name: "OpenSans-SemiboldItalic", size: AccountLabel.frame.width*0.2)
-        Secondtext.textAlignment = .left
-        Secondtext.textColor = Colors().blue
-        Secondtext.baselineAdjustment = .alignCenters
- //Secondtext.backgroundColor = .green
-        Secondtext.text = "Sign Up."
-        Secondtext.adjustsFontSizeToFitWidth = true
-        
-        AccountLabel.addSubview(firsttext)
-         AccountLabel.addSubview(Secondtext)
+       
         
         
         var img = #imageLiteral(resourceName: "or")
@@ -121,11 +121,11 @@ class LoginPage: UIViewController {
     
     func form (_ y : CGFloat){
         
-        let Email = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: y+view.frame.height*0.04, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "  * Your E-mail" , view: view)
+        let Email = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: y+view.frame.height*0.04, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "* Your E-mail" , view: view)
         view.addSubview(Email)
         
         
-        let Paasword = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: Email.frame.maxY+view.frame.height*0.015, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "  * Password",view:view)
+        let Paasword = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: Email.frame.maxY+view.frame.height*0.015, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "* Password",view:view)
         view.addSubview(Paasword)
         
         let ForgetPasswordcontainer  = UIView(frame: CGRect(x: Paasword.frame.origin.x, y:  Paasword.frame.maxY +  view.frame.height*0.05 , width: Paasword.frame.width, height: Paasword.frame.height/2))
@@ -161,32 +161,21 @@ class LoginPage: UIViewController {
         ForgetLabel.isUserInteractionEnabled = true
         ForgetPasswordcontainer.addSubview(ForgetLabel)
         //ForgetLabel.backgroundColor = .gray
-        let tap = UITapGestureRecognizer(target: self, action: #selector(forgetpassword))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(Actions().ForgerPasseord_Pressed))
         ForgetLabel.addGestureRecognizer(tap)
         
         //ForgetPasswordcontainer.backgroundColor = .gray
         view.addSubview(ForgetPasswordcontainer)
      
          button = ButtonWithGradient(frame: CGRect(x: ForgetPasswordcontainer.frame.origin.x, y: ForgetPasswordcontainer.frame.maxY+view.frame.height*0.05, width: ForgetPasswordcontainer.frame.width, height: view.frame.height*0.07), title: "LOG IN", view: self.view)
-        button.addTarget(self, action: #selector(login_Pressed), for: .touchUpInside)
-       
+        
         
         view.addSubview(button)
         
         
     }
-    func forgetpassword(){
-    present(ForgetPassword(), animated: true, completion: nil)
-    
-    
-    }
-    func login_Pressed(){
-    
-    
-    
-    
-    }
-    
+   
+
     
     
     
@@ -216,6 +205,28 @@ class LoginPage: UIViewController {
         markableContainer.addSubview(textlabel)
         view.addSubview(markableContainer)
         return markableContainer.frame.origin.y+markableContainer.frame.height
+    }
+    
+    
+    //actions 
+    
+    
+    func SignIn_Pressed(_ sender : UITapGestureRecognizer){
+        
+        present(LoginPage(), animated: true, completion: nil)
+        
+    }
+    
+    func ForgerPasseord_Pressed(_ sender : UITapGestureRecognizer){
+        present(ForgetPassword(), animated: true, completion: nil)
+    }
+    
+    
+    func SignUp_Pressed(_ sender : UITapGestureRecognizer){
+        
+        present(SignUp(), animated: true, completion: nil)
+        
+        
     }
     /*
      // MARK: - Navigation

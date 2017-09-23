@@ -67,12 +67,13 @@ class ForgetPassword: UIViewController {
         UIFont(name: "OpenSans-SemiboldItalic", size: LabelsContainer.frame.width*0.45)
         Firsttext.textColor = .white
         Firsttext.adjustsFontSizeToFitWidth = true
-       
+        
         Firsttext.baselineAdjustment = .alignCenters
         Firsttext.textAlignment = .left
         LabelsContainer.addSubview(Firsttext)
-        
-        
+        let tab = UITapGestureRecognizer(target: self, action: #selector( SignIn_Pressed))
+        Firsttext.isUserInteractionEnabled = true
+        Firsttext.addGestureRecognizer(tab)
         
         let SecondText = UILabel(frame: CGRect(x: LabelsContainer.frame.maxX - LabelsContainer.frame.width*0.55, y: 0, width: LabelsContainer.frame.width*0.45, height: view.frame.height*0.03))
         SecondText.text = "Don't Have Any? Sign Up"
@@ -83,7 +84,7 @@ class ForgetPassword: UIViewController {
         SecondText.baselineAdjustment = .alignCenters
         SecondText.isUserInteractionEnabled = true
         SecondText.textAlignment = .right
-        let tap = UITapGestureRecognizer(target: self, action: #selector(signup_Pressed))
+        let tap = UITapGestureRecognizer(target: self, action: #selector( SignUp_Pressed))
         SecondText.addGestureRecognizer(tap)
         SecondText.isUserInteractionEnabled = true
         LabelsContainer.addSubview(SecondText)
@@ -161,7 +162,26 @@ class ForgetPassword: UIViewController {
     }
     
     
+    //actions
     
+    
+    func SignIn_Pressed(_ sender : UITapGestureRecognizer){
+        
+        present(LoginPage(), animated: true, completion: nil)
+        
+    }
+    
+    func ForgerPasseord_Pressed(_ sender : UITapGestureRecognizer){
+        present(ForgetPassword(), animated: true, completion: nil)
+    }
+    
+    
+    func SignUp_Pressed(_ sender : UITapGestureRecognizer){
+        
+        present(SignUp(), animated: true, completion: nil)
+        
+        
+    }
    
     
 
