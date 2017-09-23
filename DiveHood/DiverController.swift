@@ -12,6 +12,7 @@ class DiverController: UIViewController {
     var verficationChecked: Bool = true
     var verficationCheckBox:UIImageView!
     var ReadPolicyCheckBox : UIImageView!
+    var ContainerHeight : CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,13 +67,22 @@ class DiverController: UIViewController {
         
         view.addSubview(signupBtn)
         
-        
+        ContainerHeight = signupBtn.frame.maxY
         
     }
     func Verfication_Pressed(){
-    
-    
+        
+        if verficationChecked{
+            present(VerficationViaPhone(), animated: true, completion: nil)
+        }
+        else{
+            present(VerficationViaMail(), animated: true, completion: nil)
+            
+        }
+        
+        
     }
+    
     func verfiy(_ sender:UITapGestureRecognizer){
   
             if verficationCheckBox.image == #imageLiteral(resourceName: "Empty_Check_Box"){

@@ -34,7 +34,7 @@ class CustomizedTextField: UITextField {
         self.placeholder = PlaceHolder
         self.attributedPlaceholder = NSAttributedString(string : self.placeholder!,
                                                         attributes: [NSForegroundColorAttributeName: UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.6)])
-        self.font = UIFont(name: "OpenSans", size:view.frame.width*0.035)
+        self.font = UIFont(name: "OpenSans", size:view.frame.height*0.024)
         //self.adjustsFontSizeToFitWidth = true
         self.textAlignment = .left
         self.contentVerticalAlignment = .center

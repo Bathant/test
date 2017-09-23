@@ -13,6 +13,8 @@ class SignUp: UIViewController {
     var container : UIView!
     var Controllers : [UIViewController]!
     var   scrollview : UIScrollView!
+    var AccountLabel: UIView!
+    var footerCntainer:UIView!
        override func viewDidLoad() {
         super.viewDidLoad()
         Controllers = [DiverController() , BusinessOwnerController()]
@@ -74,14 +76,26 @@ class SignUp: UIViewController {
         
         segment.addTarget(self, action: #selector(segmentChange), for: .valueChanged)
       
+        Footer(maxy: container.frame.maxY)
         
         
         
-        var img = #imageLiteral(resourceName: "Check_Box")
-        let x = view.frame.width*0.0426+img.size.width+view.frame.width*0.09
-        let AccountLabel = UIView(frame: CGRect(x: x, y: container.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(x*2), height: view.frame.height*0.025))
         
+    }
+    
+    func Footer(maxy :CGFloat ){
+    
+        var Checkimg = #imageLiteral(resourceName: "Check_Box")
+         var Orimg = #imageLiteral(resourceName: "or")
+            var FacebbokImage = #imageLiteral(resourceName: "Login-Facebook")
+         let x = view.frame.width*0.0426+Checkimg.size.width+view.frame.width*0.09
+        let  FooterHeight  = view.frame.height*0.025+Orimg.size.height+FacebbokImage.size.height+view.frame.height*0.0426+view.frame.height*0.0239
+         footerCntainer = UIView(frame: CGRect(x: x, y: maxy+view.frame.height*Measurements().HEIGHT_32, width: view.frame.width - (2*x), height: FooterHeight))
+      //  footerCntainer.backgroundColor = .gray
        
+         AccountLabel = UIView(frame: CGRect(x: 0, y: 0, width: footerCntainer.frame.width, height: view.frame.height*0.025))
+        //container.backgroundColor = .gray
+        
         let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
         firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*0.032)
         firsttext.textAlignment = .left
@@ -101,43 +115,36 @@ class SignUp: UIViewController {
         firsttext.addGestureRecognizer(tab)
         AccountLabel.addSubview(firsttext)
         
-      scrollview.addSubview(AccountLabel)
-    
+        footerCntainer.addSubview(AccountLabel)
         
         
-         img = #imageLiteral(resourceName: "or")
-        let orimage = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: AccountLabel.frame.maxY+view.frame.height*0.0239, width: img.size.width, height: img.size.height))
-        orimage.image = img
-        scrollview.addSubview(orimage)
+        
+       
+        let orimage = UIImageView(frame: CGRect(x: footerCntainer.frame.width/2-(Orimg.size.width/2), y: AccountLabel.frame.maxY+view.frame.height*0.0239, width: Orimg.size.width, height: Orimg.size.height))
+        orimage.image = Orimg
+        footerCntainer.addSubview(orimage)
         
         
-        img = #imageLiteral(resourceName: "Login-Facebook")
-        let facebookimg = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: orimage.frame.maxY+view.frame.height*0.0426, width: img.size.width, height: img.size.height))
-        facebookimg.image = img
-        scrollview.addSubview(facebookimg)
-        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width, height: facebookimg.frame.maxY+view.frame.height*0.0426)
+
+        let facebookimg = UIImageView(frame: CGRect(x: footerCntainer.frame.width/2-(FacebbokImage.size.width/2), y: orimage.frame.maxY+view.frame.height*0.0426, width: FacebbokImage.size.width, height: FacebbokImage.size.height))
+        facebookimg.image = FacebbokImage
+        footerCntainer.addSubview(facebookimg)
+        scrollview.addSubview(footerCntainer)
+        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width, height: footerCntainer.frame.maxY+view.frame.height*0.0426)
         
-        
-    }
-    func Verfication_Pressed(){
-        let controller = Controllers[0] as! DiverController
-        if controller.verficationChecked {
-                present(VerficationViaPhone(), animated: true, completion: nil)
-        }
-        else{
-        present(VerficationViaMail(), animated: true, completion: nil)
-        
-        }
     
     
     }
     
+    
+ 
     func segmentChange(sender:UISegmentedControl) {
         
         switch sender.selectedSegmentIndex{
         case 0:
             setupControllers(0, 0)
             setupControllers(1, container.frame.width)
+            
         case 1:
             setupControllers(0, container.frame.width)
             setupControllers(1, 0)
@@ -155,7 +162,27 @@ class SignUp: UIViewController {
         
         
         Controllers[Index].view.frame = CGRect(x: x, y:  0 , width: container.frame.width, height: container.frame.height)
+        if x == 0 {
         
+            if Index == 0{
+            let temp = Controllers[0] as! DiverController
+                container.frame.size.height = temp.ContainerHeight
+                footerCntainer.removeFromSuperview()
+              
+                Footer(maxy: container.frame.maxY)
+                
+            }
+            else{
+            
+                let temp = Controllers[1] as! BusinessOwnerController
+                container.frame.size.height = temp.stepOneFormHeight
+                  footerCntainer.removeFromSuperview()
+                 Footer(maxy: container.frame.maxY)
+            
+            }
+        
+        
+        }
     }
     
     
@@ -210,7 +237,7 @@ class SignUp: UIViewController {
     }
     
     func BusinessOwnerControllerfunc(_ x:CGFloat){
-        let controller = BusinessOwnerController()
+        let controller = BusinessOwnerController(SignupInstance: self)
         controller.view.frame = CGRect(x: x, y:  0 , width: container.frame.width, height: container.frame.height)
         addChildViewController(controller)
         container.addSubview((controller.view)!)
