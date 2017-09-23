@@ -66,25 +66,20 @@ class SignUp: UIViewController {
         scrollview.addSubview(segment)
         
         
-        container = UIView(frame: CGRect(x: 0, y: view.frame.height*0.048+segment.frame.maxY, width: view.frame.width, height: view.frame.height*0.57))
-       // container.backgroundColor = .gray
+        container = UIView(frame: CGRect(x: 0, y: view.frame.height*0.048+segment.frame.maxY, width: view.frame.width, height: view.frame.height*0.7))
+        //container.backgroundColor = .red
         scrollview.addSubview(container)
         DiverControllerfunc(0)
         BusinessOwnerControllerfunc(container.frame.width)
         
         segment.addTarget(self, action: #selector(segmentChange), for: .valueChanged)
-       
-       let  signupBtn = ButtonWithGradient(frame: CGRect(x: view.frame.width*0.09, y: container.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(view.frame.width*0.09*2), height: view.frame.height*0.07), title: "VERFIY YOUR ACCOUNT", view: self.view)
-        signupBtn.addTarget(self, action: #selector(Verfication_Pressed), for: .touchUpInside)
-        
-        
-        scrollview.addSubview(signupBtn)
+      
         
         
         
         var img = #imageLiteral(resourceName: "Check_Box")
         let x = view.frame.width*0.0426+img.size.width+view.frame.width*0.09
-        let AccountLabel = UIView(frame: CGRect(x: x, y: signupBtn.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(x*2), height: view.frame.height*0.025))
+        let AccountLabel = UIView(frame: CGRect(x: x, y: container.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(x*2), height: view.frame.height*0.025))
         
        
         let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))

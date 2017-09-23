@@ -12,8 +12,10 @@ class DiverController: UIViewController {
     var verficationChecked: Bool = true
     var verficationCheckBox:UIImageView!
     var ReadPolicyCheckBox : UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       // view.backgroundColor = .gray
         form()
         
         // Do any additional setup after loading the view.
@@ -58,10 +60,18 @@ class DiverController: UIViewController {
         view.addSubview(container2)
         
        
-      
+        let  signupBtn = ButtonWithGradient(frame: CGRect(x: view.frame.width*0.09, y: container2.frame.maxY+view.frame.height*0.0479, width: view.frame.width-(view.frame.width*0.09*2), height: view.frame.height*0.07), title: "VERFIY YOUR ACCOUNT", view: self.view)
+        signupBtn.addTarget(self, action: #selector(Verfication_Pressed), for: .touchUpInside)
+        
+        
+        view.addSubview(signupBtn)
         
         
         
+    }
+    func Verfication_Pressed(){
+    
+    
     }
     func verfiy(_ sender:UITapGestureRecognizer){
   

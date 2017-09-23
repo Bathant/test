@@ -34,6 +34,8 @@
 		0E963B4D1F759D9C0036EBA4 /* VerficationViaMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B4C1F759D9C0036EBA4 /* VerficationViaMail.swift */; };
 		0E963B4F1F759E260036EBA4 /* Markable_Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B4E1F759E260036EBA4 /* Markable_Shape.swift */; };
 		0E963B511F75E3350036EBA4 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B501F75E3350036EBA4 /* Actions.swift */; };
+		0E963B531F75EE1A0036EBA4 /* Step2FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */; };
+		0E963B551F75EE2F0036EBA4 /* Step1FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		0E963B4C1F759D9C0036EBA4 /* VerficationViaMail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerficationViaMail.swift; sourceTree = "<group>"; };
 		0E963B4E1F759E260036EBA4 /* Markable_Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Markable_Shape.swift; sourceTree = "<group>"; };
 		0E963B501F75E3350036EBA4 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step2FormController.swift; sourceTree = "<group>"; };
+		0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1FormController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +233,8 @@
 			children = (
 				0E963B441F7486F40036EBA4 /* DiverController.swift */,
 				0E963B461F74870C0036EBA4 /* BusinessOwnerController.swift */,
+				0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */,
+				0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -384,7 +390,9 @@
 				0E963B4B1F759D840036EBA4 /* VerficationViaPhone.swift in Sources */,
 				0E963B491F7564130036EBA4 /* Measurements.swift in Sources */,
 				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
+				0E963B551F75EE2F0036EBA4 /* Step1FormController.swift in Sources */,
 				0E963B471F74870C0036EBA4 /* BusinessOwnerController.swift in Sources */,
+				0E963B531F75EE1A0036EBA4 /* Step2FormController.swift in Sources */,
 				0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */,
 				0E963B511F75E3350036EBA4 /* Actions.swift in Sources */,
 				0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */,
