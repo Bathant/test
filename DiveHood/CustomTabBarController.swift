@@ -41,7 +41,8 @@ class CustomTabBarController: UITabBarController  {
         
         
         let numberOfItems = CGFloat(self.tabBar.items!.count)
-        let tabBarItemSize = CGSize(width: self.tabBar.frame.width/(numberOfItems-1), height: tabBar.frame.height+40 )
+        let tabBarItemSize = CGSize(width: 50, height: tabBar.frame.height+15 )
+        print(self.tabBar.frame.width)
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.brown, size: tabBarItemSize).resizableImage(withCapInsets: .init())
         
         var items = self.tabBar.items
