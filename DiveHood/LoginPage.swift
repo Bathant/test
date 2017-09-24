@@ -182,7 +182,10 @@ class LoginPage: UIViewController {
         
     //present(view, animated: true, completion: nil)
     
-        AppDelegate.sharedInstance().window?.rootViewController = CustomTabBarController()
+        let nav = UINavigationController(rootViewController: CustomTabBarController())
+              nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
+        //nav.navigationBar.pre
+        AppDelegate.sharedInstance().window?.rootViewController = nav
 
     
     }

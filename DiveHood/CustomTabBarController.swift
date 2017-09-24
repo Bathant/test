@@ -17,7 +17,7 @@ extension UITabBar{
                 
                 item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)
                 item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .selected)
-               
+                
                 
             }
         }
@@ -53,7 +53,7 @@ extension UIImage
 {
     class func imageWithColor(color: UIColor, size: CGSize) -> UIImage
     {
-      
+        
         
         let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
@@ -69,36 +69,44 @@ class CustomTabBarController: UITabBarController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         setupUi()
+        setupUi()
         SetTabBar()
-        
-        
+        setNavigtionBar()
         
         
         
     }
     
+    func setNavigtionBar(){
     
+        self.title = "Liveaboards List"
+       
+        var nav = self.navigationController?.navigationBar
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
+        
+    
+    
+    }
     func SetTabBar(){
-    
-        self.tabBar.barTintColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:0.9)
+        
+        self.tabBar.barTintColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:0.1)
         UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -2.0)
         self.tabBar.inActiveTintColor()
         self.tabBar.tintColor = .white
         
         
         let numberOfItems = CGFloat(self.tabBar.items!.count)
-        let tabBarItemSize = CGSize(width: self.tabBar.frame.width/numberOfItems, height: tabBar.frame.height+40 )
+        let tabBarItemSize = CGSize(width: self.tabBar.frame.width/(numberOfItems-1), height: tabBar.frame.height+40 )
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.brown, size: tabBarItemSize).resizableImage(withCapInsets: .init())
-      
-         var items = self.tabBar.items
+        
+        var items = self.tabBar.items
         items?[0].titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
         items?[0].setTitleTextAttributes([NSFontAttributeName : UIFont(name : "OpenSans",size: 12)], for: .normal)
         items?[0].imageInsets = UIEdgeInsetsMake(-10, 0, 10, 0)
         
-
         
-    
+        
+        
     }
     func setupUi(){
         setbackground()
@@ -132,7 +140,7 @@ class CustomTabBarController: UITabBarController  {
         backgroundImage.image = UIImage(named: "splashbg")
         self.view.insertSubview(backgroundImage, at: 0)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -146,14 +154,14 @@ class CustomTabBarController: UITabBarController  {
         items?[self.selectedIndex].imageInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         
         var index = items?.index(of: item)
-     
+        
         items?[index!].titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
         items?[index!].setTitleTextAttributes([NSFontAttributeName : UIFont(name : "OpenSans",size: 12)], for: .normal)
         items?[index!].imageInsets = UIEdgeInsetsMake(-10, 0, 10, 0)
-       
-      
         
-
+        
+        
+        
     }
     /*
      // MARK: - Navigation
