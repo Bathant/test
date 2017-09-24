@@ -9,62 +9,7 @@
 import UIKit
 
 
-extension UITabBar{
-    func inActiveTintColor() {
-        if let items = items{
-            for item in items{
-                item.image =  item.image?.withRenderingMode(.alwaysOriginal)
-                
-                item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)
-                item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .selected)
-                
-                
-            }
-        }
-    }
-}
-extension UIImage {
-    func tintedWithLinearGradientColors(colorsArr: [CGColor?], size : CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, self.scale);
-        let context = UIGraphicsGetCurrentContext()
-        context!.translateBy(x: 0, y: self.size.height)
-        context!.scaleBy(x: 1.0, y: -1.0)
-        
-        context!.setBlendMode(.normal)
-        let rect = CGRect(x:0, y:0,width: self.size.width,height: self.size.height)
-        
-        // Create gradient
-        
-        let colors = colorsArr as CFArray
-        let space = CGColorSpaceCreateDeviceRGB()
-        let gradient = CGGradient(colorsSpace: space, colors: colors, locations: nil)
-        
-        // Apply gradient
-        
-        context!.clip(to: rect, mask: self.cgImage!)
-        context!.drawLinearGradient(gradient!, start: CGPoint(x:0,y:0), end: CGPoint(x:self.size.height, y: self.size.height), options: CGGradientDrawingOptions(rawValue: 0))
-        let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return gradientImage!
-    }
-}
-extension UIImage
-{
-    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage
-    {
-        
-        
-        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
-        UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        let img = image.tintedWithLinearGradientColors(colorsArr: [UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0).cgColor , Colors().gradientColor2.cgColor], size : size )
-        UIGraphicsEndImageContext()
-        return img
-    }
-}
+
 class CustomTabBarController: UITabBarController  {
     
     override func viewDidLoad() {
@@ -74,22 +19,22 @@ class CustomTabBarController: UITabBarController  {
         setNavigtionBar()
         
         
-        
     }
     
     func setNavigtionBar(){
-    
+        
         self.title = "Liveaboards List"
-       
+        
         var nav = self.navigationController?.navigationBar
         nav?.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
         
-    
-    
+        
     }
+   
     func SetTabBar(){
         
-        self.tabBar.barTintColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:0.1)
+        self.tabBar.barTintColor = UIColor(red:0.05, green:0.13, blue:0.25, alpha:1.0)
+        self.tabBar.alpha = 0.9
         UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -2.0)
         self.tabBar.inActiveTintColor()
         self.tabBar.tintColor = .white
@@ -110,7 +55,7 @@ class CustomTabBarController: UITabBarController  {
     }
     func setupUi(){
         setbackground()
-        let LiveBoards = UIViewController()
+        let LiveBoards = LiveaBoardsLists()
         let nav1 = UINavigationController(rootViewController: LiveBoards)
         nav1.tabBarItem.title = "Liveaboard"
         nav1.tabBarItem.image = UIImage(named: "tb-liveaboards")
@@ -173,4 +118,60 @@ class CustomTabBarController: UITabBarController  {
      }
      */
     
+}
+extension UITabBar{
+    func inActiveTintColor() {
+        if let items = items{
+            for item in items{
+                item.image =  item.image?.withRenderingMode(.alwaysOriginal)
+                
+                item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .normal)
+                item.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: .selected)
+                
+                
+            }
+        }
+    }
+}
+extension UIImage {
+    func tintedWithLinearGradientColors(colorsArr: [CGColor?], size : CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, self.scale);
+        let context = UIGraphicsGetCurrentContext()
+        context!.translateBy(x: 0, y: self.size.height)
+        context!.scaleBy(x: 1.0, y: -1.0)
+        
+        context!.setBlendMode(.normal)
+        let rect = CGRect(x:0, y:0,width: self.size.width,height: self.size.height)
+        
+        // Create gradient
+        
+        let colors = colorsArr as CFArray
+        let space = CGColorSpaceCreateDeviceRGB()
+        let gradient = CGGradient(colorsSpace: space, colors: colors, locations: nil)
+        
+        // Apply gradient
+        
+        context!.clip(to: rect, mask: self.cgImage!)
+        context!.drawLinearGradient(gradient!, start: CGPoint(x:0,y:0), end: CGPoint(x:self.size.height, y: self.size.height), options: CGGradientDrawingOptions(rawValue: 0))
+        let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return gradientImage!
+    }
+}
+extension UIImage
+{
+    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage
+    {
+        
+        
+        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let img = image.tintedWithLinearGradientColors(colorsArr: [UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0).cgColor , Colors().gradientColor2.cgColor], size : size )
+        UIGraphicsEndImageContext()
+        return img
+    }
 }

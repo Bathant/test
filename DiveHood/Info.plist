@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>OpenSans-ExtraBold.ttf</string>
 		<string>OpenSans-Bold.ttf</string>
 		<string>OpenSans-SemiboldItalic.ttf</string>
 		<string>OpenSans-Light.ttf</string>
