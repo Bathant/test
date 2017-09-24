@@ -62,7 +62,9 @@ class CustomTableViewCell: UITableViewCell {
         priceViewLabels()
         contentView.addSubview(priceView)
         
-        DescriptionView = UIView(frame: CGRect(x: priceView.frame.maxX, y: priceView.frame.origin.y, width: contentView.frame.width-(priceView.frame.maxX), height: viewheight*125/1334))
+        DescriptionView = UIView(frame: CGRect(x: priceView.frame.maxX, y: priceView.frame.origin.y, width: contentView.frame.width-(priceView.frame.maxX), height: (viewheight*125/1334)-1))
+        
+        DescriptionLabels()
         DescriptionView.backgroundColor = .white
         contentView.addSubview(DescriptionView)
         
@@ -158,6 +160,41 @@ class CustomTableViewCell: UITableViewCell {
         self.contentView.layer.insertSublayer(gradientx, at: 0)
         
         
+    }
+    func DescriptionLabels(){
+        
+        let SubContainer = UIView(frame: CGRect(x: viewwidth*0.047, y: viewheight*16/1334, width: DescriptionView.frame.width-(viewwidth*0.047*2), height: DescriptionView.frame.height-(viewheight*16/1334*2)))
+                print(viewheight*0.026)
+        DescriptionView.addSubview(SubContainer)
+        let Header = UILabel()
+        Header.frame.origin = CGPoint(x: 0, y: 0)
+        
+        Header.text = "Grand Sea Serpent"
+        Header.textColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0)
+        Header.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)
+        Header.textAlignment = .center
+        Header.sizeToFit()
+        SubContainer.addSubview(Header)
+        
+        //Total distance 59.45 km (36.94 mi)
+    
+      
+        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: DescriptionView.frame.width, height: DescriptionView.frame.height*1/2))
+        //subHeader.backgroundColor = .red
+        subHeader.text = "Total distance 59.45 km (36.94 mi)"
+        subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
+        subHeader.font = UIFont(name: "OpenSans", size: viewwidth*0.032)
+        subHeader.textAlignment = .center
+        subHeader.sizeToFit()
+        SubContainer.addSubview(subHeader)
+        
+        
+        let rightarrow = UIImageView(frame: CGRect(x: SubContainer.frame.width-#imageLiteral(resourceName: "right-purple-arrow").size.width, y: SubContainer.frame.height/2-(#imageLiteral(resourceName: "right-purple-arrow").size.height/2), width: #imageLiteral(resourceName: "right-purple-arrow").size.width, height: #imageLiteral(resourceName: "right-purple-arrow").size.height))
+        
+        rightarrow.image = #imageLiteral(resourceName: "right-purple-arrow")
+    
+        SubContainer.addSubview(rightarrow)
+    
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
