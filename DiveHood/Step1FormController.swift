@@ -55,13 +55,13 @@ class Step1FormController: UIViewController {
     }
     
     func nextStep(){
-    UIView.animate(withDuration: 0.5) { 
-        self.BusinessOwner.setupControllers(0, -2*self.view.frame.width)
-        self.BusinessOwner.setupControllers(1, 0)
-        }
+ 
+  // UIView.animate(withDuration: 0.5, animations: {
+    self.BusinessOwner.setupControllers(0, -2*self.view.frame.width)
+    self.BusinessOwner.setupControllers(1, 0)
+   //})
    
-    
-    
+     self.BusinessOwner.setFooter()
     }
 
 }

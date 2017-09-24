@@ -318,9 +318,14 @@ class Step2FormController: UIViewController,UIPickerViewDelegate ,UIPickerViewDa
     }
     func BackStep(){
         UIView.animate(withDuration: 0.5) {
+            
+        }
+       // UIView.animate(withDuration: 0.5, animations: {
             self.BusinessOwner.setupControllers(0, 0)
             self.BusinessOwner.setupControllers(1, self.view.frame.width)
-        }
+        //}) { (true) in
+            self.BusinessOwner.setFooter()
+        //}
     }
    
  

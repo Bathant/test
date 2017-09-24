@@ -168,13 +168,24 @@ class LoginPage: UIViewController {
         view.addSubview(ForgetPasswordcontainer)
      
          button = ButtonWithGradient(frame: CGRect(x: ForgetPasswordcontainer.frame.origin.x, y: ForgetPasswordcontainer.frame.maxY+view.frame.height*0.05, width: ForgetPasswordcontainer.frame.width, height: view.frame.height*0.07), title: "LOG IN", view: self.view)
-        
+  
         
         view.addSubview(button)
-        
+              button.addTarget(self, action: #selector(lOGIN_Pressed), for: .touchUpInside)
         
     }
-   
+    func lOGIN_Pressed(_ sender : UIButton){
+           //let view = CustomTabBarController().viewControllers?[0] as! UINavigationController
+   // let nav = UINavigationController(rootViewController: self)
+     
+     //   nav.pushViewController(view, animated: true)
+        
+    //present(view, animated: true, completion: nil)
+    
+        AppDelegate.sharedInstance().window?.rootViewController = CustomTabBarController()
+
+    
+    }
 
     
     

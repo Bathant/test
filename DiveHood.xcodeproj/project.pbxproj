@@ -21,6 +21,7 @@
 		0E0F02861F71FBB800E2C6C2 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */; };
 		0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */; };
 		0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F028E1F72E59700E2C6C2 /* Colors.swift */; };
+		0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */; };
 		0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */; };
 		0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */; };
 		0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */; };
@@ -76,6 +77,7 @@
 		0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperWindow.swift; sourceTree = "<group>"; };
 		0E0F028E1F72E59700E2C6C2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTextField.swift; sourceTree = "<group>"; };
 		0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithGradient.swift; sourceTree = "<group>"; };
 		0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		0E0F028D1F72DE4600E2C6C2 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				0E2C4A9C1F77028A003EAB1B /* HomePage */,
 				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
 				0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */,
 				0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */,
@@ -213,6 +216,14 @@
 				0E963B4C1F759D9C0036EBA4 /* VerficationViaMail.swift */,
 			);
 			name = Pages;
+			sourceTree = "<group>";
+		};
+		0E2C4A9C1F77028A003EAB1B /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */,
+			);
+			name = HomePage;
 			sourceTree = "<group>";
 		};
 		0E963B381F731E8D0036EBA4 /* CustomizedShapes */ = {
@@ -385,6 +396,7 @@
 				0E963B4F1F759E260036EBA4 /* Markable_Shape.swift in Sources */,
 				0E963B421F747D640036EBA4 /* CustomeLabel.swift in Sources */,
 				0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */,
+				0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */,
 				0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */,
 				0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */,
 				0E963B4B1F759D840036EBA4 /* VerficationViaPhone.swift in Sources */,

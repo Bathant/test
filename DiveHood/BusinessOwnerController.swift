@@ -58,8 +58,7 @@ class BusinessOwnerController: UIViewController {
             let temp  = Controllers[0] as! Step1FormController
                 signUpInstance.container.frame.size.height = temp.height!
                 container.frame.size.height = signUpInstance.container.frame.size.height
-                signUpInstance.footerCntainer.removeFromSuperview()
-                signUpInstance.Footer(maxy: signUpInstance.container.frame.maxY)
+
                 
                 
             }
@@ -67,13 +66,18 @@ class BusinessOwnerController: UIViewController {
                 let temp  = Controllers[1] as! Step2FormController
                 signUpInstance.container.frame.size.height = temp.Containerheight!
                 container.frame.size.height = signUpInstance.container.frame.size.height
-                signUpInstance.footerCntainer.removeFromSuperview()
-                signUpInstance.Footer(maxy: signUpInstance.container.frame.maxY)
+
                 
             }
           
         }
         
+    }
+    func setFooter(){
+    
+        signUpInstance.footerCntainer.removeFromSuperview()
+        signUpInstance.Footer(maxy: signUpInstance.container.frame.maxY)
+    
     }
     
     func StepOneForm(_ x:CGFloat){
