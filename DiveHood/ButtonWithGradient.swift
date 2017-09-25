@@ -31,9 +31,6 @@ class ButtonWithGradient: UIButton {
         self.layer.shadowRadius = 4
         
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
-        
-        
-        
         self.layer.insertSublayer(gradientx, at: 0)
         
         

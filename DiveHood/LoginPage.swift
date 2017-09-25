@@ -182,10 +182,34 @@ class LoginPage: UIViewController {
         
     //present(view, animated: true, completion: nil)
     
-        let nav = UINavigationController(rootViewController: CustomTabBarController())
-              nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
-        //nav.navigationBar.pre
-        AppDelegate.sharedInstance().window?.rootViewController = nav
+      // let nav = UINavigationController(rootViewController: CustomTabBarController())
+//           //   nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
+//        if #available(iOS 11.0, *) {
+//            nav.navigationBar.prefersLargeTitles = true
+//            print("height is ??? \(nav.navigationBar.intrinsicContentSize.height)")
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        nav.navigationBar.shadowImage = UIImage()
+//        nav.navigationBar.isTranslucent = true
+//        nav.navigationBar.backgroundColor = UIColor.clear
+        
+//        let gradientx = CAGradientLayer()
+//        gradientx.colors = [Colors().gradientColor1.cgColor,Colors().gradientColor2.cgColor]
+//        
+//        
+//        gradientx.startPoint = CGPoint(x: 0.0, y: 1.0)
+//        gradientx.endPoint = CGPoint(x: 1.0, y: 1.0)
+//        gradientx.frame = nav.navigationBar.bounds
+//        
+//    
+//        UIGraphicsBeginImageContext(gradientx.bounds.size)
+//        gradientx.render(in: UIGraphicsGetCurrentContext()!)
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        nav.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
+        AppDelegate.sharedInstance().window?.rootViewController = CustomTabBarController()
 
     
     }

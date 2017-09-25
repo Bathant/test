@@ -23,14 +23,18 @@ class CustomTabBarController: UITabBarController  {
     
     func setNavigtionBar(){
         
-        self.title = "Liveaboards List"
+        //self.title = "Liveaboards List"
         
         var nav = self.navigationController?.navigationBar
-        nav?.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
+        // nav?.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
+        print("height from tab bar \(nav?.intrinsicContentSize.height)")
+        
+        
+        
         
         
     }
-   
+    
     func SetTabBar(){
         
         self.tabBar.barTintColor = UIColor(red:0.05, green:0.13, blue:0.25, alpha:1.0)
@@ -58,9 +62,14 @@ class CustomTabBarController: UITabBarController  {
         setbackground()
         let LiveBoards = LiveaBoardsLists()
         let nav1 = UINavigationController(rootViewController: LiveBoards)
+        
         nav1.tabBarItem.title = "Liveaboard"
         nav1.tabBarItem.image = UIImage(named: "tb-liveaboards")
-        
+        //        if #available(iOS 11.0, *) {
+        //            nav1.navigationBar.prefersLargeTitles = true
+        //        } else {
+        //            // Fallback on earlier versions
+        //        }
         
         let DivingCenters = UIViewController()
         let nav2 = UINavigationController(rootViewController: DivingCenters)
@@ -109,15 +118,6 @@ class CustomTabBarController: UITabBarController  {
         
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 extension UITabBar{
