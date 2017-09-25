@@ -45,7 +45,7 @@ class CustomTabBarController: UITabBarController  {
         
         
         let numberOfItems = CGFloat(self.tabBar.items!.count)
-        let tabBarItemSize = CGSize(width: 50, height: tabBar.frame.height+15 )
+        let tabBarItemSize = CGSize(width:90, height: tabBar.frame.height+15 )
         print(self.tabBar.frame.width)
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.brown, size: tabBarItemSize).resizableImage(withCapInsets: .init())
         
@@ -65,12 +65,7 @@ class CustomTabBarController: UITabBarController  {
         
         nav1.tabBarItem.title = "Liveaboard"
         nav1.tabBarItem.image = UIImage(named: "tb-liveaboards")
-        //        if #available(iOS 11.0, *) {
-        //            nav1.navigationBar.prefersLargeTitles = true
-        //        } else {
-        //            // Fallback on earlier versions
-        //        }
-        
+  
         let DivingCenters = UIViewController()
         let nav2 = UINavigationController(rootViewController: DivingCenters)
         nav2.tabBarItem.title = "Diving Centers"

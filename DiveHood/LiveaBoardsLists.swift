@@ -44,15 +44,23 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     
     
     func setupUi(){
-        let frame = UIApplication.shared.statusBarFrame
-        let view1 = UIView()
-        view1.backgroundColor = .black
-        view1.frame = frame
-        view.addSubview(view1)
+      statusBarGradient()
         let maxy = setupSegmentedControl()
         setupTableView(maxy)
         setNavigationGradient()
+        statusBarGradient()
         //SetUpStatusBar()
+        
+    }
+    func statusBarGradient(){
+      
+       
+        let frame = UIApplication.shared.statusBarFrame
+        let view1 = UIView()
+        view1.backgroundColor = UIColor(red:56/255, green:44/255, blue:98/255, alpha:1.0)
+        view1.frame = frame
+        
+        view.addSubview(view1)
         
     }
     
@@ -63,15 +71,20 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     self.navigationController!.navigationBar.shadowImage = UIImage()
     self.navigationController!.navigationBar.isTranslucent = true
     self.navigationController!.navigationBar.backgroundColor = UIColor.clear
-  //  let gradientx = CAGradientLayer()
-  //  gradientx.colors = [UIColor(red:17/255, green:42/255, blue:76/255, alpha:1.0).cgColor, Colors().gradientColor2.cgColor]
-   // gradientx.startPoint = CGPoint(x: 0.0, y: 1.0)
-   // gradientx.endPoint = CGPoint(x: 1.0, y: 1.0)
-    
+    var menuimage = UIImage(named: "nb-menu")
+    menuimage = menuimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+       
+        var SearchImage = UIImage(named: "nb-search")
+        SearchImage = SearchImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+       
+        var FilterImage = UIImage(named: "nb-filter")
+        FilterImage = FilterImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-  //  gradientx.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: view.frame.width, height:   70)
-    //    self.navigationController?.navigationBar.layer.insertSublayer(gradientx, at: 0)
-   // view.layer.insertSublayer(gradientx, at: 0)
+        
+        let searrchItem = UIBarButtonItem(image: SearchImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let filterItem =  UIBarButtonItem(image: FilterImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItems = [ filterItem,searrchItem]
     }
     func setupbackgroundGradient(){
         
