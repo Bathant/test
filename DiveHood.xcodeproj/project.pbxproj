@@ -26,6 +26,7 @@
 		0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */; };
 		0E2C4AA61F783FA8003EAB1B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */; };
 		0E4713021F7944F800E59E08 /* MapHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4713011F7944F800E59E08 /* MapHomePage.swift */; };
+		0E4713051F7A15E100E59E08 /* Single Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4713041F7A15E100E59E08 /* Single Page.swift */; };
 		0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */; };
 		0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */; };
 		0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */; };
@@ -86,6 +87,7 @@
 		0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0E4713011F7944F800E59E08 /* MapHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomePage.swift; sourceTree = "<group>"; };
+		0E4713041F7A15E100E59E08 /* Single Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single Page.swift"; sourceTree = "<group>"; };
 		0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTextField.swift; sourceTree = "<group>"; };
 		0E963B391F733FA50036EBA4 /* ButtonWithGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithGradient.swift; sourceTree = "<group>"; };
 		0E963B3B1F73EF2F0036EBA4 /* ForgetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		0E0F028D1F72DE4600E2C6C2 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				0E4713031F7A159600E59E08 /* SinglePage */,
 				0E2C4A9C1F77028A003EAB1B /* HomePage */,
 				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
 				0E0F027C1F71BB8300E2C6C2 /* LoginPage.swift */,
@@ -236,6 +239,14 @@
 				0E4713011F7944F800E59E08 /* MapHomePage.swift */,
 			);
 			name = HomePage;
+			sourceTree = "<group>";
+		};
+		0E4713031F7A159600E59E08 /* SinglePage */ = {
+			isa = PBXGroup;
+			children = (
+				0E4713041F7A15E100E59E08 /* Single Page.swift */,
+			);
+			name = SinglePage;
 			sourceTree = "<group>";
 		};
 		0E963B381F731E8D0036EBA4 /* CustomizedShapes */ = {
@@ -407,6 +418,7 @@
 				0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */,
 				0E963B451F7486F40036EBA4 /* DiverController.swift in Sources */,
 				0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */,
+				0E4713051F7A15E100E59E08 /* Single Page.swift in Sources */,
 				0E963B4F1F759E260036EBA4 /* Markable_Shape.swift in Sources */,
 				0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */,
 				0E4713021F7944F800E59E08 /* MapHomePage.swift in Sources */,
