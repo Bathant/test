@@ -10,6 +10,7 @@ import UIKit
 
 class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate {
     var scrollView : UIScrollView!
+    var scrollViewSlider: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUi()
@@ -31,11 +32,129 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         y =  booked240Times(y)
         y = PickCabinandBook(y)
         y = DescriptionField(y)
-       
         y = setTableview(y)
-         scrollView.contentSize = CGSize(width: view.frame.width, height: y+1000)
+        SimilarLiveaboards(y)
+        
+       
     }
-
+    
+    func SimilarLiveaboards(_ y: CGFloat){
+        let container = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*515/1334))
+         var  label1 =  makeOneLineLabel(container , x: view.frame.width*25/750 , y:view.frame.height*32/1334, text: "SIMILAR LIVEABOARDS" , textColor: UIColor(red:17/255 , green:42/255, blue:76/255 , alpha : 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
+        //container.backgroundColor = .black
+        
+        scrollView.addSubview(container)
+        setsliderContainer(label1.frame.maxY+container.frame.minY)
+        
+        scrollView.contentSize = CGSize(width: view.frame.width, height: container.frame.maxY+(self.tabBarController?.tabBar.frame.height)!+view.frame.height*64*2/1334)
+        
+    }
+    func setsliderContainer (_ y : CGFloat){
+        let Barheight:CGFloat  = self.tabBarController!.tabBar.frame.height
+        print(Barheight)
+        scrollViewSlider  = UIScrollView(frame: CGRect(x: 0, y: y , width: view.frame.width, height: view.frame.height*515/1334))
+        scrollViewSlider.isPagingEnabled = true
+        scrollViewSlider.contentSize = CGSize(width: view.frame.width*3, height: view.frame.height*515/1334)
+        scrollViewSlider.showsHorizontalScrollIndicator = false
+        
+        scrollView.addSubview(scrollViewSlider)
+        
+        var  x =  makeABoxContainer(scrollViewSlider , xposition : 0 , yposition : view.frame.height*50/1334 ,img: #imageLiteral(resourceName: "fiji-siren-1") )
+        
+        x = makeABoxContainer(scrollViewSlider , xposition :x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
+        
+        x =  makeABoxContainer(scrollViewSlider , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "palau-siren-5"))
+       
+        x = makeABoxContainer(scrollViewSlider , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
+    }
+    
+    func makeABoxContainer(_ scrollViewSlider: UIScrollView , xposition : CGFloat , yposition : CGFloat, img: UIImage)->CGFloat{
+        let subcontainer = UIView(frame: CGRect(x: xposition, y: yposition, width: view.frame.width*0.5, height: scrollViewSlider.frame.height-(view.frame.height*50/1334*2)))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: subcontainer.frame.width, height: view.frame.height*205/1334))
+        image.image = img
+        subcontainer.addSubview(image)
+        let priceView = UIView(frame: CGRect(x: 0, y: view.frame.height*80/1334, width: subcontainer.frame.width/2, height:image.frame.maxY-view.frame.height*80/1334))
+        priceView.backgroundColor = UIColor(red:0.07, green:0.16, blue:0.30, alpha:0.9)
+        priceViewLabels(priceView)
+        subcontainer.addSubview(priceView)
+        let whiteBox = UIView(frame: CGRect(x: 0, y: image.frame.maxY, width: subcontainer.frame.width, height: view.frame.height*120/1334))
+        whiteBox.backgroundColor = .white
+        DescriptionLabels(whiteBox)
+        subcontainer.addSubview(whiteBox)
+        scrollViewSlider.addSubview(subcontainer)
+        
+        return subcontainer.frame.maxX+view.frame.width*70/750
+    }
+    
+    
+    func priceViewLabels(_ priceView: UIView){
+        let subContainer = UILabel(frame: CGRect(x: view.frame.width*0.04, y: priceView.frame.height*0.1, width: priceView.frame.width-(view.frame.width*0.04*2), height: priceView.frame.height-(priceView.frame.height*0.1*2)))
+        priceView.addSubview(subContainer)
+        let BiggerPrice = UILabel(frame: CGRect(x: 0, y: 0, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
+        let txt1 = "EGP  "
+        let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.024 )]
+        let txt2 = "83,132"
+        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 )]
+        let attributedString = NSMutableAttributedString(string: txt1, attributes: attrs)
+        let normalString = NSMutableAttributedString(string: txt2, attributes: attrs2)
+        attributedString.append(normalString)
+        BiggerPrice.attributedText = attributedString
+        BiggerPrice.textAlignment = .center
+        BiggerPrice.sizeToFit()
+        BiggerPrice.baselineAdjustment = .alignBaselines
+        BiggerPrice.textColor = .white
+        subContainer.addSubview(BiggerPrice)
+        let smallerPrice = UILabel(frame: CGRect(x: 0, y: BiggerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height))
+        smallerPrice.text = "20.783"
+        smallerPrice.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
+        smallerPrice.font = UIFont(name: "OpenSans-ExtraBold", size: view.frame.width*0.0453)
+        smallerPrice.textAlignment = .center
+        smallerPrice.sizeToFit()
+        subContainer.addSubview(smallerPrice)
+        
+        
+        let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
+        smallDetail.text = "PER TRIP"
+        smallDetail.textColor = UIColor(red:173/255, green:155/355, blue:26/255, alpha:1.0)
+        smallDetail.font = UIFont(name: "OpenSans-Bold", size: view.frame.width*0.0187)
+        smallDetail.textAlignment = .center
+        smallDetail.sizeToFit()
+        subContainer.addSubview(smallDetail)
+        
+        
+        
+    }
+    func DescriptionLabels(_ DescriptionView:UIView ){
+        
+        let SubContainer = UIView(frame: CGRect(x: view.frame.width*30/750, y: view.frame.height*16/1334, width: DescriptionView.frame.width-(view.frame.width*30/750*2), height: DescriptionView.frame.height-(view.frame.height*16/1334*2)))
+        
+        DescriptionView.addSubview(SubContainer)
+        let Header = UILabel()
+        Header.frame.origin = CGPoint(x: 0, y: 0)
+        
+        Header.text = "Grand Sea Serpent"
+        Header.textColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0)
+        Header.font = UIFont(name: "OpenSans-ExtraBold", size: view.frame.width*0.0453)
+        Header.textAlignment = .center
+        Header.sizeToFit()
+        SubContainer.addSubview(Header)
+        
+        
+        
+        
+        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: SubContainer.frame.width, height: DescriptionView.frame.height*0.2))
+        //subHeader.backgroundColor = .red
+        subHeader.text = "Total distance 59.45 km (36.94 mi)"
+        subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
+        subHeader.font = UIFont(name: "OpenSans", size: view.frame.width*0.032)
+        subHeader.textAlignment = .center
+        //subHeader.sizeToFit()
+        // subHeader.adjustsFontSizeToFitWidth = true
+        SubContainer.addSubview(subHeader)
+        
+        
+        
+    }
     
     
     
@@ -134,14 +253,42 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
         makeOneLineLabel(container , x: label6.frame.maxX , y:label6.frame.origin.y , text: " Free" , textColor: UIColor(red: 28/255, green: 59/255, blue: 104/255, alpha: 1.0) , Fontname: "OpenSans" , FontSize: view.frame.width*20/750)
         
-        
-        
-        
+    
         scrollView.addSubview(container)
+        
+        // on the other side ratings :::::::::::::::::
+        let widthofratings = #imageLiteral(resourceName: "gold-star").size.width*5
+        let ratings = UIView(frame: CGRect(x: container.frame.width-widthofratings-view.frame.width*25/750, y:labelBookedHeader.frame.origin.y , width:widthofratings , height: #imageLiteral(resourceName: "gold-star").size.height  ))
+        setupStars(ratings)
+        container.addSubview(ratings)
+      
+        makeOneLineLabel(container, x: ratings.frame.minX, y: ratings.frame.maxY+view.frame.height*16/1334, text: "120 Feedback", textColor: UIColor(red: 28/255, green: 59/255, blue: 104/255, alpha: 1.0), Fontname: "OpenSans", FontSize: view.frame.width*20/750)
         
         return container.frame.maxY
         
     }
+    func setupStars(_ ratings: UIView){
+        
+        let stars1 = UIImageView(frame: CGRect(x: 0, y: ratings.frame.height/4, width: #imageLiteral(resourceName: "gold-star").size.width, height: #imageLiteral(resourceName: "gold-star").size.height))
+        stars1.image = #imageLiteral(resourceName: "gold-star")
+        let stars2 = UIImageView(frame: CGRect(x: stars1.frame.maxX, y: stars1.frame.minY, width: #imageLiteral(resourceName: "gold-star").size.width, height: #imageLiteral(resourceName: "gold-star").size.height))
+        stars2.image = #imageLiteral(resourceName: "gold-star")
+        let stars3 = UIImageView(frame: CGRect(x: stars2.frame.maxX, y: stars2.frame.minY, width: #imageLiteral(resourceName: "gold-star").size.width, height: #imageLiteral(resourceName: "gold-star").size.height))
+        stars3.image = #imageLiteral(resourceName: "gold-star")
+        let stars4 = UIImageView(frame: CGRect(x: stars3.frame.maxX, y: stars3.frame.minY, width: #imageLiteral(resourceName: "gold-star").size.width, height: #imageLiteral(resourceName: "gold-star").size.height))
+        stars4.image = #imageLiteral(resourceName: "gold-star")
+        let stars5 = UIImageView(frame: CGRect(x: stars4.frame.maxX, y: stars4.frame.minY, width: #imageLiteral(resourceName: "gold-star").size.width, height: #imageLiteral(resourceName: "gold-star").size.height))
+        stars5.image = #imageLiteral(resourceName: "gold-star")
+        ratings.addSubview(stars1)
+        ratings.addSubview(stars2)
+        ratings.addSubview(stars3)
+        ratings.addSubview(stars4)
+        ratings.addSubview(stars5)
+        
+    }
+    
+    
+    
     func makeOneLineLabel(_ container :UIView, x : CGFloat , y:CGFloat , text :String , textColor: UIColor , Fontname : String , FontSize : CGFloat)->UILabel{
         let label = UILabel()
         label.frame.origin = CGPoint(x: x, y:y)
@@ -184,7 +331,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         //Total distance 59.45 km (36.94 mi)
         
         
-        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: DescriptionView.frame.width, height: DescriptionView.frame.height*1/2))
+        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: DescriptionView.frame.width/2, height: DescriptionView.frame.height*1/2))
         //subHeader.backgroundColor = .red
         subHeader.text = "Total distance 59.45 km (36.94 mi)"
         subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
@@ -192,6 +339,13 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         subHeader.textAlignment = .center
         subHeader.sizeToFit()
         SubContainer.addSubview(subHeader)
+        
+        let viewmap = UIImageView(frame:CGRect(x: SubContainer.frame.width-#imageLiteral(resourceName: "view-map").size.width, y: SubContainer.frame.midY-(#imageLiteral(resourceName: "view-map").size.height), width: #imageLiteral(resourceName: "view-map").size.width, height: #imageLiteral(resourceName: "view-map").size.height))
+        viewmap.image = #imageLiteral(resourceName: "view-map")
+        SubContainer.addSubview(viewmap)
+        let callus = UIImageView(frame:CGRect(x: viewmap.frame.minX-view.frame.width*16/750-#imageLiteral(resourceName: "call-us").size.width, y: viewmap.frame.origin.y, width: #imageLiteral(resourceName: "call-us").size.width, height: #imageLiteral(resourceName: "call-us").size.height))
+        callus.image = #imageLiteral(resourceName: "call-us")
+        SubContainer.addSubview(callus)
         
         
     }
@@ -258,16 +412,19 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         self.navigationController!.navigationBar.backgroundColor = UIColor.clear
         
         
-        var SearchImage = UIImage(named: "nb-search")
-        SearchImage = SearchImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        var cartimage = UIImage(named: "cart")
+        cartimage = cartimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        var FilterImage = UIImage(named: "nb-filter")
-        FilterImage = FilterImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        var shareimage = UIImage(named: "share")
+        shareimage = shareimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        var addfavoriteimage = UIImage(named: "add-favorite")
+        addfavoriteimage = addfavoriteimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        
-        let searrchItem = UIBarButtonItem(image: SearchImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        let filterItem =  UIBarButtonItem(image: FilterImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItems = [ filterItem,searrchItem]
+        let cartItem = UIBarButtonItem(image: cartimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let shareItem =  UIBarButtonItem(image: shareimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let favItem =  UIBarButtonItem(image: addfavoriteimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItems = [ favItem,shareItem,cartItem ]
+        self.navigationController?.navigationBar.tintColor = .white
     }
     func setupbackgroundGradient(){
         
@@ -282,14 +439,17 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
         
     }
+    
       //*************************** Tableview Protocols  Functionalities *******************************//
     func setTableview(_ y:CGFloat  ) ->CGFloat{
         let tableView = UITableView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*113/1334*6))
         scrollView.addSubview(tableView)
-        
+        //tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SinglePageTableCell.classForCoder(), forCellReuseIdentifier: "SinglePageCell")
+       // tableView.separatorColor = UIColor(red: 77/25, green: 194/255, blue: 230/255, alpha: 1.0)
+        tableView.separatorStyle = .none
         return tableView.frame.maxY
         
         
