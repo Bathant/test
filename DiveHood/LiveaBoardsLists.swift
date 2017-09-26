@@ -34,7 +34,6 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     
     
     
-    
     func setupUi(){
         SetupNavigationBar()
         statusBarGradient()
@@ -45,6 +44,8 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         
     }
+  
+    
     func statusBarGradient(){
         
         let frame = UIApplication.shared.statusBarFrame
@@ -144,7 +145,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! CustomTableViewCell
         cell.img.image = UIImage(named: imags[indexPath.row])
-        
+        cell.selectionStyle = .none
         return cell
     }
     

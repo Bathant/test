@@ -21,6 +21,8 @@
 		0E0F02861F71FBB800E2C6C2 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */; };
 		0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */; };
 		0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F028E1F72E59700E2C6C2 /* Colors.swift */; };
+		0E1FDA8A1F7A8E1000375A4B /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E1FDA891F7A8D6E00375A4B /* OpenSans-Semibold.ttf */; };
+		0E1FDA8C1F7AB11D00375A4B /* SinglePageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FDA8B1F7AB11D00375A4B /* SinglePageTableCell.swift */; };
 		0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */; };
 		0E2C4AA21F77F983003EAB1B /* LiveaBoardsLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA11F77F983003EAB1B /* LiveaBoardsLists.swift */; };
 		0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */; };
@@ -82,6 +84,8 @@
 		0E0F02841F71F99700E2C6C2 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../Documents/Fonts/open-sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		0E0F02871F72003700E2C6C2 /* WallpaperWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperWindow.swift; sourceTree = "<group>"; };
 		0E0F028E1F72E59700E2C6C2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0E1FDA891F7A8D6E00375A4B /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		0E1FDA8B1F7AB11D00375A4B /* SinglePageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageTableCell.swift; sourceTree = "<group>"; };
 		0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		0E2C4AA11F77F983003EAB1B /* LiveaBoardsLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveaBoardsLists.swift; sourceTree = "<group>"; };
 		0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				0E963B3D1F7448990036EBA4 /* OpenSans-SemiboldItalic.ttf */,
+				0E1FDA891F7A8D6E00375A4B /* OpenSans-Semibold.ttf */,
 				0E0F02801F71E92D00E2C6C2 /* OpenSans-Bold.ttf */,
 				0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */,
 				0E0F02821F71F7CA00E2C6C2 /* OpenSans-Light.ttf */,
@@ -245,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				0E4713041F7A15E100E59E08 /* Single Page.swift */,
+				0E1FDA8B1F7AB11D00375A4B /* SinglePageTableCell.swift */,
 			);
 			name = SinglePage;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E1FDA8A1F7A8E1000375A4B /* OpenSans-Semibold.ttf in Resources */,
 				0E0F02811F71EA8800E2C6C2 /* OpenSans-Bold.ttf in Resources */,
 				0E0F02831F71F7D300E2C6C2 /* OpenSans-Light.ttf in Resources */,
 				0E0F02861F71FBB800E2C6C2 /* OpenSans-Regular.ttf in Resources */,
@@ -427,6 +434,7 @@
 				0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */,
 				0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */,
 				0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */,
+				0E1FDA8C1F7AB11D00375A4B /* SinglePageTableCell.swift in Sources */,
 				0E963B4B1F759D840036EBA4 /* VerficationViaPhone.swift in Sources */,
 				0E963B491F7564130036EBA4 /* Measurements.swift in Sources */,
 				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
