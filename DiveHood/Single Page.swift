@@ -505,7 +505,12 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        switch indexPath.row {
+        case 0:
+            self.navigationController?.pushViewController(AmenitiesView(), animated: true)
+        default:
+            break
+        }
     }
     //#############   END OF Tableview Protocols  Functionalities #####################################//
     

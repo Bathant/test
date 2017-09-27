@@ -29,6 +29,8 @@
 		0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */; };
 		0E2C4AA61F783FA8003EAB1B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */; };
 		0E358D091F7B0EAE00DBA65C /* TimeSlotsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */; };
+		0E358D0D1F7B3A4D00DBA65C /* AmenitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E358D0C1F7B3A4D00DBA65C /* AmenitiesView.swift */; };
+		0E358D0F1F7B3FD300DBA65C /* AmenitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E358D0E1F7B3FD300DBA65C /* AmenitiesCell.swift */; };
 		0E4713021F7944F800E59E08 /* MapHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4713011F7944F800E59E08 /* MapHomePage.swift */; };
 		0E4713051F7A15E100E59E08 /* Single Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4713041F7A15E100E59E08 /* Single Page.swift */; };
 		0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */; };
@@ -94,6 +96,8 @@
 		0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsCell.swift; sourceTree = "<group>"; };
+		0E358D0C1F7B3A4D00DBA65C /* AmenitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmenitiesView.swift; sourceTree = "<group>"; };
+		0E358D0E1F7B3FD300DBA65C /* AmenitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmenitiesCell.swift; sourceTree = "<group>"; };
 		0E4713011F7944F800E59E08 /* MapHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomePage.swift; sourceTree = "<group>"; };
 		0E4713041F7A15E100E59E08 /* Single Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single Page.swift"; sourceTree = "<group>"; };
 		0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTextField.swift; sourceTree = "<group>"; };
@@ -242,8 +246,8 @@
 		0E1FDA8F1F7B05B600375A4B /* SubPages */ = {
 			isa = PBXGroup;
 			children = (
-				0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */,
-				0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */,
+				0E358D0B1F7B399400DBA65C /* Amenities */,
+				0E358D0A1F7B398200DBA65C /* TimeSlots */,
 			);
 			name = SubPages;
 			sourceTree = "<group>";
@@ -257,6 +261,24 @@
 				0E4713011F7944F800E59E08 /* MapHomePage.swift */,
 			);
 			name = HomePage;
+			sourceTree = "<group>";
+		};
+		0E358D0A1F7B398200DBA65C /* TimeSlots */ = {
+			isa = PBXGroup;
+			children = (
+				0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */,
+				0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */,
+			);
+			name = TimeSlots;
+			sourceTree = "<group>";
+		};
+		0E358D0B1F7B399400DBA65C /* Amenities */ = {
+			isa = PBXGroup;
+			children = (
+				0E358D0C1F7B3A4D00DBA65C /* AmenitiesView.swift */,
+				0E358D0E1F7B3FD300DBA65C /* AmenitiesCell.swift */,
+			);
+			name = Amenities;
 			sourceTree = "<group>";
 		};
 		0E4713031F7A159600E59E08 /* SinglePage */ = {
@@ -443,6 +465,7 @@
 				0E4713051F7A15E100E59E08 /* Single Page.swift in Sources */,
 				0E963B4F1F759E260036EBA4 /* Markable_Shape.swift in Sources */,
 				0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */,
+				0E358D0D1F7B3A4D00DBA65C /* AmenitiesView.swift in Sources */,
 				0E4713021F7944F800E59E08 /* MapHomePage.swift in Sources */,
 				0E963B421F747D640036EBA4 /* CustomeLabel.swift in Sources */,
 				0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */,
@@ -451,6 +474,7 @@
 				0E1FDA911F7B060A00375A4B /* TimeSlotsView.swift in Sources */,
 				0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */,
 				0E1FDA8C1F7AB11D00375A4B /* SinglePageTableCell.swift in Sources */,
+				0E358D0F1F7B3FD300DBA65C /* AmenitiesCell.swift in Sources */,
 				0E963B4B1F759D840036EBA4 /* VerficationViaPhone.swift in Sources */,
 				0E963B491F7564130036EBA4 /* Measurements.swift in Sources */,
 				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
