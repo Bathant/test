@@ -26,6 +26,7 @@
 		0E1FDA911F7B060A00375A4B /* TimeSlotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */; };
 		0E201BB11F7BEB2200FD82A4 /* LocationOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E201BB01F7BEB2200FD82A4 /* LocationOnMap.swift */; };
 		0E201BB41F7BF19900FD82A4 /* AllExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E201BB31F7BF19900FD82A4 /* AllExtensions.swift */; };
+		0E201BB71F7C2E2600FD82A4 /* CabinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E201BB61F7C2E2500FD82A4 /* CabinsViewController.swift */; };
 		0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */; };
 		0E2C4AA21F77F983003EAB1B /* LiveaBoardsLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA11F77F983003EAB1B /* LiveaBoardsLists.swift */; };
 		0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */; };
@@ -49,6 +50,8 @@
 		0E963B511F75E3350036EBA4 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B501F75E3350036EBA4 /* Actions.swift */; };
 		0E963B531F75EE1A0036EBA4 /* Step2FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */; };
 		0E963B551F75EE2F0036EBA4 /* Step1FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */; };
+		0ECE06E41F7C404700409D2C /* CabinsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE06E31F7C404700409D2C /* CabinsTab.swift */; };
+		0ECE06E81F7C416900409D2C /* CabinsTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,7 @@
 		0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsView.swift; sourceTree = "<group>"; };
 		0E201BB01F7BEB2200FD82A4 /* LocationOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationOnMap.swift; sourceTree = "<group>"; };
 		0E201BB31F7BF19900FD82A4 /* AllExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllExtensions.swift; sourceTree = "<group>"; };
+		0E201BB61F7C2E2500FD82A4 /* CabinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsViewController.swift; sourceTree = "<group>"; };
 		0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		0E2C4AA11F77F983003EAB1B /* LiveaBoardsLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveaBoardsLists.swift; sourceTree = "<group>"; };
 		0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		0E963B501F75E3350036EBA4 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step2FormController.swift; sourceTree = "<group>"; };
 		0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1FormController.swift; sourceTree = "<group>"; };
+		0ECE06E31F7C404700409D2C /* CabinsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsTab.swift; sourceTree = "<group>"; };
+		0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsTabCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,16 @@
 			name = "LocationOnMap ";
 			sourceTree = "<group>";
 		};
+		0E201BB51F7C2DD900FD82A4 /* Cabins */ = {
+			isa = PBXGroup;
+			children = (
+				0E201BB61F7C2E2500FD82A4 /* CabinsViewController.swift */,
+				0ECE06E31F7C404700409D2C /* CabinsTab.swift */,
+				0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */,
+			);
+			name = Cabins;
+			sourceTree = "<group>";
+		};
 		0E2C4A9C1F77028A003EAB1B /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +295,7 @@
 			children = (
 				0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */,
 				0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */,
+				0E201BB51F7C2DD900FD82A4 /* Cabins */,
 			);
 			name = TimeSlots;
 			sourceTree = "<group>";
@@ -470,10 +487,12 @@
 				0E963B4D1F759D9C0036EBA4 /* VerficationViaMail.swift in Sources */,
 				0E358D091F7B0EAE00DBA65C /* TimeSlotsCell.swift in Sources */,
 				0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */,
+				0E201BB71F7C2E2600FD82A4 /* CabinsViewController.swift in Sources */,
 				0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */,
 				0E963B451F7486F40036EBA4 /* DiverController.swift in Sources */,
 				0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */,
 				0E4713051F7A15E100E59E08 /* Single Page.swift in Sources */,
+				0ECE06E41F7C404700409D2C /* CabinsTab.swift in Sources */,
 				0E963B4F1F759E260036EBA4 /* Markable_Shape.swift in Sources */,
 				0E201BB41F7BF19900FD82A4 /* AllExtensions.swift in Sources */,
 				0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */,
@@ -491,6 +510,7 @@
 				0E0F027F1F71BCF800E2C6C2 /* Splach.swift in Sources */,
 				0E963B551F75EE2F0036EBA4 /* Step1FormController.swift in Sources */,
 				0E963B471F74870C0036EBA4 /* BusinessOwnerController.swift in Sources */,
+				0ECE06E81F7C416900409D2C /* CabinsTabCell.swift in Sources */,
 				0E963B531F75EE1A0036EBA4 /* Step2FormController.swift in Sources */,
 				0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */,
 				0E963B511F75E3350036EBA4 /* Actions.swift in Sources */,

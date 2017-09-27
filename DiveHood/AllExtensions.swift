@@ -12,7 +12,9 @@ import UIKit
 ////////////////////////////////////// UIVIEWCONTROLLER ////////////////////////////////////////////////////
 extension UIViewController {
     func  setupnavigation( viewController : UIViewController , Title : String){
-        
+        let backItem = UIBarButtonItem()
+        backItem.title = Title
+        viewController.navigationItem.backBarButtonItem = backItem
         viewController.title = Title
         let nav = viewController.navigationController!
         nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]

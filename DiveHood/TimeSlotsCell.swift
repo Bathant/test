@@ -40,25 +40,10 @@ class TimeSlotsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     func setCell(){
-         heightView = UIScreen.main.bounds.maxY-UIScreen.main.bounds.minY
-         WidthView = UIScreen.main.bounds.maxX-UIScreen.main.bounds.minX
-        let date = UIView(frame: CGRect(x: 0, y: 0, width: WidthView*96/750, height: heightView*140/1334))
-        date.backgroundColor = UIColor(red : 177/255,green: 177/255,blue: 177/255, alpha: 1.0)
-        verticallyLabels(date, "IN", "8", "July")
-        let outDate = UIView(frame: CGRect(x: date.frame.width+1 , y: 0, width: WidthView*96/750, height: heightView*140/1334))
-         outDate.backgroundColor = UIColor(red : 207/255,green: 207/255,blue: 209/255, alpha: 1.0)
-        verticallyLabels(outDate, "OUT", "12", "July")
-        let ticketDescription = UIView(frame: CGRect(x: outDate.frame.maxX, y: 0, width: contentView.frame.width-outDate.frame.maxX, height: outDate.frame.height))
-        ticketDescription.backgroundColor = UIColor(red: 230/255,green:  230/255,blue: 230/255, alpha:1.0 )
 
-        let getlabel = HorizontalyLabels("Brothers, Daedalus and Elphinstone", font: UIFont(name: "OpenSans-SemiBold", size: WidthView*28/750)!, textcolor: UIColor(red: 12/255, green: 37/255, blue: 60/255, alpha: 1), y: 0, container: ticketDescription, Width: ticketDescription.frame.width-(WidthView*25/750))
-        
-      let label2  =   HorizontalyLabels("5 Days / 6 Nights (Approximately 17 dives)", font: UIFont(name: "OpenSans", size: WidthView*24/750)!, textcolor: UIColor(red: 12/255, green: 37/255, blue: 60/255, alpha: 1), y: getlabel.frame.maxY, container: ticketDescription, Width: ticketDescription.frame.width-(WidthView*25/750))
-       let label3 =  HorizontalyLabels("4 spaces Left", font: UIFont(name: "OpenSans", size: WidthView*24/750)!, textcolor: UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1), y: label2.frame.maxY+heightView*8/1334, container: ticketDescription, Width:(WidthView*174/750))
-        label3.backgroundColor = UIColor(red: 207/255,green:  207/255,blue: 209/255, alpha:1.0 )
-        label3.textAlignment = .center
-       
-        
+        heightView = UIScreen.main.bounds.maxY-UIScreen.main.bounds.minY
+        WidthView = UIScreen.main.bounds.maxX-UIScreen.main.bounds.minX
+        let date  = SetFirstPart()
         let lastView = UIView(frame: CGRect(x: 0, y: date.frame.maxY, width: contentView.frame.width, height: heightView*100/1334))
         lastView.backgroundColor = UIColor(red: 17/255,green:  42/255,blue: 76/255, alpha:1.0 )
         let str = "PRICES STARTS FROM"
@@ -89,10 +74,34 @@ class TimeSlotsCell: UITableViewCell {
         
         
         
-        contentView.addSubview(ticketDescription)
+     
         
         
     }
+    
+    func SetFirstPart( )->UIView{
+      
+        let date = UIView(frame: CGRect(x: 0, y: 0, width: WidthView*96/750, height: heightView*140/1334))
+        date.backgroundColor = UIColor(red : 177/255,green: 177/255,blue: 177/255, alpha: 1.0)
+        verticallyLabels(date, "IN", "8", "July")
+        let outDate = UIView(frame: CGRect(x: date.frame.width+1 , y: 0, width: WidthView*96/750, height: heightView*140/1334))
+        outDate.backgroundColor = UIColor(red : 207/255,green: 207/255,blue: 209/255, alpha: 1.0)
+        verticallyLabels(outDate, "OUT", "12", "July")
+        let ticketDescription = UIView(frame: CGRect(x: outDate.frame.maxX, y: 0, width: contentView.frame.width-outDate.frame.maxX, height: outDate.frame.height))
+        ticketDescription.backgroundColor = UIColor(red: 230/255,green:  230/255,blue: 230/255, alpha:1.0 )
+        
+        let getlabel = HorizontalyLabels("Brothers, Daedalus and Elphinstone", font: UIFont(name: "OpenSans-SemiBold", size: WidthView*28/750)!, textcolor: UIColor(red: 12/255, green: 37/255, blue: 60/255, alpha: 1), y: 0, container: ticketDescription, Width: ticketDescription.frame.width-(WidthView*25/750))
+        
+        let label2  =   HorizontalyLabels("5 Days / 6 Nights (Approximately 17 dives)", font: UIFont(name: "OpenSans", size: WidthView*24/750)!, textcolor: UIColor(red: 12/255, green: 37/255, blue: 60/255, alpha: 1), y: getlabel.frame.maxY, container: ticketDescription, Width: ticketDescription.frame.width-(WidthView*25/750))
+        let label3 =  HorizontalyLabels("4 spaces Left", font: UIFont(name: "OpenSans", size: WidthView*24/750)!, textcolor: UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1), y: label2.frame.maxY+heightView*8/1334, container: ticketDescription, Width:(WidthView*174/750))
+        label3.backgroundColor = UIColor(red: 207/255,green:  207/255,blue: 209/255, alpha:1.0 )
+        label3.textAlignment = .center
+        
+           contentView.addSubview(ticketDescription)
+        return date
+    }
+    
+    
     func HorizontalyLabels(_ text :String , font : UIFont , textcolor : UIColor , y: CGFloat , container: UIView , Width : CGFloat)->UILabel{
         
         let text2 = text
