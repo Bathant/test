@@ -41,8 +41,22 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     func SimilarLiveaboards(_ y: CGFloat){
         let container = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*515/1334))
          var  label1 =  makeOneLineLabel(container , x: view.frame.width*25/750 , y:view.frame.height*32/1334, text: "SIMILAR LIVEABOARDS" , textColor: UIColor(red:17/255 , green:42/255, blue:76/255 , alpha : 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
-        //container.backgroundColor = .black
+
+
+        let label2 = UILabel(frame: CGRect(x: container.frame.width - view.frame.width*87/750-view.frame.width*25/750, y: label1.frame.minY, width: view.frame.width*87/750, height: view.frame.height*40/1334))
+        label2.text = "Egypt"
+        label2.textColor = .white
+       // label2.adjustsFontSizeToFitWidth = true
         
+        label2.layer.borderWidth = 1.0
+        label2.layer.cornerRadius = 2.0
+        label2.clipsToBounds = true
+        
+        label2.textAlignment = .center
+        
+        label2.font = UIFont(name: "OpenSans", size: view.frame.width*24/750)
+        label2.backgroundColor = UIColor(red: 17/255, green: 42/255, blue: 76/255, alpha: 1.0)
+        container.addSubview(label2)
         scrollView.addSubview(container)
         setsliderContainer(label1.frame.maxY+container.frame.minY)
         
@@ -72,6 +86,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         let subcontainer = UIView(frame: CGRect(x: xposition, y: yposition, width: view.frame.width*0.5, height: scrollViewSlider.frame.height-(view.frame.height*50/1334*2)))
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: subcontainer.frame.width, height: view.frame.height*205/1334))
         image.image = img
+        
         subcontainer.addSubview(image)
         let priceView = UIView(frame: CGRect(x: 0, y: view.frame.height*80/1334, width: subcontainer.frame.width/2, height:image.frame.maxY-view.frame.height*80/1334))
         priceView.backgroundColor = UIColor(red:0.07, green:0.16, blue:0.30, alpha:0.9)
@@ -94,7 +109,8 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         let txt1 = "EGP  "
         let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.024 )]
         let txt2 = "83,132"
-        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 )]
+    
+        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedString = NSMutableAttributedString(string: txt1, attributes: attrs)
         let normalString = NSMutableAttributedString(string: txt2, attributes: attrs2)
         attributedString.append(normalString)
@@ -113,10 +129,10 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         subContainer.addSubview(smallerPrice)
         
         
-        let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
+        let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*0.1))
         smallDetail.text = "PER TRIP"
         smallDetail.textColor = UIColor(red:173/255, green:155/355, blue:26/255, alpha:1.0)
-        smallDetail.font = UIFont(name: "OpenSans-Bold", size: view.frame.width*0.0187)
+        smallDetail.font = UIFont(name: "OpenSans-Bold", size: view.frame.width*12/750)
         smallDetail.textAlignment = .center
         smallDetail.sizeToFit()
         subContainer.addSubview(smallDetail)
@@ -194,10 +210,17 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         conainer2.backgroundColor = UIColor(red: 27/255, green: 21/255, blue: 38/255, alpha: 1.0)
         
         var  label5 =  makeOneLineLabel(conainer2 , x: view.frame.width*15/750 , y:view.frame.width*20/750, text: "25 Cabin Available" , textColor: UIColor(red: 237/255, green: 202/255, blue: 12/255, alpha: 1.0) , Fontname: "OpenSans" , FontSize: view.frame.height*20/1334)
-        var  label6 =  makeOneLineLabel(conainer2 , x: label5.frame.origin.x , y:label5.frame.maxY, text: "Pick Cabin & book" , textColor: .white, Fontname: "OpenSans-Bold" , FontSize: view.frame.height*28/1334)
+        var  label6 =  makeOneLineLabel(conainer2 , x: label5.frame.origin.x , y:label5.frame.maxY, text: "Select Your Trip" , textColor: .white, Fontname: "OpenSans-Bold" , FontSize: view.frame.height*28/1334)
         
         
+        let arrow = UIImageView(frame: CGRect(x: conainer2.frame.width-(#imageLiteral(resourceName: "right-white-arrow").size.width)-view.frame.width*15/750, y: conainer2.frame.height/2-(#imageLiteral(resourceName: "right-white-arrow").size.height/2), width: #imageLiteral(resourceName: "right-white-arrow").size.width, height: #imageLiteral(resourceName: "right-white-arrow").size.height))
+        arrow.image = #imageLiteral(resourceName: "right-white-arrow")
+        conainer2.addSubview(arrow)
         
+        
+        let tab = UITapGestureRecognizer(target: self, action: #selector(OpenTimeSlots))
+        conainer2.isUserInteractionEnabled = true
+        conainer2.addGestureRecognizer(tab)
         
         scrollView.addSubview(conainer2)
         
@@ -206,7 +229,11 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         return container1.frame.maxY
         
     }
-    
+    func OpenTimeSlots(){
+        
+        self.navigationController?.pushViewController(TimeSlotsView(), animated: true)
+        
+    }
     
     
     func booked240Times(_ y:CGFloat)->CGFloat{
@@ -455,6 +482,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
     }
     let Titles = ["Boat Amenities","Diving Services", "Location On Map", "Liveaboard Images", "Liveaboard Videos", "Reviews"]
+    let images = [#imageLiteral(resourceName: "amenities"),#imageLiteral(resourceName: "diving"), #imageLiteral(resourceName: "map"), #imageLiteral(resourceName: "image"), #imageLiteral(resourceName: "video"), #imageLiteral(resourceName: "review")]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -462,7 +490,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SinglePageCell", for: indexPath as IndexPath) as! SinglePageTableCell
         cell.selectionStyle = .none
-        cell.icon.image = #imageLiteral(resourceName: "purple-map")
+        cell.icon.image = images[indexPath.row]
         cell.Title.text = Titles[indexPath.row]
         
         return cell
@@ -476,17 +504,11 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     }
     
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     //#############   END OF Tableview Protocols  Functionalities #####################################//
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

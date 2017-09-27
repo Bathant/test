@@ -44,11 +44,11 @@ class SinglePageTableCell: UITableViewCell {
        Title =  makeOneLineLabel(container , x: icon.frame.maxX+Widthview*30/750 , y:0, text: "Boat Amenities" , textColor: .white , Fontname: "OpenSans" , FontSize: heightview*30/1334)
         
         
-        let anotherlabel =  makeOneLineLabel(container , x: container.frame.maxX*0.8 , y:0, text: "Details" , textColor: .white , Fontname: "OpenSans" , FontSize: heightview*30/1334)
+        let anotherlabel =  makeOneLineLabel(container , x: container.frame.maxX*0.78 , y:0, text: "Details" , textColor: UIColor(red:77/255 , green: 194/255, blue :230/255, alpha: 1.0) , Fontname: "OpenSans" , FontSize: heightview*30/1334)
         
-        let rightarrow = UIImageView(frame: CGRect(x: container.frame.width-#imageLiteral(resourceName: "right-purple-arrow").size.width, y: container.frame.height/2-(#imageLiteral(resourceName: "right-purple-arrow").size.height/2), width: #imageLiteral(resourceName: "right-purple-arrow").size.width, height: #imageLiteral(resourceName: "right-purple-arrow").size.height))
+        let rightarrow = UIImageView(frame: CGRect(x: container.frame.width-#imageLiteral(resourceName: "right-blue-arrow").size.width, y: container.frame.height/2-(#imageLiteral(resourceName: "right-blue-arrow").size.height/2), width: #imageLiteral(resourceName: "right-blue-arrow").size.width, height: #imageLiteral(resourceName: "right-blue-arrow").size.height))
         
-        rightarrow.image = #imageLiteral(resourceName: "right-purple-arrow")
+        rightarrow.image = #imageLiteral(resourceName: "right-blue-arrow")
         
         container.addSubview(rightarrow)
         

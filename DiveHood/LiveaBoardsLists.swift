@@ -281,7 +281,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         let txt1 = "EGP  "
         let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.024 )]
         let txt2 = "83,132"
-        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 )]
+          let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedString = NSMutableAttributedString(string: txt1, attributes: attrs)
         let normalString = NSMutableAttributedString(string: txt2, attributes: attrs2)
         attributedString.append(normalString)

@@ -23,10 +23,12 @@
 		0E0F028F1F72E59800E2C6C2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F028E1F72E59700E2C6C2 /* Colors.swift */; };
 		0E1FDA8A1F7A8E1000375A4B /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E1FDA891F7A8D6E00375A4B /* OpenSans-Semibold.ttf */; };
 		0E1FDA8C1F7AB11D00375A4B /* SinglePageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FDA8B1F7AB11D00375A4B /* SinglePageTableCell.swift */; };
+		0E1FDA911F7B060A00375A4B /* TimeSlotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */; };
 		0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */; };
 		0E2C4AA21F77F983003EAB1B /* LiveaBoardsLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA11F77F983003EAB1B /* LiveaBoardsLists.swift */; };
 		0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */; };
 		0E2C4AA61F783FA8003EAB1B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */; };
+		0E358D091F7B0EAE00DBA65C /* TimeSlotsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */; };
 		0E4713021F7944F800E59E08 /* MapHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4713011F7944F800E59E08 /* MapHomePage.swift */; };
 		0E4713051F7A15E100E59E08 /* Single Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4713041F7A15E100E59E08 /* Single Page.swift */; };
 		0E963B371F731E3B0036EBA4 /* CustomizedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */; };
@@ -86,10 +88,12 @@
 		0E0F028E1F72E59700E2C6C2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0E1FDA891F7A8D6E00375A4B /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		0E1FDA8B1F7AB11D00375A4B /* SinglePageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageTableCell.swift; sourceTree = "<group>"; };
+		0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsView.swift; sourceTree = "<group>"; };
 		0E2C4A9F1F7706AF003EAB1B /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		0E2C4AA11F77F983003EAB1B /* LiveaBoardsLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveaBoardsLists.swift; sourceTree = "<group>"; };
 		0E2C4AA31F781A0C003EAB1B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0E2C4AA51F783FA8003EAB1B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsCell.swift; sourceTree = "<group>"; };
 		0E4713011F7944F800E59E08 /* MapHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomePage.swift; sourceTree = "<group>"; };
 		0E4713041F7A15E100E59E08 /* Single Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single Page.swift"; sourceTree = "<group>"; };
 		0E963B361F731E3B0036EBA4 /* CustomizedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedTextField.swift; sourceTree = "<group>"; };
@@ -235,6 +239,15 @@
 			name = Pages;
 			sourceTree = "<group>";
 		};
+		0E1FDA8F1F7B05B600375A4B /* SubPages */ = {
+			isa = PBXGroup;
+			children = (
+				0E1FDA901F7B060A00375A4B /* TimeSlotsView.swift */,
+				0E358D081F7B0EAE00DBA65C /* TimeSlotsCell.swift */,
+			);
+			name = SubPages;
+			sourceTree = "<group>";
+		};
 		0E2C4A9C1F77028A003EAB1B /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +264,7 @@
 			children = (
 				0E4713041F7A15E100E59E08 /* Single Page.swift */,
 				0E1FDA8B1F7AB11D00375A4B /* SinglePageTableCell.swift */,
+				0E1FDA8F1F7B05B600375A4B /* SubPages */,
 			);
 			name = SinglePage;
 			sourceTree = "<group>";
@@ -421,6 +435,7 @@
 			files = (
 				0E2C4AA21F77F983003EAB1B /* LiveaBoardsLists.swift in Sources */,
 				0E963B4D1F759D9C0036EBA4 /* VerficationViaMail.swift in Sources */,
+				0E358D091F7B0EAE00DBA65C /* TimeSlotsCell.swift in Sources */,
 				0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */,
 				0E963B3A1F733FA50036EBA4 /* ButtonWithGradient.swift in Sources */,
 				0E963B451F7486F40036EBA4 /* DiverController.swift in Sources */,
@@ -433,6 +448,7 @@
 				0E0F027D1F71BB8300E2C6C2 /* LoginPage.swift in Sources */,
 				0E2C4AA01F7706AF003EAB1B /* CustomTabBarController.swift in Sources */,
 				0E0F027B1F71BB3400E2C6C2 /* RaderAnimation.swift in Sources */,
+				0E1FDA911F7B060A00375A4B /* TimeSlotsView.swift in Sources */,
 				0E963B3C1F73EF2F0036EBA4 /* ForgetPassword.swift in Sources */,
 				0E1FDA8C1F7AB11D00375A4B /* SinglePageTableCell.swift in Sources */,
 				0E963B4B1F759D840036EBA4 /* VerficationViaPhone.swift in Sources */,
