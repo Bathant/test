@@ -13,7 +13,9 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     var scrollViewSlider: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         setUi()
+       
         // Do any additional setup after loading the view.
     }
     
@@ -23,7 +25,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     }
     
     func setUi(){
-        
+       
         SetupNavigationBar()
         setupbackgroundGradient()
         statusBarGradient()
@@ -230,7 +232,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
     }
     func OpenTimeSlots(){
-        
+         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(TimeSlotsView(), animated: true)
         
     }
@@ -418,7 +420,14 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     }
     
     func SetupNavigationBar(){
+       
+
         self.title = "Grand Sea Serpent"
+        //back button functionalities ::
+        let backItem = UIBarButtonItem()
+        backItem.title = self.title!
+        navigationItem.backBarButtonItem = backItem
+        //navigationItem.backBarButtonItem?.action = #selector(WhenBackIsPressed)
         let nav = self.navigationController!
         nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
         if #available(iOS 11.0, *) {
@@ -453,6 +462,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         self.navigationItem.rightBarButtonItems = [ favItem,shareItem,cartItem ]
         self.navigationController?.navigationBar.tintColor = .white
     }
+  
     func setupbackgroundGradient(){
         
         
@@ -506,12 +516,26 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+            
         case 0:
-            self.navigationController?.pushViewController(AmenitiesView(), animated: true)
+            self.tabBarController?.tabBar.isHidden = true
+            let AmenitiesVC = AmenitiesView()
+            AmenitiesVC.title = "Amenities"
+            self.navigationController?.pushViewController(AmenitiesVC, animated: true)
+        case 1:
+            self.tabBarController?.tabBar.isHidden = true
+            let DivingVC = AmenitiesView()
+            DivingVC.title = "Diving Services"
+            self.navigationController?.pushViewController(DivingVC, animated: true)
+        case 2:
+             self.tabBarController?.tabBar.isHidden = true
+             self.navigationController?.pushViewController(LocationOnMap(), animated: true)
+            
         default:
             break
         }
     }
+  
     //#############   END OF Tableview Protocols  Functionalities #####################################//
     
 

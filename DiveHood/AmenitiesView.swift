@@ -9,19 +9,40 @@
 import UIKit
 
 class AmenitiesView: UIViewController , UITableViewDelegate ,UITableViewDataSource{
-    
+    var FacilitiyTableView : UITableView!
+    var FoodandDrinkTableView : UITableView!
+    var scrollview : UIScrollView!
+    var Viewtitle : String!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         setUi()
+        FacilitiyTableView.delegate = self
+         FacilitiyTableView.dataSource = self
+        FacilitiyTableView.register(AmenitiesCell.classForCoder(), forCellReuseIdentifier: "AmenitiesCell")
+        
+        FoodandDrinkTableView.delegate = self
+        FoodandDrinkTableView.dataSource = self
+        FoodandDrinkTableView.register(AmenitiesCell.classForCoder(), forCellReuseIdentifier: "AmenitiesCell1")
+        
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
     func setUi(){
-        
+        scrollview = UIScrollView(frame: CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: view.frame.height))
+       scrollview.backgroundColor = .white
+        view.addSubview(scrollview)
         SetupNavigationBar()
         setupbackgroundGradient()
         statusBarGradient()
         
-        FacilityTableview((self.navigationController?.navigationBar.frame.maxY)!)
+       FacilitiyTableView =  FacilityTableview(view.frame.height*32/1334 ,text: "FACILITIES")
+        FoodandDrinkTableView =  FacilityTableview(FacilitiyTableView.frame.maxY,text: "FOOD AND DRINK")
+         scrollview.contentSize = CGSize(width: view.frame.width, height: FoodandDrinkTableView.frame.maxY)
+      
         
         
     }
@@ -34,42 +55,57 @@ class AmenitiesView: UIViewController , UITableViewDelegate ,UITableViewDataSour
     //*************************** Tableview Protocols  Functionalities *******************************//
     let Facilitesimagesarr = [#imageLiteral(resourceName: "Amenity-1"), #imageLiteral(resourceName: "Amenity-2"), #imageLiteral(resourceName: "Amenity-3"), #imageLiteral(resourceName: "Amenity-4"), #imageLiteral(resourceName: "Amenity-5"), #imageLiteral(resourceName: "Amenity-6")]
     let Facilitesstr = ["Wi-Fi (FREE)", "Air-conditioning", "Lounge/TV area", "European (2 pin) power sockets", "Power socket adapters available", "Shaded sun deck"]
-    func FacilityTableview(_ y:CGFloat  ) ->CGFloat{
+    let foodandDrinkimages = [#imageLiteral(resourceName: "Amenity-2"), #imageLiteral(resourceName: "Amenity-1"), #imageLiteral(resourceName: "Amenity-default"), #imageLiteral(resourceName: "Amenity-default"), #imageLiteral(resourceName: "Amenity-default"), #imageLiteral(resourceName: "Amenity-default")]
+     let foodandDrinkstr = ["Snaks all day ", "Buffet", "Vegetarian food", "Gluten  free food", "Power socket adapters available", "Shaded sun deck"]
+    func FacilityTableview(_ y:CGFloat , text : String  ) ->UITableView{
         
-        let container = UIView(frame: CGRect(x: 0, y: view.frame.height*32/1334+y, width: view.frame.width, height: view.frame.height*88/1334))
+        let container = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*88/1334))
         container.backgroundColor = UIColor(red: 52/255, green: 42/255, blue: 72/255, alpha: 1.0)
-        let str = "Facilities"
+        let str = text
         let height = str.height(constraintedWidth: container.frame.width, font:  UIFont(name: "OpenSans-Bold", size: view.frame.width*34/750)!)
         let firstlabel2 = UILabel(frame: CGRect(x:  view.frame.width*25/750, y:container.frame.height/2-height/2, width:container.frame.width ,height: height))
         firstlabel2.font = UIFont(name: "OpenSans-Bold", size:  view.frame.width*34/750)
-        firstlabel2.text = "Facilities"
+        firstlabel2.text = text
         firstlabel2.textAlignment = .left
         firstlabel2.textColor = .white
         container.addSubview(firstlabel2)
         
-        view.addSubview(container)
-        let tableView = UITableView(frame: CGRect(x: 0, y: container.frame.maxY, width: view.frame.width, height: view.frame.height))
-        view.addSubview(tableView)
-        //tableView.backgroundColor = .black
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(AmenitiesCell.classForCoder(), forCellReuseIdentifier: "AmenitiesCell")
+        scrollview.addSubview(container)
         
+        let tableView = UITableView(frame: CGRect(x: 0, y: container.frame.maxY, width: view.frame.width, height: view.frame.height*100/1334*6))
+        scrollview.addSubview(tableView)
         tableView.separatorStyle = .none
-        return tableView.frame.maxY
+        return tableView
         
         
     }
+    
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AmenitiesCell", for: indexPath as IndexPath) as! AmenitiesCell
+        
+        var images = Facilitesimagesarr
+        var content = Facilitesstr
+        var identifier = "AmenitiesCell"
+        if tableView == FoodandDrinkTableView{
+            
+            images = foodandDrinkimages
+            content = foodandDrinkstr
+            identifier =  "AmenitiesCell1"
+            
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier:identifier, for: indexPath as IndexPath) as! AmenitiesCell
         cell.selectionStyle = .none
-        cell.icon.image = Facilitesimagesarr[indexPath.row]
-        var str = Facilitesstr[indexPath.row]
+        cell.icon.image = images[indexPath.row]
+        var str = content[indexPath.row]
         let height = str.height(constraintedWidth: cell.frame.width-(cell.icon.frame.maxX+view.frame.width*32/750), font: UIFont(name: "OpenSans", size:  view.frame.width*22/750)!)
         cell.title.frame = CGRect(x: cell.icon.frame.maxX+view.frame.width*32/750, y:cell.icon.frame.midY-height/2, width:cell.frame.width-(cell.icon.frame.maxX+view.frame.width*32/750) ,height: height)
         cell.title.text = str
@@ -88,7 +124,7 @@ class AmenitiesView: UIViewController , UITableViewDelegate ,UITableViewDataSour
     //#############   END OF Tableview Protocols  Functionalities #####################################//
     
     func SetupNavigationBar(){
-        self.title = "Amenities"
+       
         let nav = self.navigationController!
         nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
         if #available(iOS 11.0, *) {

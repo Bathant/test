@@ -12,7 +12,9 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUi()
+       // self.tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -76,7 +78,7 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
         if #available(iOS 11.0, *) {
             nav.navigationBar.prefersLargeTitles = true
             nav.navigationBar.largeTitleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
-            
+           
             print("height is ??? \(nav.navigationBar.intrinsicContentSize.height)")
         } else {
             // Fallback on earlier versions
@@ -114,4 +116,11 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
         view.addSubview(view1)
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+ 
 }
+
+
