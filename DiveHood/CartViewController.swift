@@ -41,6 +41,18 @@ class CartViewController: UIViewController {
         Fourthlabel.frame.origin.x = 10*WidthOfScreen/750
         makeSecondPartLabels(text: "20.783 EGP", textalignment: .center, container: container, y: secondLabel.frame.maxY+HeightOfScreen*16/1334,UIColor(
             red: 237/255, green: 202/255, blue: 12/255, alpha: 1.0),  "OpenSans-Bold",WidthOfScreen*24/750)
+        let text4 = "2"
+        let getHeight4 = text4.height(constraintedWidth: container.frame.width, font:  UIFont(name: "OpenSans", size:WidthOfScreen*30/750)!)
+        let firstlabel4 = UILabel(frame: CGRect(x:container.bounds.maxX-(64*WidthOfScreen/750), y:Fourthlabel.frame.minY, width: 30*WidthOfScreen/750, height: getHeight4))
+        firstlabel4.font = UIFont(name: "OpenSans-Bold", size:WidthOfScreen*24/750)
+        firstlabel4.text = text4
+        firstlabel4.textColor = UIColor(red: 237/255, green: 202/255, blue: 12/255, alpha: 1.0)
+        firstlabel4.textAlignment = .center
+        
+        firstlabel4.backgroundColor = UIColor(red: 44/255, green: 34/255, blue: 61/255, alpha: 1.0)
+        container.addSubview(firstlabel4)
+        
+        
        
         viewx.addSubview(container)
            scrollview.addSubview(viewx)
