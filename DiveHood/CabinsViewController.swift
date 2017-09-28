@@ -48,7 +48,7 @@ class CabinsViewController: UIViewController {
         container.addSubview(segmented)
         view.addSubview(container)
         segmented.addTarget(self, action: #selector(self.segmentChange), for: .valueChanged )
-        
+        CabinsController(viewController: CabinsTab())
         return container.frame.maxY
     }
     
@@ -69,10 +69,11 @@ class CabinsViewController: UIViewController {
     
     func CabinsController(viewController : UIViewController){
         
-        let views = Bigcontainer.subviews
-        for view in views {
+     
+        for view in Bigcontainer.subviews {
             view.removeFromSuperview()
         }
+        
         let controller = viewController
         controller.view.frame = CGRect(x: 0, y:  0 , width:  Bigcontainer.frame.width, height:  Bigcontainer.frame.height)
         
@@ -100,7 +101,7 @@ class CabinsViewController: UIViewController {
         
         let label2  =   HorizontalyLabels("5 Days / 6 Nights (Approximately 17 dives)", font: UIFont(name: "OpenSans", size: view.frame.width*24/750)!, textcolor: UIColor(red: 12/255, green: 37/255, blue: 60/255, alpha: 1), y: getlabel.frame.maxY, container: ticketDescription, Width: ticketDescription.frame.width-(view.frame.width*25/750))
         let label3 =  HorizontalyLabels("4 spaces Left", font: UIFont(name: "OpenSans", size: view.frame.width*24/750)!, textcolor: UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1), y: label2.frame.maxY+view.frame.height*8/1334, container: ticketDescription, Width:(view.frame.width*174/750))
-        label3.backgroundColor = UIColor(red: 207/255,green:  207/255,blue: 209/255, alpha:1.0 )
+        label3.backgroundColor = UIColor(red: 217/255,green:  207/255,blue: 209/255, alpha:1.0 )
         label3.textAlignment = .center
         
         view.addSubview(ticketDescription)

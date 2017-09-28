@@ -52,6 +52,7 @@
 		0E963B551F75EE2F0036EBA4 /* Step1FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */; };
 		0ECE06E41F7C404700409D2C /* CabinsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE06E31F7C404700409D2C /* CabinsTab.swift */; };
 		0ECE06E81F7C416900409D2C /* CabinsTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */; };
+		0EEAC0431F7C84080011D54A /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEAC0421F7C84080011D54A /* CartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1FormController.swift; sourceTree = "<group>"; };
 		0ECE06E31F7C404700409D2C /* CabinsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsTab.swift; sourceTree = "<group>"; };
 		0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsTabCell.swift; sourceTree = "<group>"; };
+		0EEAC0421F7C84080011D54A /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 		0E0F028D1F72DE4600E2C6C2 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				0EEAC0441F7C840E0011D54A /* NavigationButtons */,
 				0E4713031F7A159600E59E08 /* SinglePage */,
 				0E2C4A9C1F77028A003EAB1B /* HomePage */,
 				0E0F027E1F71BCF800E2C6C2 /* Splach.swift */,
@@ -341,6 +344,14 @@
 				0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0EEAC0441F7C840E0011D54A /* NavigationButtons */ = {
+			isa = PBXGroup;
+			children = (
+				0EEAC0421F7C84080011D54A /* CartViewController.swift */,
+			);
+			name = NavigationButtons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,6 +496,7 @@
 			files = (
 				0E2C4AA21F77F983003EAB1B /* LiveaBoardsLists.swift in Sources */,
 				0E963B4D1F759D9C0036EBA4 /* VerficationViaMail.swift in Sources */,
+				0EEAC0431F7C84080011D54A /* CartViewController.swift in Sources */,
 				0E358D091F7B0EAE00DBA65C /* TimeSlotsCell.swift in Sources */,
 				0E0F02881F72003700E2C6C2 /* WallpaperWindow.swift in Sources */,
 				0E201BB71F7C2E2600FD82A4 /* CabinsViewController.swift in Sources */,

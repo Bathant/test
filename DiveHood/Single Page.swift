@@ -456,7 +456,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         var addfavoriteimage = UIImage(named: "add-favorite")
         addfavoriteimage = addfavoriteimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        let cartItem = UIBarButtonItem(image: cartimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let cartItem = UIBarButtonItem(image: cartimage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(OpenCart))
         let shareItem =  UIBarButtonItem(image: shareimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         let favItem =  UIBarButtonItem(image: addfavoriteimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItems = [ favItem,shareItem,cartItem ]
@@ -476,7 +476,11 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
         
     }
-    
+    func OpenCart(){
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(CartViewController(), animated: true)
+        
+    }
       //*************************** Tableview Protocols  Functionalities *******************************//
     func setTableview(_ y:CGFloat  ) ->CGFloat{
         let tableView = UITableView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*113/1334*6))

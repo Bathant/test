@@ -55,7 +55,9 @@ class CabinsTab: UIViewController, UITableViewDelegate, UITableViewDataSource   
         return cellimageheight
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(CartViewController(), animated: true)
+    }
   
     //#############   END OF Tableview Protocols  Functionalities #####################################//
 
