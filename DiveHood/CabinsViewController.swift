@@ -20,12 +20,10 @@ class CabinsViewController: UIViewController {
         let Container = SetFirstPart((self.navigationController?.navigationBar.frame.maxY)!)
         let y = setupSegmentedControl(Container.frame.maxY)
         self.tabBarController?.tabBar.isHidden = true
-       
          Bigcontainer = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height-y))
-        
-        
          Bigcontainer.backgroundColor = UIColor(red: 17/255, green: 42/255, blue: 76/255, alpha: 1.0)
         view.addSubview(Bigcontainer)
+         CabinsController(viewController: CabinsTab())
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +46,7 @@ class CabinsViewController: UIViewController {
         container.addSubview(segmented)
         view.addSubview(container)
         segmented.addTarget(self, action: #selector(self.segmentChange), for: .valueChanged )
-        CabinsController(viewController: CabinsTab())
+       
         return container.frame.maxY
     }
     
@@ -70,9 +68,7 @@ class CabinsViewController: UIViewController {
     func CabinsController(viewController : UIViewController){
         
      
-        for view in Bigcontainer.subviews {
-            view.removeFromSuperview()
-        }
+        
         
         let controller = viewController
         controller.view.frame = CGRect(x: 0, y:  0 , width:  Bigcontainer.frame.width, height:  Bigcontainer.frame.height)
@@ -80,7 +76,8 @@ class CabinsViewController: UIViewController {
         addChildViewController(controller)
          Bigcontainer.addSubview((controller.view)!)
         controller.didMove(toParentViewController: self)
-      
+        
+     
         
         
     }
@@ -163,6 +160,9 @@ class CabinsViewController: UIViewController {
         label.frame.size = CGSize(width: date.frame.width, height: height)
         date.addSubview(label)
         view.addSubview(date)
+        
+        
+    
         
     }
     

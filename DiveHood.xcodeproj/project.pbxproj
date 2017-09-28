@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E0F024C1F71B9EF00E2C6C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */; };
-		0E0F02511F71B9EF00E2C6C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */; };
 		0E0F02531F71B9EF00E2C6C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */; };
 		0E0F02561F71B9EF00E2C6C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */; };
 		0E0F02611F71B9EF00E2C6C2 /* DiveHoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0F02601F71B9EF00E2C6C2 /* DiveHoodTests.swift */; };
@@ -50,6 +49,7 @@
 		0E963B511F75E3350036EBA4 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B501F75E3350036EBA4 /* Actions.swift */; };
 		0E963B531F75EE1A0036EBA4 /* Step2FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */; };
 		0E963B551F75EE2F0036EBA4 /* Step1FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */; };
+		0EB56BE91F7D23C6008CB174 /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB56BE71F7D23C6008CB174 /* DLRadioButton.m */; };
 		0ECE06E41F7C404700409D2C /* CabinsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE06E31F7C404700409D2C /* CabinsTab.swift */; };
 		0ECE06E81F7C416900409D2C /* CabinsTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */; };
 		0EEAC0431F7C84080011D54A /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEAC0421F7C84080011D54A /* CartViewController.swift */; };
@@ -75,7 +75,6 @@
 /* Begin PBXFileReference section */
 		0E0F02481F71B9EF00E2C6C2 /* DiveHood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiveHood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0E0F02501F71B9EF00E2C6C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E0F02551F71B9EF00E2C6C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E0F02571F71B9EF00E2C6C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +121,10 @@
 		0E963B501F75E3350036EBA4 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		0E963B521F75EE1A0036EBA4 /* Step2FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step2FormController.swift; sourceTree = "<group>"; };
 		0E963B541F75EE2F0036EBA4 /* Step1FormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1FormController.swift; sourceTree = "<group>"; };
+		0EB56BE51F7D2279008CB174 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0EB56BE61F7D23C4008CB174 /* DiveHood-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiveHood-Bridging-Header.h"; sourceTree = "<group>"; };
+		0EB56BE71F7D23C6008CB174 /* DLRadioButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		0EB56BE81F7D23C6008CB174 /* DLRadioButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		0ECE06E31F7C404700409D2C /* CabinsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsTab.swift; sourceTree = "<group>"; };
 		0ECE06E71F7C416900409D2C /* CabinsTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinsTabCell.swift; sourceTree = "<group>"; };
 		0EEAC0421F7C84080011D54A /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -177,13 +180,17 @@
 			isa = PBXGroup;
 			children = (
 				0E201BB31F7BF19900FD82A4 /* AllExtensions.swift */,
+				0EB56BEA1F7D23CF008CB174 /* RadioButtons */,
+				0EB56BE81F7D23C6008CB174 /* DLRadioButton.h */,
+				0EB56BE71F7D23C6008CB174 /* DLRadioButton.m */,
+				0EB56BE61F7D23C4008CB174 /* DiveHood-Bridging-Header.h */,
 				0E963B431F7486CF0036EBA4 /* Controllers */,
 				0E963B381F731E8D0036EBA4 /* CustomizedShapes */,
 				0E0F028D1F72DE4600E2C6C2 /* Pages */,
 				0E0F028C1F728D0700E2C6C2 /* Fonts */,
 				0E0F02791F71BB1900E2C6C2 /* Animation */,
 				0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */,
-				0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */,
+				0EB56BE51F7D2279008CB174 /* Main.storyboard */,
 				0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */,
 				0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */,
 				0E0F02571F71B9EF00E2C6C2 /* Info.plist */,
@@ -346,6 +353,13 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		0EB56BEA1F7D23CF008CB174 /* RadioButtons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RadioButtons;
+			sourceTree = "<group>";
+		};
 		0EEAC0441F7C840E0011D54A /* NavigationButtons */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +436,7 @@
 				TargetAttributes = {
 					0E0F02471F71B9EF00E2C6C2 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					0E0F025B1F71B9EF00E2C6C2 = {
@@ -469,7 +484,6 @@
 				0E963B3E1F7448990036EBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				0E0F02561F71B9EF00E2C6C2 /* LaunchScreen.storyboard in Resources */,
 				0E0F02531F71B9EF00E2C6C2 /* Assets.xcassets in Resources */,
-				0E0F02511F71B9EF00E2C6C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +521,7 @@
 				0ECE06E41F7C404700409D2C /* CabinsTab.swift in Sources */,
 				0E963B4F1F759E260036EBA4 /* Markable_Shape.swift in Sources */,
 				0E201BB41F7BF19900FD82A4 /* AllExtensions.swift in Sources */,
+				0EB56BE91F7D23C6008CB174 /* DLRadioButton.m in Sources */,
 				0E2C4AA41F781A0C003EAB1B /* CustomTableViewCell.swift in Sources */,
 				0E358D0D1F7B3A4D00DBA65C /* AmenitiesView.swift in Sources */,
 				0E963B421F747D640036EBA4 /* CustomeLabel.swift in Sources */,
@@ -564,14 +579,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0E0F024F1F71B9EF00E2C6C2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0E0F02501F71B9EF00E2C6C2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -683,10 +690,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DiveHood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.DiveHood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DiveHood/DiveHood-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -696,10 +706,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DiveHood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.DiveHood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DiveHood/DiveHood-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
