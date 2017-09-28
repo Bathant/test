@@ -10,6 +10,7 @@ import UIKit
 
 class CabinsViewController: UIViewController {
       var Bigcontainer: UIView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -19,8 +20,11 @@ class CabinsViewController: UIViewController {
         let Container = SetFirstPart((self.navigationController?.navigationBar.frame.maxY)!)
         let y = setupSegmentedControl(Container.frame.maxY)
         self.tabBarController?.tabBar.isHidden = true
+       
          Bigcontainer = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height-y))
-        Bigcontainer.backgroundColor = .black
+        
+        
+         Bigcontainer.backgroundColor = UIColor(red: 17/255, green: 42/255, blue: 76/255, alpha: 1.0)
         view.addSubview(Bigcontainer)
        
     }
@@ -54,7 +58,7 @@ class CabinsViewController: UIViewController {
         switch sender.selectedSegmentIndex{
         case 0:
             CabinsController(viewController: CabinsTab())
-
+            
      
 
         default:
