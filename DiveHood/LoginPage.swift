@@ -197,24 +197,21 @@ class LoginPage: UIViewController {
     func markableLabel () -> CGFloat{
         var  boldText  = " الدخول "
         var normalText = "الي حسابك "
+        if !Language{
+            boldText = "LOGIN "
+             normalText = "to your account"
+        }
         let width1 = boldText.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: 32*view.frame.width/750)!)
         let width2 = normalText.widthOfString(usingFont: UIFont(name: "OpenSans", size: 24*view.frame.width/750)!)
-        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.078, width: width1*2, height: view.frame.height*0.04))
+        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.078, width: width1+width2+view.frame.width*0.025, height: view.frame.height*0.04))
         markableContainer.backgroundColor = Colors().gray
         let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
        
-        
-        
-        if !Language{
-            boldText = "LOGIN "
-        }
+
+       
         let attrs = [NSFontAttributeName : UIFont(name: "OpenSans-Bold", size: 24*view.frame.width/750) ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
-        
-        
-        if !Language{
-            normalText = "to your account"
-        }
+
         
         let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 24*view.frame.width/750)]
         
@@ -253,20 +250,9 @@ class LoginPage: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        
-        //        Email.translatesAutoresizingMaskIntoConstraints = false
-        //        view.addConstraint(NSLayoutConstraint(item: Email, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant:view.frame.width*0.09))
-        //        view.addConstraint(NSLayoutConstraint(item: Email, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: view.frame.width*0.09))
+
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
 

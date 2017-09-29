@@ -234,33 +234,29 @@ class SignUp: UIViewController {
         
         
         var boldText = "اصنع"
+         var normalText = " حسابك"
         if !language{
          boldText  = "CREATE "
+            normalText = "a Divehood Account"
         }
+       
+       
         let width1 = boldText.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: 32*view.frame.width/750)!)
-        
-        
+        let width2 = normalText.widthOfString(usingFont: UIFont(name: "OpenSans", size: 24*view.frame.width/750)!)
         
         let attrs = [NSFontAttributeName :  UIFont(name: "OpenSans-Bold", size: 24*view.frame.width/750) ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
-        
-        var normalText = " حسابك"
-        if !language{
-         normalText = "a Divehood Account"
-        }
-        let width2 = normalText.widthOfString(usingFont: UIFont(name: "OpenSans", size: 32*view.frame.width/750)!)
         let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 24*view.frame.width/750)]
-        
         let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
         attributedString.append(normalString)
         
-        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.086, width: width1+width2, height: view.frame.height*0.04))
+        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.086, width: width1+width2+view.frame.width*0.025*2, height: view.frame.height*0.04))
         markableContainer.backgroundColor = Colors().gray
         let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
       
         textlabel.attributedText = attributedString
     
-        textlabel.textAlignment = .center
+       // textlabel.textAlignment = .center
         textlabel.textColor = .black
         markableContainer.addSubview(textlabel)
         scrollview.addSubview(markableContainer)
