@@ -257,13 +257,9 @@ class SignUp: UIViewController {
         let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.086, width: width1+width2, height: view.frame.height*0.04))
         markableContainer.backgroundColor = Colors().gray
         let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
-        textlabel.font = UIFont(name: "OpenSans-Bold", size: 66)
-        
-        
+      
         textlabel.attributedText = attributedString
-        textlabel.baselineAdjustment = .alignCenters
-       // textlabel.adjustsFontSizeToFitWidth = true
-        textlabel.numberOfLines = 1
+    
         textlabel.textAlignment = .center
         textlabel.textColor = .black
         markableContainer.addSubview(textlabel)

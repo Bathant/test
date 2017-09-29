@@ -73,19 +73,19 @@ class ForgetPassword: UIViewController {
     
         //last part 
         let LabelsContainer  = UIView(frame: CGRect(x: button.frame.origin.x, y:  button.frame.maxY +  view.frame.height*0.05 , width: button.frame.width, height: view.frame.height*0.03))
-    
-        
-        let Firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: LabelsContainer.frame.width*0.45, height: view.frame.height*0.03))
-        // RememberMe.backgroundColor = .gray
-      Firsttext.text = "تسجيل الدخول "
+        var str  = "تسجيل الدخول "
         if !language{
-            Firsttext.text = "Log In To Your Account"
+           str = "Log In To Your Account"
         }
-        
+        let width = str.widthOfString(usingFont: UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*24/750)!)
+        let Firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: view.frame.height*0.03))
+        // RememberMe.backgroundColor = .gray
+       
+        Firsttext.text  = str
         Firsttext.font =
-        UIFont(name: "OpenSans-SemiboldItalic", size: LabelsContainer.frame.width*0.045)
+        UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*24/750)
         Firsttext.textColor = .white
-        Firsttext.adjustsFontSizeToFitWidth = true
+        //Firsttext.adjustsFontSizeToFitWidth = true
         
         Firsttext.baselineAdjustment = .alignCenters
         Firsttext.textAlignment = .left
@@ -94,15 +94,19 @@ class ForgetPassword: UIViewController {
         Firsttext.isUserInteractionEnabled = true
         Firsttext.addGestureRecognizer(tab)
         
-        let SecondText = UILabel(frame: CGRect(x: LabelsContainer.frame.maxX - LabelsContainer.frame.width*0.55, y: 0, width: LabelsContainer.frame.width*0.45, height: view.frame.height*0.03))
-        SecondText.text = "ليس لديك حساب ؟ إشترك الآن"
+        
+        str = "ليس لديك حساب ؟ إشترك الآن"
         if !language{
-        SecondText.text = "Don't Have Any? Sign Up"
+           str = "Don't Have Any? Sign Up"
         }
+        let width2 = str.widthOfString(usingFont: UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*24/750)!)
+        let SecondText = UILabel(frame: CGRect(x: LabelsContainer.frame.maxX - width2-view.frame.width*0.09, y: 0, width: width2, height: view.frame.height*0.03))
+        SecondText.text = str
+       
         // ForgetLabel.font = UIFont.systemFont(ofSize: RememberMe.font.pointSize)
-        SecondText.font =  UIFont(name: "OpenSans-SemiboldItalic", size: LabelsContainer.frame.width*0.45)
+        SecondText.font = UIFont(name: "OpenSans-SemiboldItalic", size: view.frame.width*24/750)
         SecondText.textColor = .white
-        SecondText.adjustsFontSizeToFitWidth = true
+        //SecondText.adjustsFontSizeToFitWidth = true
         SecondText.baselineAdjustment = .alignCenters
         SecondText.isUserInteractionEnabled = true
         SecondText.textAlignment = .right
@@ -161,31 +165,33 @@ class ForgetPassword: UIViewController {
     
     func markableLabel () -> CGFloat{
         
-        
-        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.078, width: view.frame.width*0.4, height: view.frame.height*0.04))
-        markableContainer.backgroundColor = Colors().gray
-        let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
-        textlabel.font = UIFont(name: "OpenSans-Bold", size: 66)
         var boldText = "إستعادة"
+         var  normalText = " كلمه المرور"
         if !language{
-         boldText  = "PASSWORD "
+            boldText  = "PASSWORD "
+             normalText  = "recovering"
         }
-        let attrs = [NSFontAttributeName :  UIFont(name: "OpenSans-Bold", size: 66) ]
+        let width1 = boldText.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: 32*view.frame.width/750)!)
+        let width2 = normalText.widthOfString(usingFont: UIFont(name: "OpenSans", size: 24*view.frame.width/750)!)
+        
+        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.078, width: width1+width2, height: view.frame.height*0.04))
+        markableContainer.backgroundColor = Colors().gray
+        let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width, height: markableContainer.frame.height))
+        textlabel.font = UIFont(name: "OpenSans-Bold", size: 24*view.frame.width/750)
+        
+       
+        let attrs = [NSFontAttributeName :  UIFont(name: "OpenSans-Bold", size: 24*view.frame.width/750) ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
         
-        var  normalText = " كلمه المرور"
-        if !language{
-            normalText  = "recovering"
-        }
-        let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 66)]
+        
+        
+        let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 24*view.frame.width/750)]
         
         let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
         attributedString.append(normalString)
         textlabel.attributedText = attributedString
-        textlabel.baselineAdjustment = .alignCenters
-        textlabel.adjustsFontSizeToFitWidth = true
-        textlabel.numberOfLines = 1
-        textlabel.textAlignment = .center
+       // textlabel.textAlignment = .center
+        
         textlabel.textColor = .black
         markableContainer.addSubview(textlabel)
         view.addSubview(markableContainer)

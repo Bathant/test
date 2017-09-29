@@ -67,10 +67,10 @@ class LoginPage: UIViewController {
         let AccountLabel = UIView(frame: CGRect(x: x, y: button.frame.maxY+view.frame.height*0.04, width: view.frame.width-(x*2), height: view.frame.height*0.04))
         print( RememberMe.frame.origin.x)
         let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
-        firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: AccountLabel.frame.width*0.8)
-        firsttext.textAlignment = .left
-        firsttext.baselineAdjustment = .alignCenters
-        var  boldText  = "ليس لديك حساب"
+        firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size:view.frame.width*24/750)
+        
+       
+        var  boldText  = "ليس لديك حساب؟"
         if !Language {
             boldText  =  "Don't Have a Divehood account "
         }
@@ -88,8 +88,9 @@ class LoginPage: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector( SignUp_Pressed))
         firsttext.addGestureRecognizer(tap)
         firsttext.isUserInteractionEnabled = true
-        firsttext.adjustsFontSizeToFitWidth = true
-        // firsttext.backgroundColor = .red
+       
+        firsttext.textAlignment = .center
+       
         AccountLabel.addSubview(firsttext)
         
         
@@ -144,49 +145,34 @@ class LoginPage: UIViewController {
         ForgetPasswordcontainer.addSubview(checkbox)
         
         let str2 = "Remeber Me"
-        let widthstr2:CGFloat =  str2.widthOfString(usingFont: UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)!)
+        let widthstr2:CGFloat =  str2.widthOfString(usingFont: UIFont(name: "OpenSans", size:view.frame.width*24/750)!)
         RememberMe = UILabel(frame: CGRect(x: checkbox.frame.maxX + view.frame.width*0.05, y: 0, width: widthstr2, height: view.frame.height*0.03))
-        // RememberMe.backgroundColor = .gray
-        print(checkbox.frame.maxX + view.frame.width*0.05)
-        
         RememberMe.text = "تذكرني"
         if !Language{
             RememberMe.text = "Remeber Me"
         }
         // RememberMe.backgroundColor = .blue
-        RememberMe.font = UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)
+        RememberMe.font = UIFont(name: "OpenSans", size:view.frame.width*24/750)
         RememberMe.textColor = Colors().blue
-        // RememberMe.adjustsFontSizeToFitWidth = true
-        //RememberMe.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-        RememberMe.baselineAdjustment = .alignCenters
         RememberMe.textAlignment = .left
         ForgetPasswordcontainer.addSubview(RememberMe)
         
         let str = "Forget Your Password?"
-        let widthstr:CGFloat =  str.widthOfString(usingFont: UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)!)
+        let widthstr:CGFloat =  str.widthOfString(usingFont: UIFont(name: "OpenSans", size:view.frame.width*24/750)!)
         let ForgetLabel = UILabel(frame: CGRect(x: ForgetPasswordcontainer.bounds.maxX - widthstr, y: 0, width: widthstr, height: view.frame.height*0.03))
-        ForgetLabel.text = "نسييت كلمه المرور"
+        ForgetLabel.text = "نسييت كلمه المرور؟"
         if !Language{
             ForgetLabel.text = "Forget Your Password?"
             
         }
-        
-        
-        
-        
-        // ForgetLabel.font = UIFont.systemFont(ofSize: RememberMe.font.pointSize)
-        ForgetLabel.font = UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)
+        ForgetLabel.font = UIFont(name: "OpenSans", size:view.frame.width*24/750)
         ForgetLabel.textColor = Colors().blue
-        //ForgetLabel.adjustsFontSizeToFitWidth = true
-        ForgetLabel.baselineAdjustment = .alignCenters
+       
         ForgetLabel.textAlignment = .right
         ForgetLabel.isUserInteractionEnabled = true
         ForgetPasswordcontainer.addSubview(ForgetLabel)
-        //ForgetLabel.backgroundColor = .gray
         let tap = UITapGestureRecognizer(target: self, action: #selector(Actions().ForgerPasseord_Pressed))
         ForgetLabel.addGestureRecognizer(tap)
-        
-        //ForgetPasswordcontainer.backgroundColor = .gray
         view.addSubview(ForgetPasswordcontainer)
         var title = "تسجيل الدخول"
         if !Language{
@@ -209,32 +195,33 @@ class LoginPage: UIViewController {
     
     
     func markableLabel () -> CGFloat{
-        
-        
-        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.078, width: view.frame.width*0.4, height: view.frame.height*0.04))
+        var  boldText  = " الدخول "
+        var normalText = "الي حسابك "
+        let width1 = boldText.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: 32*view.frame.width/750)!)
+        let width2 = normalText.widthOfString(usingFont: UIFont(name: "OpenSans", size: 24*view.frame.width/750)!)
+        let markableContainer = UIView(frame: CGRect(x: 0, y: view.frame.height*0.078, width: width1*2, height: view.frame.height*0.04))
         markableContainer.backgroundColor = Colors().gray
         let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
-        textlabel.font = UIFont(name: "OpenSans-Bold", size: 66)
+       
         
-        var  boldText  = " الدخول "
+        
         if !Language{
             boldText = "LOGIN "
         }
-        let attrs = [NSFontAttributeName :  UIFont(name: "OpenSans-Bold", size: 66) ]
+        let attrs = [NSFontAttributeName : UIFont(name: "OpenSans-Bold", size: 24*view.frame.width/750) ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
         
-        var normalText = "الي حسابك "
+        
         if !Language{
             normalText = "to your account"
         }
         
-        let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 66)]
+        let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 24*view.frame.width/750)]
         
         let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
         attributedString.append(normalString)
         textlabel.attributedText = attributedString
-        textlabel.baselineAdjustment = .alignCenters
-        textlabel.adjustsFontSizeToFitWidth = true
+
         textlabel.numberOfLines = 1
         textlabel.textAlignment = .center
         textlabel.textColor = .black
