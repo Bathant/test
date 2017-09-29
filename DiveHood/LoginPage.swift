@@ -11,10 +11,12 @@
 import UIKit
 
 class LoginPage: UIViewController {
-    
+    var Email  : CustomizedTextField!
+    var Language : Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
-       setbackground()
+        Language = AppDelegate.sharedInstance().language
+        setbackground()
         SetupUi()
         // Do any additional setup after loading the view.
     }
@@ -34,7 +36,11 @@ class LoginPage: UIViewController {
         let height = markableLabel()
         
         let welcomelabel = UILabel(frame: CGRect(x: view.frame.width/2-(view.frame.width*0.6/2), y: view.frame.height*0.065+height, width: view.frame.width*0.6, height: view.frame.height*0.058))
-        welcomelabel.text = "Welcome Back!"
+        if Language{
+            welcomelabel.text = "مرحبا بعودتك!"
+        }else{
+            welcomelabel.text = "Welcome Back"
+        }
         welcomelabel.adjustsFontSizeToFitWidth = true
         welcomelabel.textColor = .white
         welcomelabel.font = UIFont(name: "OpenSans-Bold", size: 28*3)
@@ -58,18 +64,22 @@ class LoginPage: UIViewController {
     func lastPart(){
         let img1 = #imageLiteral(resourceName: "Check_Box")
         let x = view.frame.width*0.09+view.frame.width*0.05+img1.size.width
-    let AccountLabel = UIView(frame: CGRect(x: x, y: button.frame.maxY+view.frame.height*0.04, width: view.frame.width-(x*2), height: view.frame.height*0.04))
+        let AccountLabel = UIView(frame: CGRect(x: x, y: button.frame.maxY+view.frame.height*0.04, width: view.frame.width-(x*2), height: view.frame.height*0.04))
         print( RememberMe.frame.origin.x)
-    let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
+        let firsttext = UILabel(frame: CGRect(x: 0, y: 0, width: AccountLabel.frame.width, height: AccountLabel.frame.height))
         firsttext.font = UIFont(name: "OpenSans-SemiboldItalic", size: AccountLabel.frame.width*0.8)
         firsttext.textAlignment = .left
         firsttext.baselineAdjustment = .alignCenters
-       
-        
-        let boldText  = "Don’t Have a Divehood account?"
+        var  boldText  = "ليس لديك حساب"
+        if !Language {
+            boldText  =  "Don't Have a Divehood account "
+        }
         let attrs = [NSForegroundColorAttributeName:UIColor.white ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
-        let normalText = "Sign Up"
+        var  normalText = " سجل من هنا"
+        if !Language{
+            normalText = "Sign Up"
+        }
         let attrs2 = [NSForegroundColorAttributeName:Colors().blue]
         let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
         attributedString.append(normalString)
@@ -79,9 +89,9 @@ class LoginPage: UIViewController {
         firsttext.addGestureRecognizer(tap)
         firsttext.isUserInteractionEnabled = true
         firsttext.adjustsFontSizeToFitWidth = true
-     // firsttext.backgroundColor = .red
+        // firsttext.backgroundColor = .red
         AccountLabel.addSubview(firsttext)
-       
+        
         
         
         var img = #imageLiteral(resourceName: "or")
@@ -90,72 +100,84 @@ class LoginPage: UIViewController {
         view.addSubview(orimage)
         
         
-         img = #imageLiteral(resourceName: "Login-Facebook")
+        img = #imageLiteral(resourceName: "Login-Facebook")
         let facebookimg = UIImageView(frame: CGRect(x: view.frame.width/2-(img.size.width/2), y: orimage.frame.maxY+view.frame.height*0.02*2, width: img.size.width, height: img.size.height))
         facebookimg.image = img
         view.addSubview(facebookimg)
-  
         
         
         
-      /*  let container = UIView(frame: CGRect(x: 0, y: button.frame.maxY, width: view.frame.origin.x+facebookimg.frame.origin.x, height: view.frame.maxY-button.frame.maxY))
-        img = #imageLiteral(resourceName: "Tiny-Diver")
-        let manimg = UIImageView(frame: CGRect(x: 0, y: 0, width: container.frame.width/2, height: container.frame.height))
         
-        manimg.image = img
-        container.addSubview(manimg)
-        container.backgroundColor = .gray
-        view.addSubview(container)
-        */
-
         
-    view.addSubview(AccountLabel)
-    
-    
-    
-    
-    
+        view.addSubview(AccountLabel)
+        
+        
+        
+        
+        
     }
     
     
     
     func form (_ y : CGFloat){
         
-        let Email = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: y+view.frame.height*0.04, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "* Your E-mail" , view: view)
+        var placeholder = "* بريدك الالكتروني"
+        if !Language{
+            placeholder = "*Your Email"
+        }
+        Email = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: y+view.frame.height*0.04, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: placeholder , view: view)
         view.addSubview(Email)
+        placeholder = " * كلمه المرور"
+        if !Language{
+            placeholder = "*Your Password"
+        }
         
-        
-        let Paasword = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: Email.frame.maxY+view.frame.height*0.015, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: "* Password",view:view)
+        let Paasword = CustomizedTextField (frame: CGRect(x: view.frame.width*0.09, y: Email.frame.maxY+view.frame.height*0.015, width: view.frame.width*0.82, height: view.frame.height*0.07) , PlaceHolder: placeholder,view:view)
         view.addSubview(Paasword)
         
         let ForgetPasswordcontainer  = UIView(frame: CGRect(x: Paasword.frame.origin.x, y:  Paasword.frame.maxY +  view.frame.height*0.05 , width: Paasword.frame.width, height: Paasword.frame.height/2))
         let img = #imageLiteral(resourceName: "Check_Box")
         
         let checkbox = UIImageView(frame: CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height))
-            checkbox.image = img
-          //  checkbox.contentMode = .scaleAspectFit
+        checkbox.image = img
+        //  checkbox.contentMode = .scaleAspectFit
         ForgetPasswordcontainer.addSubview(checkbox)
-         RememberMe = UILabel(frame: CGRect(x: checkbox.frame.maxX + view.frame.width*0.05, y: 0, width: ForgetPasswordcontainer.frame.width*0.28, height: view.frame.height*0.03))
-           // RememberMe.backgroundColor = .gray
-            print(checkbox.frame.maxX + view.frame.width*0.05)
-            RememberMe.text = "Remember Me"
-           // RememberMe.backgroundColor = .blue
-            RememberMe.font = UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*0.28)
-            RememberMe.textColor = Colors().blue
-        RememberMe.adjustsFontSizeToFitWidth = true
+        
+        let str2 = "Remeber Me"
+        let widthstr2:CGFloat =  str2.widthOfString(usingFont: UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)!)
+        RememberMe = UILabel(frame: CGRect(x: checkbox.frame.maxX + view.frame.width*0.05, y: 0, width: widthstr2, height: view.frame.height*0.03))
+        // RememberMe.backgroundColor = .gray
+        print(checkbox.frame.maxX + view.frame.width*0.05)
+        
+        RememberMe.text = "تذكرني"
+        if !Language{
+            RememberMe.text = "Remeber Me"
+        }
+        // RememberMe.backgroundColor = .blue
+        RememberMe.font = UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)
+        RememberMe.textColor = Colors().blue
+        // RememberMe.adjustsFontSizeToFitWidth = true
         //RememberMe.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         RememberMe.baselineAdjustment = .alignCenters
         RememberMe.textAlignment = .left
         ForgetPasswordcontainer.addSubview(RememberMe)
         
+        let str = "Forget Your Password?"
+        let widthstr:CGFloat =  str.widthOfString(usingFont: UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)!)
+        let ForgetLabel = UILabel(frame: CGRect(x: ForgetPasswordcontainer.bounds.maxX - widthstr, y: 0, width: widthstr, height: view.frame.height*0.03))
+        ForgetLabel.text = "نسييت كلمه المرور"
+        if !Language{
+            ForgetLabel.text = "Forget Your Password?"
+            
+        }
         
         
-        let ForgetLabel = UILabel(frame: CGRect(x: ForgetPasswordcontainer.frame.maxX - ForgetPasswordcontainer.frame.width*0.55, y: 0, width: ForgetPasswordcontainer.frame.width*0.45, height: view.frame.height*0.03))
-        ForgetLabel.text = "Forget Your Password?"
-       // ForgetLabel.font = UIFont.systemFont(ofSize: RememberMe.font.pointSize)
-         ForgetLabel.font = UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*0.45)
+        
+        
+        // ForgetLabel.font = UIFont.systemFont(ofSize: RememberMe.font.pointSize)
+        ForgetLabel.font = UIFont(name: "OpenSans", size:ForgetPasswordcontainer.frame.width*28/750)
         ForgetLabel.textColor = Colors().blue
-        ForgetLabel.adjustsFontSizeToFitWidth = true
+        //ForgetLabel.adjustsFontSizeToFitWidth = true
         ForgetLabel.baselineAdjustment = .alignCenters
         ForgetLabel.textAlignment = .right
         ForgetLabel.isUserInteractionEnabled = true
@@ -166,54 +188,23 @@ class LoginPage: UIViewController {
         
         //ForgetPasswordcontainer.backgroundColor = .gray
         view.addSubview(ForgetPasswordcontainer)
-     
-         button = ButtonWithGradient(frame: CGRect(x: ForgetPasswordcontainer.frame.origin.x, y: ForgetPasswordcontainer.frame.maxY+view.frame.height*0.05, width: ForgetPasswordcontainer.frame.width, height: view.frame.height*0.07), title: "LOG IN", view: self.view)
-  
+        var title = "تسجيل الدخول"
+        if !Language{
+            title = "LOG IN"
+        }
+        button = ButtonWithGradient(frame: CGRect(x: ForgetPasswordcontainer.frame.origin.x, y: ForgetPasswordcontainer.frame.maxY+view.frame.height*0.05, width: ForgetPasswordcontainer.frame.width, height: view.frame.height*0.07), title: title , view: self.view)
         
         view.addSubview(button)
-              button.addTarget(self, action: #selector(lOGIN_Pressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(lOGIN_Pressed), for: .touchUpInside)
         
     }
     func lOGIN_Pressed(_ sender : UIButton){
-           //let view = CustomTabBarController().viewControllers?[0] as! UINavigationController
-   // let nav = UINavigationController(rootViewController: self)
-     
-     //   nav.pushViewController(view, animated: true)
         
-    //present(view, animated: true, completion: nil)
-    
-      // let nav = UINavigationController(rootViewController: CustomTabBarController())
-//           //   nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
-//        if #available(iOS 11.0, *) {
-//            nav.navigationBar.prefersLargeTitles = true
-//            print("height is ??? \(nav.navigationBar.intrinsicContentSize.height)")
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        nav.navigationBar.shadowImage = UIImage()
-//        nav.navigationBar.isTranslucent = true
-//        nav.navigationBar.backgroundColor = UIColor.clear
-        
-//        let gradientx = CAGradientLayer()
-//        gradientx.colors = [Colors().gradientColor1.cgColor,Colors().gradientColor2.cgColor]
-//        
-//        
-//        gradientx.startPoint = CGPoint(x: 0.0, y: 1.0)
-//        gradientx.endPoint = CGPoint(x: 1.0, y: 1.0)
-//        gradientx.frame = nav.navigationBar.bounds
-//        
-//    
-//        UIGraphicsBeginImageContext(gradientx.bounds.size)
-//        gradientx.render(in: UIGraphicsGetCurrentContext()!)
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        nav.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
         AppDelegate.sharedInstance().window?.rootViewController = CustomTabBarController()
-
-    
+        
+        
     }
-
+    
     
     
     
@@ -225,11 +216,18 @@ class LoginPage: UIViewController {
         let textlabel = UILabel(frame: CGRect(x: view.frame.width*0.025, y: 0, width: markableContainer.frame.width-(view.frame.width*0.025*2), height: markableContainer.frame.height))
         textlabel.font = UIFont(name: "OpenSans-Bold", size: 66)
         
-        let boldText  = "LOG IN "
+        var  boldText  = " الدخول "
+        if !Language{
+            boldText = "LOGIN "
+        }
         let attrs = [NSFontAttributeName :  UIFont(name: "OpenSans-Bold", size: 66) ]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
         
-        let normalText = "to your account"
+        var normalText = "الي حسابك "
+        if !Language{
+            normalText = "to your account"
+        }
+        
         let attrs2 = [NSFontAttributeName :  UIFont(name: "OpenSans", size: 66)]
         
         let normalString = NSMutableAttributedString(string:normalText, attributes: attrs2)
@@ -246,7 +244,7 @@ class LoginPage: UIViewController {
     }
     
     
-    //actions 
+    //actions
     
     
     func SignIn_Pressed(_ sender : UITapGestureRecognizer){
@@ -266,6 +264,13 @@ class LoginPage: UIViewController {
         
         
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        //        Email.translatesAutoresizingMaskIntoConstraints = false
+        //        view.addConstraint(NSLayoutConstraint(item: Email, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant:view.frame.width*0.09))
+        //        view.addConstraint(NSLayoutConstraint(item: Email, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: view.frame.width*0.09))
+    }
     /*
      // MARK: - Navigation
      
@@ -277,3 +282,5 @@ class LoginPage: UIViewController {
      */
     
 }
+
+

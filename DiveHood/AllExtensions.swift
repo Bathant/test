@@ -72,6 +72,12 @@ extension String {
     }
     
     
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSFontAttributeName: font]
+        let size = self.size(attributes: fontAttributes)
+        return size.width
+    }
+    
 }
 //***************************************************** END OF String *****************************************************
 

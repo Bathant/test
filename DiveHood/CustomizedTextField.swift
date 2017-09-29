@@ -17,6 +17,7 @@ class CustomizedTextField: UITextField {
 
     }
     var leftTextMargin : CGFloat = 0.0
+    var language : Bool = AppDelegate.sharedInstance().language!
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         var newBounds = bounds
@@ -36,15 +37,25 @@ class CustomizedTextField: UITextField {
                                                         attributes: [NSForegroundColorAttributeName: UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.6)])
         self.font = UIFont(name: "OpenSans", size:view.frame.height*0.024)
         //self.adjustsFontSizeToFitWidth = true
+        self.textAlignment = .right
+        if !language{
         self.textAlignment = .left
+        }
         self.contentVerticalAlignment = .center
         var bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: self.frame.height-1, width: self.frame.width, height: 1)
         bottomLine.backgroundColor = Colors().BorderColor.cgColor
         self.borderStyle = UITextBorderStyle.none
         self.layer.addSublayer(bottomLine)
-        self.leftTextMargin = 10
+        if !language{
+             self.leftTextMargin = 10
+        }
+        else{
+             self.leftTextMargin = -10
+        }
+       
         self.textColor = .white
+     
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -180,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				0E201BB31F7BF19900FD82A4 /* AllExtensions.swift */,
+				0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */,
 				0EB56BEA1F7D23CF008CB174 /* RadioButtons */,
 				0EB56BE81F7D23C6008CB174 /* DLRadioButton.h */,
 				0EB56BE71F7D23C6008CB174 /* DLRadioButton.m */,
@@ -189,7 +190,6 @@
 				0E0F028D1F72DE4600E2C6C2 /* Pages */,
 				0E0F028C1F728D0700E2C6C2 /* Fonts */,
 				0E0F02791F71BB1900E2C6C2 /* Animation */,
-				0E0F024B1F71B9EF00E2C6C2 /* AppDelegate.swift */,
 				0EB56BE51F7D2279008CB174 /* Main.storyboard */,
 				0E0F02521F71B9EF00E2C6C2 /* Assets.xcassets */,
 				0E0F02541F71B9EF00E2C6C2 /* LaunchScreen.storyboard */,
