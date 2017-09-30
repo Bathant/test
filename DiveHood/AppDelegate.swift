@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         //true
         language = true
+       
         window?.makeKeyAndVisible()
         let splachVc = Splach()
         window?.rootViewController = splachVc

@@ -42,6 +42,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     
     func SimilarLiveaboards(_ y: CGFloat){
         let container = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*515/1334))
+        
          var  label1 =  makeOneLineLabel(container , x: view.frame.width*25/750 , y:view.frame.height*32/1334, text: "SIMILAR LIVEABOARDS" , textColor: UIColor(red:17/255 , green:42/255, blue:76/255 , alpha : 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
 
 
@@ -461,6 +462,12 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         let favItem =  UIBarButtonItem(image: addfavoriteimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItems = [ favItem,shareItem,cartItem ]
         self.navigationController?.navigationBar.tintColor = .white
+        
+        
+      
+        
+        
+        
     }
   
     func setupbackgroundGradient(){

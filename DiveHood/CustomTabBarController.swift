@@ -13,11 +13,14 @@ import UIKit
 class CustomTabBarController: UITabBarController  {
     var language = AppDelegate.sharedInstance().language!
     override func viewDidLoad() {
+        if language{
+          UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        }
         super.viewDidLoad()
         setupUi()
         SetTabBar()
         //setNavigtionBar()
-       
+     
         
     }
     
@@ -84,9 +87,7 @@ class CustomTabBarController: UITabBarController  {
         }
         nav4.tabBarItem.image = UIImage(named: "tb-destinations")
          viewControllers = [nav1, nav2, nav3, nav4]
-        if language {
-             viewControllers = [nav4, nav3, nav2, nav1]
-        }
+       
         
        
         

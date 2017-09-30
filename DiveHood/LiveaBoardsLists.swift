@@ -22,7 +22,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     var beginY : CGFloat!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         
         setupbackgroundGradient()
         TabBarHeight =  self.tabBarController!.tabBar.frame.height
         setupUi()
@@ -30,6 +30,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         tableview.dataSource = self
         tableview.register(CustomTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         tableview.separatorStyle = .none
+       
 
         if let downcastStrings = self.tabBarController?.tabBar.items as? [UITabBarItem]
         {
@@ -143,16 +144,16 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         var items = ["List", "Map"]
         if language{
-            items = ["خريطة","قائمة"]
+            items = ["قائمة","خريطة"]
         }
         let segmented = UISegmentedControl(items: items)
         segmented.frame = CGRect(x: view.frame.width*0.04, y: view.frame.height*0.013, width: container.frame.width-(view.frame.width*0.04*2), height: container.frame.height-(view.frame.height*0.013*2))
         segmented.tintColor = Colors().blue
        
         segmented.selectedSegmentIndex = 0
-        if language{
-            segmented.selectedSegmentIndex = 1
-        }
+//        if language{
+//            segmented.selectedSegmentIndex = 1
+//        }
         container.addSubview(segmented)
         view.addSubview(container)
        segmented.addTarget(self, action: #selector(self.segmentChange), for: .valueChanged )
@@ -167,7 +168,10 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(Single_Page(), animated: true)
+       
+     
+             self.navigationController?.pushViewController(Single_Page(), animated: true)
+        
     }
     
     //*************************** Tableview Protocols  Functionalities *******************************//
@@ -206,7 +210,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
          mapView.delegate = self
          mapView.showsUserLocation = true
         mapContainer.addSubview(mapView)
-        let firstCoardinat =  CLLocationCoordinate2DMake(40.9922868, 32.6672701)
+        let firstCoardinat =  CLLocationCoordinate2DMake(45.9922868, 32.6672701)
         let firstAnnotaion = MKPointAnnotation()
         
         let region = MKCoordinateRegion(center: firstCoardinat, span: .init(latitudeDelta: mapView.region.span.latitudeDelta , longitudeDelta: mapView.region.span.longitudeDelta))
@@ -253,8 +257,8 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         scrollview.backgroundColor = UIColor(red:37/255, green:43/255, blue:87/255, alpha:0.9)
         scrollview.isPagingEnabled = true
-        scrollview.contentSize = CGSize(width: mapContainer.frame.width*3, height: mapContainer.frame.height*440/1334)
        
+   
         scrollview.showsHorizontalScrollIndicator = false
         
         mapContainer.addSubview(scrollview)
@@ -264,7 +268,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         x = makeABoxContainer(scrollview , xposition :x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
         positionsX.append(x)
         if language{
-            scrollview.contentOffset = CGPoint(x: x , y: 0)
+            scrollview.contentOffset = CGPoint(x: x+30, y: 0)
         }
         x =  makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "palau-siren-5"))
         positionsX.append(x)
@@ -272,6 +276,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         x = makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
       
         //85 45
+         scrollview.contentSize = CGSize(width: x, height: mapContainer.frame.height*440/1334)
         var numbersofCabinsFoundX:CGFloat = 0
         if language{
             numbersofCabinsFoundX = mapContainer.frame.width-view.frame.width*85/750
@@ -471,6 +476,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         }
        anView?.image = UIImage(named: "purple-map.png")
         
+        
         return anView
     }
     
@@ -480,23 +486,23 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
 
         switch sender.selectedSegmentIndex{
         case 0:
-            if language {
-                tableview.removeFromSuperview()
-                setupmap(beginY)
-            }else{
+//            if language {
+//                tableview.removeFromSuperview()
+//                setupmap(beginY)
+//            }else{
                 mapContainer.removeFromSuperview()
                 viewDidLoad()
-            }
+//            }
 
         case 1:
            
-            if language {
-                mapContainer.removeFromSuperview()
-                viewDidLoad()
-            }else{
+//            if language {
+//                mapContainer.removeFromSuperview()
+//                viewDidLoad()
+//            }else{
                 tableview.removeFromSuperview()
                 setupmap(beginY)
-            }
+           // }
 
         default:
             break
@@ -509,6 +515,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
        
         scrollview.setContentOffset(CGPoint(x:(positionsX[2]-view.frame.width*4) , y: 0), animated: true)
+        view.image = #imageLiteral(resourceName: "map-focus-bg")
         
     }
     
