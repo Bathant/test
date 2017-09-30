@@ -114,7 +114,7 @@ class CustomTableViewCell: UITableViewCell {
         offertxt.font = UIFont(name: "OpenSans-ExtraBold", size: viewwidth*0.032)
         offertxt.text = "HOT OFFER -25%"
         if language{
-            offertxt.text = "عرض ساخن -٢٥٪"
+            offertxt.text = "خصم بقيمة ٢٥٪"
         }
         
         offertxt.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)

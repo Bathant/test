@@ -94,12 +94,10 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         var menuimage = UIImage(named: "nb-menu")
         menuimage = menuimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
        
-        if !language{
+       
              self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        }
-        else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        }
+        
+        
         
         
         
@@ -112,12 +110,9 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         let searrchItem = UIBarButtonItem(image: SearchImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         let filterItem =  UIBarButtonItem(image: FilterImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        if !language{
+       
         self.navigationItem.rightBarButtonItems = [ filterItem,searrchItem]
-        }
-        else{
-             self.navigationItem.leftBarButtonItems = [ searrchItem,filterItem]
-        }
+      
     }
     func setupbackgroundGradient(){
         
@@ -480,29 +475,23 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         return anView
     }
     
-    //////when segment Change Map View set up
+  
     
     func segmentChange(sender:UISegmentedControl) {
 
         switch sender.selectedSegmentIndex{
         case 0:
-//            if language {
-//                tableview.removeFromSuperview()
-//                setupmap(beginY)
-//            }else{
+
                 mapContainer.removeFromSuperview()
                 viewDidLoad()
-//            }
+
 
         case 1:
            
-//            if language {
-//                mapContainer.removeFromSuperview()
-//                viewDidLoad()
-//            }else{
+
                 tableview.removeFromSuperview()
                 setupmap(beginY)
-           // }
+     
 
         default:
             break
