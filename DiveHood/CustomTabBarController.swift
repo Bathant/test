@@ -11,30 +11,17 @@ import UIKit
 
 
 class CustomTabBarController: UITabBarController  {
-    
+    var language = AppDelegate.sharedInstance().language!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUi()
         SetTabBar()
-        setNavigtionBar()
-        
-        
-    }
-    
-    func setNavigtionBar(){
-        
-        //self.title = "Liveaboards List"
-        
-        var nav = self.navigationController?.navigationBar
-        // nav?.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
-        print("height from tab bar \(nav?.intrinsicContentSize.height)")
-        
-        
-        
-        
+        //setNavigtionBar()
+       
         
     }
     
+
     func SetTabBar(){
         
         self.tabBar.barTintColor = UIColor(red:0.05, green:0.13, blue:0.25, alpha:1.0)
@@ -45,14 +32,18 @@ class CustomTabBarController: UITabBarController  {
         
         
         let numberOfItems = CGFloat(self.tabBar.items!.count)
-        let tabBarItemSize = CGSize(width:10, height: tabBar.frame.height+15 )
+        let tabBarItemSize = CGSize(width:1, height: tabBar.frame.height+25 )
         print(self.tabBar.frame.width)
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.brown, size: tabBarItemSize).resizableImage(withCapInsets: .init())
         
         var items = self.tabBar.items
-        items?[0].titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
-        items?[0].setTitleTextAttributes([NSFontAttributeName : UIFont(name : "OpenSans",size: 12)], for: .normal)
-        items?[0].imageInsets = UIEdgeInsetsMake(-10, 0, 10, 0)
+        var index = 0
+        if language{
+            index = 3
+        }
+        items?[index].titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
+        items?[index].setTitleTextAttributes([NSFontAttributeName : UIFont(name : "OpenSans",size: 12)], for: .normal)
+        items?[index].imageInsets = UIEdgeInsetsMake(-10, 0, 10, 0)
         
         
         
@@ -63,25 +54,41 @@ class CustomTabBarController: UITabBarController  {
         let LiveBoards = LiveaBoardsLists()
         let nav1 = UINavigationController(rootViewController: LiveBoards)
         
-        nav1.tabBarItem.title = "Liveaboard"
+        //
         nav1.tabBarItem.image = UIImage(named: "tb-liveaboards")
-  
+        nav1.tabBarItem.title = "Liveaboard"
         let DivingCenters = UIViewController()
         let nav2 = UINavigationController(rootViewController: DivingCenters)
+        
         nav2.tabBarItem.title = "Diving Centers"
+        if language{
+             nav2.tabBarItem.title = "مراكز الغوص"
+        }
         nav2.tabBarItem.image = UIImage(named: "tb-diving-centers")
         
         
         let Resorts = UIViewController()
         let nav3 = UINavigationController(rootViewController: Resorts)
         nav3.tabBarItem.title = "Resorts"
+        if language{
+            nav3.tabBarItem.title = "المنتجعات"
+        }
         nav3.tabBarItem.image = UIImage(named: "tb-resorts")
         
         let Destination = UIViewController()
         let nav4 = UINavigationController(rootViewController: Destination)
         nav4.tabBarItem.title = "Destination"
+        
+        if language{
+            nav4.tabBarItem.title = "الأماكن"
+        }
         nav4.tabBarItem.image = UIImage(named: "tb-destinations")
-        viewControllers = [nav1, nav2, nav3, nav4]
+         viewControllers = [nav1, nav2, nav3, nav4]
+        if language {
+             viewControllers = [nav4, nav3, nav2, nav1]
+        }
+        
+       
         
         
     }
@@ -133,7 +140,7 @@ extension UIImage {
     func tintedWithLinearGradientColors(colorsArr: [CGColor?], size : CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, self.scale);
         let context = UIGraphicsGetCurrentContext()
-        context!.translateBy(x: 0, y: self.size.height)
+        context!.translateBy(x: 0.0, y: self.size.height)
         context!.scaleBy(x: 1.0, y: -1.0)
         
         context!.setBlendMode(.normal)
@@ -163,7 +170,7 @@ extension UIImage
         
         let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
+       // color.setFill()
         UIRectFill(rect)
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         let img = image.tintedWithLinearGradientColors(colorsArr: [UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0).cgColor , Colors().gradientColor2.cgColor], size : size )

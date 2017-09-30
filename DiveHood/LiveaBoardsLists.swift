@@ -14,6 +14,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     var mapView : MKMapView!
     var mapContainer : UIView!
     var TabBarHeight :CGFloat!
+    var language : Bool = AppDelegate.sharedInstance().language!
     var positionsX :[CGFloat] = [0]
     var Annotaions : [MKAnnotation]!
     var  scrollview :UIScrollView!
@@ -21,6 +22,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     var beginY : CGFloat!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupbackgroundGradient()
         TabBarHeight =  self.tabBarController!.tabBar.frame.height
         setupUi()
@@ -29,7 +31,15 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         tableview.register(CustomTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         tableview.separatorStyle = .none
 
-        // Do any additional setup after loading the view.
+        if let downcastStrings = self.tabBarController?.tabBar.items as? [UITabBarItem]
+        {
+            if language{
+            downcastStrings[0].title = "الفندق العائم"
+            }
+            else{
+                 downcastStrings[0].title = "LiveaBoard"
+            }
+        }
     }
     
     
@@ -55,9 +65,13 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         view.addSubview(view1)
         
     }
-    
+
     func SetupNavigationBar(){
-        self.title = "LiveaBoard Lists"
+       
+        self.title = "Liveaboard Lists"
+        if language{
+                self.title = " الفنادق العائمة"
+        }
         let nav = self.navigationController!
         nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
         if #available(iOS 11.0, *) {
@@ -78,7 +92,15 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         self.navigationController!.navigationBar.backgroundColor = UIColor.clear
         var menuimage = UIImage(named: "nb-menu")
         menuimage = menuimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+       
+        if !language{
+             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        }
+        else{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        }
+        
+        
         
         var SearchImage = UIImage(named: "nb-search")
         SearchImage = SearchImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
@@ -89,7 +111,12 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         let searrchItem = UIBarButtonItem(image: SearchImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         let filterItem =  UIBarButtonItem(image: FilterImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        if !language{
         self.navigationItem.rightBarButtonItems = [ filterItem,searrchItem]
+        }
+        else{
+             self.navigationItem.leftBarButtonItems = [ searrchItem,filterItem]
+        }
     }
     func setupbackgroundGradient(){
         
@@ -113,11 +140,19 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         print("navigation height\(self.navigationController!.navigationBar.intrinsicContentSize.height)")
         container.backgroundColor = UIColor(red:56/255, green:44/255, blue:98/255, alpha:1.0)
-        let items = ["List", "Map"]
+        
+        var items = ["List", "Map"]
+        if language{
+            items = ["خريطة","قائمة"]
+        }
         let segmented = UISegmentedControl(items: items)
         segmented.frame = CGRect(x: view.frame.width*0.04, y: view.frame.height*0.013, width: container.frame.width-(view.frame.width*0.04*2), height: container.frame.height-(view.frame.height*0.013*2))
         segmented.tintColor = Colors().blue
+       
         segmented.selectedSegmentIndex = 0
+        if language{
+            segmented.selectedSegmentIndex = 1
+        }
         container.addSubview(segmented)
         view.addSubview(container)
        segmented.addTarget(self, action: #selector(self.segmentChange), for: .valueChanged )
@@ -386,13 +421,24 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
 
         switch sender.selectedSegmentIndex{
         case 0:
-            mapContainer.removeFromSuperview()
-            viewDidLoad()
+            if language {
+                tableview.removeFromSuperview()
+                setupmap(beginY)
+            }else{
+                mapContainer.removeFromSuperview()
+                viewDidLoad()
+            }
 
         case 1:
-            tableview.removeFromSuperview()
-             setupmap(beginY)
            
+            if language {
+                mapContainer.removeFromSuperview()
+                viewDidLoad()
+            }else{
+                tableview.removeFromSuperview()
+                setupmap(beginY)
+            }
+
         default:
             break
         }

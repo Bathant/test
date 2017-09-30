@@ -11,6 +11,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     var img : UIImageView!
     var ratings : UIView!
+    var language : Bool = AppDelegate.sharedInstance().language!
     var Offers: UIView!
     var priceView : UIView!
     var DescriptionView : UIView!
@@ -44,25 +45,40 @@ class CustomTableViewCell: UITableViewCell {
         img.backgroundColor = .gray
         
         contentView.addSubview(img)
-        
-        ratings = UIView(frame: CGRect(x: 0, y: viewheight*265/1334, width: #imageLiteral(resourceName: "gold-star").size.width*5+20-1, height: (viewheight*50/1334)-1))
+        var x:CGFloat = 0
+       
+        if language {
+            x = viewwidth-#imageLiteral(resourceName: "gold-star").size.width*5-20+1
+          
+        }
+        ratings = UIView(frame: CGRect(x: x, y: viewheight*265/1334, width: #imageLiteral(resourceName: "gold-star").size.width*5+20-1, height: (viewheight*50/1334)-1))
         setupStars()
         ratings.backgroundColor = UIColor(red:0.07, green:0.16, blue:0.30, alpha:0.7)
         contentView.addSubview(ratings)
+        var Offersx = ratings.frame.maxX+1
+        if language {
+         
+            Offersx = ratings.frame.minX-contentView.frame.width*0.3-1
+        }
         
-        
-        Offers = UIView(frame: CGRect(x: ratings.frame.maxX+1, y: ratings.frame.origin.y, width: contentView.frame.width*0.3, height: viewheight*50/1334))
+        Offers = UIView(frame: CGRect(x:Offersx , y: ratings.frame.origin.y, width: contentView.frame.width*0.3, height: viewheight*50/1334))
         setupOffersLbel()
         Offers.backgroundColor = UIColor(red:0.38, green:0.16, blue:0.46, alpha:0.7)
         contentView.addSubview(Offers)
-        
-        
-        priceView = UIView(frame: CGRect(x: 0, y: ratings.frame.maxY+1, width: ratings.frame.width, height: viewheight*125/1334))
+        var priceViewX:CGFloat = 0
+        if language{
+            priceViewX =  ratings.frame.minX
+        }
+        priceView = UIView(frame: CGRect(x: priceViewX, y: ratings.frame.maxY+1, width: ratings.frame.width, height: viewheight*125/1334))
         priceView.backgroundColor = UIColor(red:0.07, green:0.16, blue:0.30, alpha:0.9)
         priceViewLabels()
         contentView.addSubview(priceView)
         
-        DescriptionView = UIView(frame: CGRect(x: priceView.frame.maxX, y: priceView.frame.origin.y, width: contentView.frame.width-(priceView.frame.maxX), height: (viewheight*125/1334)-1))
+        var DescriptionViewX:CGFloat = priceView.frame.maxX
+        if language{
+            DescriptionViewX =  0
+        }
+        DescriptionView = UIView(frame: CGRect(x: DescriptionViewX, y: priceView.frame.origin.y, width: contentView.frame.width-(priceView.frame.width), height: (viewheight*125/1334)-1))
         
         DescriptionLabels()
         DescriptionView.backgroundColor = .white
@@ -96,9 +112,11 @@ class CustomTableViewCell: UITableViewCell {
         let offertxt = UILabel()
         offertxt.frame = Offers.bounds
         offertxt.font = UIFont(name: "OpenSans-ExtraBold", size: viewwidth*0.032)
-        
-        
         offertxt.text = "HOT OFFER -25%"
+        if language{
+            offertxt.text = "عرض ساخن -٢٥٪"
+        }
+        
         offertxt.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
         //offertxt.sizeToFit()
         offertxt.adjustsFontSizeToFitWidth = true
@@ -113,14 +131,27 @@ class CustomTableViewCell: UITableViewCell {
         let subContainer = UILabel(frame: CGRect(x: viewwidth*0.04, y: priceView.frame.height*0.1, width: priceView.frame.width-(viewwidth*0.04*2), height: priceView.frame.height-(priceView.frame.height*0.1*2)))
         priceView.addSubview(subContainer)
         let BiggerPrice = UILabel(frame: CGRect(x: 0, y: 0, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
-        let txt1 = "EGP  "
+        var txt1 = "EGP  "
+        var txt2 = "83,132"
+        if language{
+            txt1 = " جنيه"
+            txt2 = " ٨٣,١٣٢"
+        }
         let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: viewwidth*0.024 )]
-        let txt2 = "83,132"
+        
           let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: viewwidth*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedString = NSMutableAttributedString(string: txt1, attributes: attrs)
         let normalString = NSMutableAttributedString(string: txt2, attributes: attrs2)
-        attributedString.append(normalString)
-        BiggerPrice.attributedText = attributedString
+      
+        if language{
+            normalString.append(attributedString)
+            BiggerPrice.attributedText = normalString
+        }
+        else{
+            attributedString.append(normalString)
+            BiggerPrice.attributedText = attributedString
+        }
+        
         BiggerPrice.textAlignment = .center
         BiggerPrice.sizeToFit()
         BiggerPrice.baselineAdjustment = .alignBaselines
@@ -128,6 +159,9 @@ class CustomTableViewCell: UITableViewCell {
         subContainer.addSubview(BiggerPrice)
         let smallerPrice = UILabel(frame: CGRect(x: 0, y: BiggerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height))
         smallerPrice.text = "20.783"
+        if language{
+             smallerPrice.text = "٢٠,٧٨٣"
+        }
         smallerPrice.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
         smallerPrice.font = UIFont(name: "OpenSans-ExtraBold", size: viewwidth*0.0453)
         smallerPrice.textAlignment = .center
@@ -137,6 +171,9 @@ class CustomTableViewCell: UITableViewCell {
         
         let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
         smallDetail.text = "PER TRIP"
+        if language{
+            smallDetail.text = "للرحلة"
+        }
         smallDetail.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
         smallDetail.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0187)
         smallDetail.textAlignment = .center
@@ -163,13 +200,24 @@ class CustomTableViewCell: UITableViewCell {
     }
     func DescriptionLabels(){
         
+      
+      
         let SubContainer = UIView(frame: CGRect(x: viewwidth*0.047, y: viewheight*16/1334, width: DescriptionView.frame.width-(viewwidth*0.047*2), height: DescriptionView.frame.height-(viewheight*16/1334*2)))
                 print(viewheight*0.026)
         DescriptionView.addSubview(SubContainer)
+       // SubContainer.backgroundColor = .black
         let Header = UILabel()
-        Header.frame.origin = CGPoint(x: 0, y: 0)
+       var text =  "Grand Sea Serpent"
+        var getwidth = text.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)!)
+        var  HeaderX: CGFloat = 0
+        if language{
+            HeaderX = SubContainer.frame.maxX-getwidth
+            text = "ثعبان البحر الضخم"
+        }
+        Header.frame.origin = CGPoint(x: HeaderX, y: 0)
         
-        Header.text = "Grand Sea Serpent"
+        
+        Header.text = text
         Header.textColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0)
         Header.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)
         Header.textAlignment = .center
@@ -178,20 +226,33 @@ class CustomTableViewCell: UITableViewCell {
         
         //Total distance 59.45 km (36.94 mi)
     
-      
-        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: DescriptionView.frame.width, height: DescriptionView.frame.height*1/2))
+         text =  "Total distance 59.45 km (36.94 mi)"
+         getwidth = text.widthOfString(usingFont:  UIFont(name: "OpenSans", size: viewwidth*0.032)!)
+        var  subHeaderX: CGFloat = 0
+        if language{
+            subHeaderX = Header.frame.maxX-getwidth
+            text = "المسافة الكلية ٥٩.٩٤ كيلومترات (٣٦.٩٤ متر مكعب)"
+        }
+        let subHeader = UILabel(frame: CGRect(x: subHeaderX, y: Header.frame.maxY, width: DescriptionView.frame.width, height: DescriptionView.frame.height*1/2))
         //subHeader.backgroundColor = .red
-        subHeader.text = "Total distance 59.45 km (36.94 mi)"
+        subHeader.text = text
         subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
         subHeader.font = UIFont(name: "OpenSans", size: viewwidth*0.032)
         subHeader.textAlignment = .center
         subHeader.sizeToFit()
         SubContainer.addSubview(subHeader)
         
-        
-        let rightarrow = UIImageView(frame: CGRect(x: SubContainer.frame.width-#imageLiteral(resourceName: "right-purple-arrow").size.width, y: SubContainer.frame.height/2-(#imageLiteral(resourceName: "right-purple-arrow").size.height/2), width: #imageLiteral(resourceName: "right-purple-arrow").size.width, height: #imageLiteral(resourceName: "right-purple-arrow").size.height))
+        var arrowx = SubContainer.frame.width-#imageLiteral(resourceName: "right-purple-arrow").size.width
+        if language{
+            arrowx = SubContainer.bounds.minX
+            
+        }
+        let rightarrow = UIImageView(frame: CGRect(x:arrowx , y: SubContainer.frame.height/2-(#imageLiteral(resourceName: "right-purple-arrow").size.height/2), width: #imageLiteral(resourceName: "right-purple-arrow").size.width, height: #imageLiteral(resourceName: "right-purple-arrow").size.height))
         
         rightarrow.image = #imageLiteral(resourceName: "right-purple-arrow")
+        if language{
+             rightarrow.image = #imageLiteral(resourceName: "left-blue-arrow")
+        }
     
         SubContainer.addSubview(rightarrow)
     
