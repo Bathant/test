@@ -215,6 +215,11 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         firstAnnotaion.coordinate = firstCoardinat
         firstAnnotaion.title = "Grand Sea Serpent"
         firstAnnotaion.subtitle = "Liveaboard"
+        if language{
+            firstAnnotaion.title = "ثعبان البحر الضخم"
+            firstAnnotaion.subtitle = "الفندق العائم "
+            
+        }
         
         //firstAnnotaion.im
         mapView.addAnnotation(firstAnnotaion)
@@ -249,6 +254,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         scrollview.backgroundColor = UIColor(red:37/255, green:43/255, blue:87/255, alpha:0.9)
         scrollview.isPagingEnabled = true
         scrollview.contentSize = CGSize(width: mapContainer.frame.width*3, height: mapContainer.frame.height*440/1334)
+       
         scrollview.showsHorizontalScrollIndicator = false
         
         mapContainer.addSubview(scrollview)
@@ -257,13 +263,21 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         positionsX.append(x)
         x = makeABoxContainer(scrollview , xposition :x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
         positionsX.append(x)
+        if language{
+            scrollview.contentOffset = CGPoint(x: x , y: 0)
+        }
         x =  makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "palau-siren-5"))
         positionsX.append(x)
-        x = makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
        
+        x = makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
+      
         //85 45
+        var numbersofCabinsFoundX:CGFloat = 0
+        if language{
+            numbersofCabinsFoundX = mapContainer.frame.width-view.frame.width*85/750
+        }
         
-        let numbersofCabinsFound = UILabel(frame: CGRect(x: 0, y: scrollview.frame.minY - view.frame.height*45/1334, width: view.frame.width*85/750, height: view.frame.height*45/1334))
+        let numbersofCabinsFound = UILabel(frame: CGRect(x: numbersofCabinsFoundX, y: scrollview.frame.minY - view.frame.height*45/1334, width: view.frame.width*85/750, height: view.frame.height*45/1334))
         numbersofCabinsFound.backgroundColor = UIColor(red: 37/255, green: 43/255, blue: 87/255, alpha: 1.0)
         numbersofCabinsFound.text = "20"
         numbersofCabinsFound.textColor = .white
@@ -273,10 +287,16 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         mapContainer.addSubview(numbersofCabinsFound)
         
         //260 45
+        var str = "liveaboards Found"
+        var LabelsofCabinsFoundX:CGFloat = numbersofCabinsFound.frame.maxX
+        if language{
+            LabelsofCabinsFoundX = numbersofCabinsFound.frame.minX-view.frame.width*260/750
+            str = "فندق عائم "
+        }
         
-        let LabelsofCabinsFound = UILabel(frame: CGRect(x: numbersofCabinsFound.frame.maxX, y: numbersofCabinsFound.frame.minY , width: view.frame.width*260/750, height: numbersofCabinsFound.frame.height))
+        let LabelsofCabinsFound = UILabel(frame: CGRect(x: LabelsofCabinsFoundX, y: numbersofCabinsFound.frame.minY , width: view.frame.width*260/750, height: numbersofCabinsFound.frame.height))
         LabelsofCabinsFound.backgroundColor = UIColor(red: 37/255, green: 43/255, blue: 87/255, alpha: 0.95)
-        LabelsofCabinsFound.text = "liveaboards Found"
+        LabelsofCabinsFound.text = str
         LabelsofCabinsFound.textColor = .white
         LabelsofCabinsFound.font = UIFont(name: "OpenSans", size: view.frame.width*0.032)
         LabelsofCabinsFound.textAlignment = .center
@@ -310,17 +330,31 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     
     
     func priceViewLabels(_ priceView: UIView){
-        let subContainer = UILabel(frame: CGRect(x: view.frame.width*0.04, y: priceView.frame.height*0.1, width: priceView.frame.width-(view.frame.width*0.04*2), height: priceView.frame.height-(priceView.frame.height*0.1*2)))
+        let viewwidth = view.frame.width
+        let subContainer = UILabel(frame: CGRect(x: viewwidth*0.04, y: priceView.frame.height*0.1, width: priceView.frame.width-(viewwidth*0.04*2), height: priceView.frame.height-(priceView.frame.height*0.1*2)))
         priceView.addSubview(subContainer)
         let BiggerPrice = UILabel(frame: CGRect(x: 0, y: 0, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
-        let txt1 = "EGP  "
-        let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.024 )]
-        let txt2 = "83,132"
-          let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
+        var txt1 = "EGP  "
+        var txt2 = "83,132"
+        if language{
+            txt1 = " جنيه"
+            txt2 = " ٨٣,١٣٢"
+        }
+        let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: viewwidth*0.024 )]
+        
+        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: viewwidth*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedString = NSMutableAttributedString(string: txt1, attributes: attrs)
         let normalString = NSMutableAttributedString(string: txt2, attributes: attrs2)
-        attributedString.append(normalString)
-        BiggerPrice.attributedText = attributedString
+        
+        if language{
+            normalString.append(attributedString)
+            BiggerPrice.attributedText = normalString
+        }
+        else{
+            attributedString.append(normalString)
+            BiggerPrice.attributedText = attributedString
+        }
+        
         BiggerPrice.textAlignment = .center
         BiggerPrice.sizeToFit()
         BiggerPrice.baselineAdjustment = .alignBaselines
@@ -328,8 +362,11 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         subContainer.addSubview(BiggerPrice)
         let smallerPrice = UILabel(frame: CGRect(x: 0, y: BiggerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height))
         smallerPrice.text = "20.783"
+        if language{
+            smallerPrice.text = "٢٠,٧٨٣"
+        }
         smallerPrice.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
-        smallerPrice.font = UIFont(name: "OpenSans-ExtraBold", size: view.frame.width*0.0453)
+        smallerPrice.font = UIFont(name: "OpenSans-ExtraBold", size: viewwidth*0.0453)
         smallerPrice.textAlignment = .center
         smallerPrice.sizeToFit()
         subContainer.addSubview(smallerPrice)
@@ -337,8 +374,11 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
         smallDetail.text = "PER TRIP"
-        smallDetail.textColor = UIColor(red:173/255, green:155/355, blue:26/255, alpha:1.0)
-        smallDetail.font = UIFont(name: "OpenSans-Bold", size: view.frame.width*0.0187)
+        if language{
+            smallDetail.text = "للرحلة"
+        }
+        smallDetail.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
+        smallDetail.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0187)
         smallDetail.textAlignment = .center
         smallDetail.sizeToFit()
         subContainer.addSubview(smallDetail)
@@ -347,31 +387,50 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
     }
     func DescriptionLabels(_ DescriptionView:UIView ){
-        
-        let SubContainer = UIView(frame: CGRect(x: view.frame.width*30/750, y: view.frame.height*16/1334, width: DescriptionView.frame.width-(view.frame.width*30/750*2), height: DescriptionView.frame.height-(view.frame.height*16/1334*2)))
+         let viewwidth = view.frame.width
+        let SubContainer = UIView(frame: CGRect(x: view.frame.width*0.01, y: view.frame.height*16/1334, width: DescriptionView.frame.width-(view.frame.width*30/750), height: DescriptionView.frame.height-(view.frame.height*16/1334*2)))
         
         DescriptionView.addSubview(SubContainer)
+
         let Header = UILabel()
-        Header.frame.origin = CGPoint(x: 0, y: 0)
+        var text =  "Grand Sea Serpent"
+        var getwidth = text.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)!)
+        var  HeaderX: CGFloat = 0
+        if language{
+            HeaderX = SubContainer.frame.maxX-getwidth+view.frame.width*30/750
+            text = "ثعبان البحر الضخم"
+        }
+        Header.frame.origin = CGPoint(x: HeaderX, y: 0)
         
-        Header.text = "Grand Sea Serpent"
+        
+        Header.text = text
         Header.textColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0)
-        Header.font = UIFont(name: "OpenSans-ExtraBold", size: view.frame.width*0.0453)
+        Header.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)
         Header.textAlignment = .center
         Header.sizeToFit()
         SubContainer.addSubview(Header)
         
-     
-        
-        
-        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: SubContainer.frame.width, height: DescriptionView.frame.height*0.2))
+        //Total distance 59.45 km (36.94 mi)
+        var  subHeaderX: CGFloat = 0
+        text =  "Total distance 59.45 km (36.94 mi)"
+        if language{
+            
+            text = "المسافة الكلية ٥٩.٩٤ كيلومترات (٣٦.٩٤ متر مكعب)"
+        }
+        getwidth = text.widthOfString(usingFont:  UIFont(name: "OpenSans", size: viewwidth*0.032)!)
+        if language
+        {
+            subHeaderX = SubContainer.frame.minX
+        }
+        let getheight = text.height(constraintedWidth: SubContainer.frame.width, font: UIFont(name: "OpenSans", size: viewwidth*0.032)!)
+        let subHeader = UILabel(frame: CGRect(x: subHeaderX, y: Header.frame.maxY, width: SubContainer.frame.width, height:getheight))
         //subHeader.backgroundColor = .red
-        subHeader.text = "Total distance 59.45 km (36.94 mi)"
+        subHeader.text = text
         subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
-        subHeader.font = UIFont(name: "OpenSans", size: view.frame.width*0.032)
-        subHeader.textAlignment = .center
-        //subHeader.sizeToFit()
-       // subHeader.adjustsFontSizeToFitWidth = true
+        subHeader.font = UIFont(name: "OpenSans", size: viewwidth*0.032)
+        //subHeader.textAlignment = .center
+      // subHeader.sizeToFit()
+        subHeader.adjustsFontSizeToFitWidth = true
         SubContainer.addSubview(subHeader)
         
 
@@ -450,6 +509,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
        
         scrollview.setContentOffset(CGPoint(x:(positionsX[2]-view.frame.width*4) , y: 0), animated: true)
+        
     }
     
     
