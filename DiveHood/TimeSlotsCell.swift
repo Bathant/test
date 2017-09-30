@@ -10,6 +10,7 @@ import UIKit
 class TimeSlotsCell: UITableViewCell {
      var heightView:CGFloat!
      var WidthView:CGFloat!
+    var language : Bool = AppDelegate.sharedInstance().language!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -81,12 +82,26 @@ class TimeSlotsCell: UITableViewCell {
     
     func SetFirstPart( )->UIView{
       
-        let date = UIView(frame: CGRect(x: 0, y: 0, width: WidthView*96/750, height: heightView*140/1334))
+        
+        
+        
+        var date = UIView(frame: CGRect(x: 0, y: 0, width: WidthView*96/750, height: heightView*140/1334))
+        if language{
+            date.frame.origin.x = contentView.frame.width-WidthView*96/750
+        }
         date.backgroundColor = UIColor(red : 177/255,green: 177/255,blue: 177/255, alpha: 1.0)
-        verticallyLabels(date, "IN", "8", "July")
+        var texts = ["IN","8","July"]
+        if language{
+            texts = ["من","٨","يوليو"]
+        }
+        verticallyLabels(date, texts[0], texts[1], texts[2])
         let outDate = UIView(frame: CGRect(x: date.frame.width+1 , y: 0, width: WidthView*96/750, height: heightView*140/1334))
         outDate.backgroundColor = UIColor(red : 207/255,green: 207/255,blue: 209/255, alpha: 1.0)
-        verticallyLabels(outDate, "OUT", "12", "July")
+         texts = ["OUT","12","July"]
+        if language{
+            texts = ["إلي","١٢","يوليو"]
+        }
+        verticallyLabels(outDate,texts[0], texts[1], texts[2])
         let ticketDescription = UIView(frame: CGRect(x: outDate.frame.maxX, y: 0, width: contentView.frame.width-outDate.frame.maxX, height: outDate.frame.height))
         ticketDescription.backgroundColor = UIColor(red: 230/255,green:  230/255,blue: 230/255, alpha:1.0 )
         
@@ -96,7 +111,11 @@ class TimeSlotsCell: UITableViewCell {
         let label3 =  HorizontalyLabels("4 spaces Left", font: UIFont(name: "OpenSans", size: WidthView*24/750)!, textcolor: UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1), y: label2.frame.maxY+heightView*8/1334, container: ticketDescription, Width:(WidthView*174/750))
         label3.backgroundColor = UIColor(red: 207/255,green:  207/255,blue: 209/255, alpha:1.0 )
         label3.textAlignment = .center
-        
+        if language{
+            ticketDescription.frame.origin.x = 0
+            outDate.frame.origin.x=ticketDescription.frame.maxX
+            
+        }
            contentView.addSubview(ticketDescription)
         return date
     }

@@ -16,7 +16,7 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         super.viewDidLoad()
         
         setUi()
-        
+      
         // Do any additional setup after loading the view.
     }
     
@@ -44,8 +44,14 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     func SimilarLiveaboards(_ y: CGFloat){
         let container = UIView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height*515/1334))
         
-        var  label1 =  makeOneLineLabel(container , x: view.frame.width*25/750 , y:view.frame.height*32/1334, text: "SIMILAR LIVEABOARDS" , textColor: UIColor(red:17/255 , green:42/255, blue:76/255 , alpha : 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
         
+        var  label1 =  makeOneLineLabel(container , x: view.frame.width*25/750 , y:view.frame.height*32/1334, text: "SIMILAR LIVEABOARDS" , textColor: UIColor(red:17/255 , green:42/255, blue:76/255 , alpha : 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
+        if langugae{
+            label1.frame.size.width = container.bounds.width-view.frame.width*25/750*2
+           
+            label1.textAlignment = .right
+            label1.text = "فنادق عائمة مشابهه"
+        }
         
         let label2 = UILabel(frame: CGRect(x: container.frame.width - view.frame.width*87/750-view.frame.width*25/750, y: label1.frame.minY, width: view.frame.width*87/750, height: view.frame.height*40/1334))
         label2.text = "Egypt"
@@ -60,6 +66,11 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
         label2.font = UIFont(name: "OpenSans", size: view.frame.width*24/750)
         label2.backgroundColor = UIColor(red: 17/255, green: 42/255, blue: 76/255, alpha: 1.0)
+        if langugae{
+            label2.frame.origin.x = view.frame.width*25/750
+            label2.text = "مصر"
+        }
+        
         container.addSubview(label2)
         scrollView.addSubview(container)
         setsliderContainer(label1.frame.maxY+container.frame.minY)
@@ -80,10 +91,13 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         var  x =  makeABoxContainer(scrollViewSlider , xposition : 0 , yposition : view.frame.height*50/1334 ,img: #imageLiteral(resourceName: "fiji-siren-1") )
         
         x = makeABoxContainer(scrollViewSlider , xposition :x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
-        
+        if langugae{
+            scrollViewSlider.contentOffset = CGPoint(x: x+30, y: 0)
+        }
         x =  makeABoxContainer(scrollViewSlider , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "palau-siren-5"))
         
         x = makeABoxContainer(scrollViewSlider , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
+        scrollViewSlider.contentSize = CGSize(width: x, height: 0)
     }
     
     func makeABoxContainer(_ scrollViewSlider: UIScrollView , xposition : CGFloat , yposition : CGFloat, img: UIImage)->CGFloat{
@@ -107,18 +121,31 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
     
     
     func priceViewLabels(_ priceView: UIView){
-        let subContainer = UILabel(frame: CGRect(x: view.frame.width*0.04, y: priceView.frame.height*0.1, width: priceView.frame.width-(view.frame.width*0.04*2), height: priceView.frame.height-(priceView.frame.height*0.1*2)))
+        let viewwidth = view.frame.width
+        let subContainer = UILabel(frame: CGRect(x: viewwidth*0.04, y: priceView.frame.height*0.1, width: priceView.frame.width-(viewwidth*0.04*2), height: priceView.frame.height-(priceView.frame.height*0.1*2)))
         priceView.addSubview(subContainer)
         let BiggerPrice = UILabel(frame: CGRect(x: 0, y: 0, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
-        let txt1 = "EGP  "
-        let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.024 )]
-        let txt2 = "83,132"
+        var txt1 = "EGP  "
+        var txt2 = "83,132"
+        if langugae{
+            txt1 = " جنيه"
+            txt2 = " ٨٣,١٣٢"
+        }
+        let attrs = [NSFontAttributeName:UIFont(name:"OpenSans", size: viewwidth*0.024 )]
         
-        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: view.frame.width*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
+        let attrs2 = [NSFontAttributeName:UIFont(name:"OpenSans", size: viewwidth*0.032 ), NSStrikethroughStyleAttributeName:NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedString = NSMutableAttributedString(string: txt1, attributes: attrs)
         let normalString = NSMutableAttributedString(string: txt2, attributes: attrs2)
-        attributedString.append(normalString)
-        BiggerPrice.attributedText = attributedString
+        
+        if langugae{
+            normalString.append(attributedString)
+            BiggerPrice.attributedText = normalString
+        }
+        else{
+            attributedString.append(normalString)
+            BiggerPrice.attributedText = attributedString
+        }
+        
         BiggerPrice.textAlignment = .center
         BiggerPrice.sizeToFit()
         BiggerPrice.baselineAdjustment = .alignBaselines
@@ -126,17 +153,23 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         subContainer.addSubview(BiggerPrice)
         let smallerPrice = UILabel(frame: CGRect(x: 0, y: BiggerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height))
         smallerPrice.text = "20.783"
+        if langugae{
+            smallerPrice.text = "٢٠,٧٨٣"
+        }
         smallerPrice.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
-        smallerPrice.font = UIFont(name: "OpenSans-ExtraBold", size: view.frame.width*0.0453)
+        smallerPrice.font = UIFont(name: "OpenSans-ExtraBold", size: viewwidth*0.0453)
         smallerPrice.textAlignment = .center
         smallerPrice.sizeToFit()
         subContainer.addSubview(smallerPrice)
         
         
-        let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*0.1))
+        let smallDetail = UILabel(frame: CGRect(x: smallerPrice.frame.minX, y: smallerPrice.frame.maxY, width: subContainer.frame.width, height: subContainer.frame.height*1/3))
         smallDetail.text = "PER TRIP"
-        smallDetail.textColor = UIColor(red:173/255, green:155/355, blue:26/255, alpha:1.0)
-        smallDetail.font = UIFont(name: "OpenSans-Bold", size: view.frame.width*12/750)
+        if langugae{
+            smallDetail.text = "للرحلة"
+        }
+        smallDetail.textColor = UIColor(red:0.93, green:0.79, blue:0.05, alpha:1.0)
+        smallDetail.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0187)
         smallDetail.textAlignment = .center
         smallDetail.sizeToFit()
         subContainer.addSubview(smallDetail)
@@ -150,26 +183,45 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         
         DescriptionView.addSubview(SubContainer)
         let Header = UILabel()
-        Header.frame.origin = CGPoint(x: 0, y: 0)
+        var text =  "Grand Sea Serpent"
+        let viewwidth = view.frame.width
+       
+        var  HeaderX: CGFloat = 0
+        if langugae{
+          
+            text = "ثعبان البحر الضخم"
+             var getwidth = text.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)!)
+             HeaderX = SubContainer.bounds.maxX-getwidth
+        }
+        Header.frame.origin = CGPoint(x: HeaderX, y: 0)
         
-        Header.text = "Grand Sea Serpent"
+        
+        Header.text = text
         Header.textColor = UIColor(red:0.05, green:0.15, blue:0.24, alpha:1.0)
-        Header.font = UIFont(name: "OpenSans-ExtraBold", size: view.frame.width*0.0453)
+        Header.font = UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)
         Header.textAlignment = .center
         Header.sizeToFit()
         SubContainer.addSubview(Header)
         
-        
-        
-        
-        let subHeader = UILabel(frame: CGRect(x: 0, y: Header.frame.maxY, width: SubContainer.frame.width, height: DescriptionView.frame.height*0.2))
-        //subHeader.backgroundColor = .red
-        subHeader.text = "Total distance 59.45 km (36.94 mi)"
+        //Total distance 59.45 km (36.94 mi)
+        var  subHeaderX: CGFloat = 0
+        text =  "Total distance 59.45 km (36.94 mi)"
+        if langugae{
+            
+            text = "المسافة الكلية ٥٩.٩٤ كيلومترات (٣٦.٩٤ متر مكعب)"
+        }
+        var getwidth = text.widthOfString(usingFont:  UIFont(name: "OpenSans", size: viewwidth*0.032)!)
+        if langugae
+        {
+            subHeaderX = SubContainer.bounds.minX
+        }
+        let getheight = text.height(constraintedWidth: SubContainer.frame.width, font: UIFont(name: "OpenSans", size: viewwidth*0.032)!)
+        let subHeader = UILabel(frame: CGRect(x: subHeaderX, y: Header.frame.maxY, width: SubContainer.frame.width, height:getheight))
+      
+        subHeader.text = text
         subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
-        subHeader.font = UIFont(name: "OpenSans", size: view.frame.width*0.032)
-        subHeader.textAlignment = .center
-        //subHeader.sizeToFit()
-        // subHeader.adjustsFontSizeToFitWidth = true
+        subHeader.font = UIFont(name: "OpenSans", size: viewwidth*0.032)
+        subHeader.adjustsFontSizeToFitWidth = true
         SubContainer.addSubview(subHeader)
         
         
@@ -214,31 +266,34 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         if langugae {
             startX = view.frame.width-view.frame.width/2
         }
-        let container1 = UIView(frame: CGRect(x: startX, y: y, width: view.frame.width/2, height: view.frame.height*110/1334))
+        let container1 = UIView(frame: CGRect(x: startX, y: y, width: view.frame.width/2, height: view.frame.height*142/1334))
         container1.backgroundColor = UIColor(red: 17/255, green: 42/255, blue: 76/255, alpha: 1.0)
         
         var texts = ["Prices Starts From"  ,"20.783 ",  "EGP"  , "PER TRIP"]
         if langugae{
-              texts = ["الاسعار تبدأ من "  ,"٢٠.٧٨٣ ",  "جنيه"  , "للرحلة"]
+              texts = ["الاسعار تبدأ من "  ,"٢٠.٧٨٣ ",  "جنيه"  , "سعر الرحلة"]
         }
-        let  label1 =  makeOneLineLabelForTitles(container1 , x: view.frame.width*25/750 , y:0, text:texts[0] , textColor: .white , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*28/750)
+        let  label1 =  makeOneLineLabelForTitles(container1 , x: view.frame.width*25/750 , y:view.frame.height*16/1334, text:texts[0] , textColor: .white , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*28/750)
         startX = label1.frame.origin.x
         if langugae{
             startX = container1.bounds.maxX-texts[1].widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: view.frame.width*34/750)!)-view.frame.width*25/750
         }
-        let  label2 =  makeOneLineLabel(container1 , x: startX, y:label1.font.lineHeight, text: texts[1] , textColor: UIColor(red: 237/255, green: 202/255, blue: 12/255, alpha: 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
+        let  label2 =  makeOneLineLabel(container1 , x: startX, y:label1.frame.maxY, text: texts[1] , textColor: UIColor(red: 237/255, green: 202/255, blue: 12/255, alpha: 1.0) , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*34/750)
         var x = label2.frame.maxX
+        var y = label2.frame.midY
         if langugae{
-            x = label2.frame.minX-10
+            x = label2.frame.minX-30*view.frame.width/750
+            y = label2.frame.maxY-30*view.frame.width/750
         }
-        _ =  makeOneLineLabel(container1 , x:  x, y:label2.frame.midY, text: texts[2], textColor: .white , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*14/750)
+        _ =  makeOneLineLabel(container1 , x:  x, y:y, text: texts[2], textColor: .white , Fontname: "OpenSans-Bold" , FontSize: view.frame.width*20/750)
         
         x = label2.frame.minX
         if langugae{
             x = label2.frame.maxX
         }
     
-        var  label4 =  makeOneLineLabelForTitles(container1 , x: x , y:label2.frame.maxY, text:  texts[3], textColor: UIColor(red: 173/255, green: 155/255, blue: 26/255, alpha: 1.0) , Fontname: "OpenSans" , FontSize: view.frame.width*18/750)
+        var  label4 =  makeOneLineLabelForTitles(container1 , x: x , y:label2.frame.maxY, text:  texts[3], textColor: UIColor(red: 173/255, green: 155/255, blue: 26/255, alpha: 1.0) , Fontname: "OpenSans" , FontSize: view.frame.width*24/750)
+        label4.frame.origin.y = container1.bounds.maxY-view.frame.height*16/1334-label4.frame.height
         scrollView.addSubview(container1)
         
          startX = container1.frame.maxX
@@ -264,6 +319,15 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
             startx = conainer2.frame.width-view.frame.width*15/750-text1.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: view.frame.height*28/1334)!)
         }
         var  label6 =  makeOneLineLabel(conainer2 , x: startx , y:label5.frame.maxY, text: text1 , textColor: .white, Fontname: "OpenSans-Bold" , FontSize: view.frame.height*28/1334)
+        
+        
+        let sumHeights = label5.frame.height+label6.frame.height
+        let Beginy = conainer2.bounds.midY-sumHeights/2
+        
+        print("the height is \(Beginy)")
+        label5.frame.origin.y = Beginy
+        label6.frame.origin.y = label5.frame.maxY
+        
         startx = conainer2.frame.width-(#imageLiteral(resourceName: "left-blue-arrow").size.width)-view.frame.width*15/750
         if langugae{
          
@@ -271,10 +335,12 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
         }
         
         let arrow = UIImageView(frame: CGRect(x: startx, y: conainer2.frame.height/2-(#imageLiteral(resourceName: "right-white-arrow").size.height/2), width: #imageLiteral(resourceName: "right-white-arrow").size.width, height: #imageLiteral(resourceName: "right-white-arrow").size.height))
-        arrow.image = #imageLiteral(resourceName: "left-blue-arrow")
+        arrow.image = #imageLiteral(resourceName: "right-white-arrow")
+        if langugae{
+        arrow.image = #imageLiteral(resourceName: "Left-White-Arrow")
+        }
         conainer2.addSubview(arrow)
-        
-        
+       
         let tab = UITapGestureRecognizer(target: self, action: #selector(OpenTimeSlots))
         conainer2.isUserInteractionEnabled = true
         conainer2.addGestureRecognizer(tab)

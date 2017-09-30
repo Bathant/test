@@ -41,9 +41,7 @@ class CustomTabBarController: UITabBarController  {
         
         var items = self.tabBar.items
         var index = 0
-        if language{
-            index = 3
-        }
+      
         items?[index].titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
         items?[index].setTitleTextAttributes([NSFontAttributeName : UIFont(name : "OpenSans",size: 12)], for: .normal)
         items?[index].imageInsets = UIEdgeInsetsMake(-10, 0, 10, 0)
@@ -52,6 +50,7 @@ class CustomTabBarController: UITabBarController  {
         
         
     }
+ 
     func setupUi(){
         setbackground()
         let LiveBoards = LiveaBoardsLists()

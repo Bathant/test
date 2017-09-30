@@ -251,7 +251,7 @@ class CustomTableViewCell: UITableViewCell {
         
         rightarrow.image = #imageLiteral(resourceName: "right-purple-arrow")
         if language{
-             rightarrow.image = #imageLiteral(resourceName: "left-blue-arrow")
+             rightarrow.image = #imageLiteral(resourceName: "Purple-Left-arrow")
         }
     
         SubContainer.addSubview(rightarrow)

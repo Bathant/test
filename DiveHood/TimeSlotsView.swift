@@ -9,15 +9,13 @@
 import UIKit
 
 class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
+    var language : Bool = AppDelegate.sharedInstance().language!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUi()
-       // self.tabBarController?.tabBar.isHidden = true
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,17 +35,16 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
     func setTableview(_ y:CGFloat  ) ->CGFloat{
         let tableView = UITableView(frame: CGRect(x: 0, y: y, width: view.frame.width, height: view.frame.height))
         view.addSubview(tableView)
-        //tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TimeSlotsCell.classForCoder(), forCellReuseIdentifier: "TimeSlotCell")
-       
+        
         tableView.separatorStyle = .none
         return tableView.frame.maxY
         
         
     }
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -55,7 +52,7 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimeSlotCell", for: indexPath as IndexPath) as! TimeSlotsCell
         cell.selectionStyle = .none
-      
+        
         
         return cell
     }
@@ -69,19 +66,22 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+        
         self.navigationController?.pushViewController(CabinsViewController(), animated: true)
     }
     //#############   END OF Tableview Protocols  Functionalities #####################################//
     
     func SetupNavigationBar(){
         self.title = "Time Slots"
+        if language{
+            self.title = "الجداول الزمنية"
+        }
         let nav = self.navigationController!
         nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
         if #available(iOS 11.0, *) {
             nav.navigationBar.prefersLargeTitles = true
             nav.navigationBar.largeTitleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
-           
+            
             print("height is ??? \(nav.navigationBar.intrinsicContentSize.height)")
         } else {
             // Fallback on earlier versions
@@ -123,7 +123,7 @@ class TimeSlotsView: UIViewController,UITableViewDelegate, UITableViewDataSource
         self.tabBarController?.tabBar.isHidden = false
     }
     
- 
+    
 }
 
 

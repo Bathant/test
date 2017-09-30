@@ -22,7 +22,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     var beginY : CGFloat!
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+       
         setupbackgroundGradient()
         TabBarHeight =  self.tabBarController!.tabBar.frame.height
         setupUi()
@@ -30,33 +30,34 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         tableview.dataSource = self
         tableview.register(CustomTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         tableview.separatorStyle = .none
-       
-
+        
         if let downcastStrings = self.tabBarController?.tabBar.items as? [UITabBarItem]
         {
             if language{
-            downcastStrings[0].title = "الفندق العائم"
+                downcastStrings[0].title = "الفندق العائم"
             }
             else{
-                 downcastStrings[0].title = "LiveaBoard"
+                downcastStrings[0].title = "LiveaBoard"
             }
         }
+        
+        
     }
     
-    
+
     
     func setupUi(){
         SetupNavigationBar()
         statusBarGradient()
-         beginY = setupSegmentedControl()
+        beginY = setupSegmentedControl()
         setupTableView(beginY)
-       
+        
         statusBarGradient()
         
         
     }
-  
     
+
     func statusBarGradient(){
         
         let frame = UIApplication.shared.statusBarFrame
@@ -66,12 +67,13 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         view.addSubview(view1)
         
     }
-
+    
     func SetupNavigationBar(){
-       
+        
         self.title = "Liveaboard Lists"
         if language{
-                self.title = " الفنادق العائمة"
+            self.title = " الفنادق العائمة"
+            
         }
         let nav = self.navigationController!
         nav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
@@ -79,7 +81,6 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
             nav.navigationBar.prefersLargeTitles = true
             nav.navigationBar.largeTitleTextAttributes = [NSForegroundColorAttributeName :UIColor.white]
             
-            print("height is ??? \(nav.navigationBar.intrinsicContentSize.height)")
         } else {
             // Fallback on earlier versions
         }
@@ -93,9 +94,9 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         self.navigationController!.navigationBar.backgroundColor = UIColor.clear
         var menuimage = UIImage(named: "nb-menu")
         menuimage = menuimage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-       
-       
-             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuimage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         
         
@@ -110,9 +111,9 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         let searrchItem = UIBarButtonItem(image: SearchImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         let filterItem =  UIBarButtonItem(image: FilterImage, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-       
+        
         self.navigationItem.rightBarButtonItems = [ filterItem,searrchItem]
-      
+        
     }
     func setupbackgroundGradient(){
         
@@ -144,14 +145,14 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         let segmented = UISegmentedControl(items: items)
         segmented.frame = CGRect(x: view.frame.width*0.04, y: view.frame.height*0.013, width: container.frame.width-(view.frame.width*0.04*2), height: container.frame.height-(view.frame.height*0.013*2))
         segmented.tintColor = Colors().blue
-       
+        
         segmented.selectedSegmentIndex = 0
-//        if language{
-//            segmented.selectedSegmentIndex = 1
-//        }
+        //        if language{
+        //            segmented.selectedSegmentIndex = 1
+        //        }
         container.addSubview(segmented)
         view.addSubview(container)
-       segmented.addTarget(self, action: #selector(self.segmentChange), for: .valueChanged )
+        segmented.addTarget(self, action: #selector(self.segmentChange), for: .valueChanged )
         
         return container.frame.maxY
     }
@@ -163,12 +164,23 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-     
-             self.navigationController?.pushViewController(Single_Page(), animated: true)
+        
+      
+        self.navigationController?.pushViewController(Single_Page(), animated: true)
         
     }
-    
+  
+   
+    override func viewWillDisappear(_ animated: Bool) {
+        let backItem = UIBarButtonItem()
+        if language{
+        backItem.title = "العودة"
+        }
+        else{
+              backItem.title = "Back"
+        }
+        navigationItem.backBarButtonItem = backItem
+    }
     //*************************** Tableview Protocols  Functionalities *******************************//
     
     
@@ -200,10 +212,10 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
     func setupmap(_ maxy :CGFloat){
         mapContainer = UIView(frame: CGRect(x: 0, y: maxy, width: view.frame.width, height: view.frame.height-TabBarHeight-maxy))
         view.addSubview(mapContainer)
-       
+        
         mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: mapContainer.frame.width, height: mapContainer.frame.height))
-         mapView.delegate = self
-         mapView.showsUserLocation = true
+        mapView.delegate = self
+        mapView.showsUserLocation = true
         mapContainer.addSubview(mapView)
         let firstCoardinat =  CLLocationCoordinate2DMake(45.9922868, 32.6672701)
         let firstAnnotaion = MKPointAnnotation()
@@ -243,21 +255,21 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         let Barheight:CGFloat  = self.tabBarController!.tabBar.frame.height
         print(Barheight)
-         scrollview  = UIScrollView(frame: CGRect(x: 0, y: mapContainer.frame.height-view.frame.height*440/1334 , width: mapContainer.frame.width, height: view.frame.height*440/1334))
+        scrollview  = UIScrollView(frame: CGRect(x: 0, y: mapContainer.frame.height-view.frame.height*440/1334 , width: mapContainer.frame.width, height: view.frame.height*440/1334))
         print(view.frame.height)
         print(self.tabBarController!.tabBar.frame.minY-view.frame.height*440/1334)
-         print(view.frame.height-self.tabBarController!.tabBar.frame.height)
+        print(view.frame.height-self.tabBarController!.tabBar.frame.height)
         print(view.frame.height*440/1334)
         print(view.frame.height*0.353)
         
         scrollview.backgroundColor = UIColor(red:37/255, green:43/255, blue:87/255, alpha:0.9)
         scrollview.isPagingEnabled = true
-       
-   
+        
+        
         scrollview.showsHorizontalScrollIndicator = false
         
         mapContainer.addSubview(scrollview)
-       
+        
         var  x =  makeABoxContainer(scrollview , xposition : 0 , yposition : view.frame.height*50/1334 ,img: #imageLiteral(resourceName: "fiji-siren-1") )
         positionsX.append(x)
         x = makeABoxContainer(scrollview , xposition :x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
@@ -267,11 +279,11 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         }
         x =  makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "palau-siren-5"))
         positionsX.append(x)
-       
+        
         x = makeABoxContainer(scrollview , xposition : x , yposition : view.frame.height*50/1334 ,img:#imageLiteral(resourceName: "indo-siren-1"))
-      
+        
         //85 45
-         scrollview.contentSize = CGSize(width: x, height: mapContainer.frame.height*440/1334)
+        scrollview.contentSize = CGSize(width: x, height: mapContainer.frame.height*440/1334)
         var numbersofCabinsFoundX:CGFloat = 0
         if language{
             numbersofCabinsFoundX = mapContainer.frame.width-view.frame.width*85/750
@@ -324,8 +336,8 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         
         scrollview.addSubview(subcontainer)
-    
-    return subcontainer.frame.maxX+view.frame.width*70/750
+        
+        return subcontainer.frame.maxX+view.frame.width*70/750
     }
     
     
@@ -387,11 +399,11 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
     }
     func DescriptionLabels(_ DescriptionView:UIView ){
-         let viewwidth = view.frame.width
+        let viewwidth = view.frame.width
         let SubContainer = UIView(frame: CGRect(x: view.frame.width*0.01, y: view.frame.height*16/1334, width: DescriptionView.frame.width-(view.frame.width*30/750), height: DescriptionView.frame.height-(view.frame.height*16/1334*2)))
         
         DescriptionView.addSubview(SubContainer)
-
+        
         let Header = UILabel()
         var text =  "Grand Sea Serpent"
         var getwidth = text.widthOfString(usingFont: UIFont(name: "OpenSans-Bold", size: viewwidth*0.0453)!)
@@ -429,11 +441,11 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         subHeader.textColor = UIColor(red:0.34, green:0.34, blue:0.34, alpha:1.0)
         subHeader.font = UIFont(name: "OpenSans", size: viewwidth*0.032)
         //subHeader.textAlignment = .center
-      // subHeader.sizeToFit()
+        // subHeader.sizeToFit()
         subHeader.adjustsFontSizeToFitWidth = true
         SubContainer.addSubview(subHeader)
         
-
+        
         
     }
     
@@ -448,7 +460,7 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         
         
         
-         mapView.addAnnotation(Annotaion)
+        mapView.addAnnotation(Annotaion)
         
         
     }
@@ -469,40 +481,40 @@ class LiveaBoardsLists: UIViewController,UITableViewDataSource, UITableViewDeleg
         else {
             anView!.annotation = annotation
         }
-       anView?.image = UIImage(named: "purple-map.png")
+        anView?.image = UIImage(named: "purple-map.png")
         
         
         return anView
     }
     
-  
+    
     
     func segmentChange(sender:UISegmentedControl) {
-
+        
         switch sender.selectedSegmentIndex{
         case 0:
-
-                mapContainer.removeFromSuperview()
-                viewDidLoad()
-
-
+            
+            mapContainer.removeFromSuperview()
+            viewDidLoad()
+            
+            
         case 1:
-           
-
-                tableview.removeFromSuperview()
-                setupmap(beginY)
-     
-
+            
+            
+            tableview.removeFromSuperview()
+            setupmap(beginY)
+            
+            
         default:
             break
         }
-
+        
     }
     
     
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-       
+        
         scrollview.setContentOffset(CGPoint(x:(positionsX[2]-view.frame.width*4) , y: 0), animated: true)
         view.image = #imageLiteral(resourceName: "map-focus-bg")
         
