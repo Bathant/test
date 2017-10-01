@@ -53,24 +53,31 @@ class Single_Page: UIViewController ,UITableViewDataSource ,UITableViewDelegate 
             label1.text = "فنادق عائمة مشابهه"
         }
         
+        
+        
         let label2 = UILabel(frame: CGRect(x: container.frame.width - view.frame.width*87/750-view.frame.width*25/750, y: label1.frame.minY, width: view.frame.width*87/750, height: view.frame.height*40/1334))
-        label2.text = "Egypt"
-        label2.textColor = .white
+        let content = UILabel(frame: CGRect(x: 0, y: 0, width: label2.frame.width, height: label2.frame.height))
+        
+        content.text = "Egypt"
+        content.textColor = .white
         // label2.adjustsFontSizeToFitWidth = true
         
         label2.layer.borderWidth = 1.0
         label2.layer.cornerRadius = 2.0
         label2.clipsToBounds = true
         
-        label2.textAlignment = .center
+        content.textAlignment = .center
         
-        label2.font = UIFont(name: "OpenSans", size: view.frame.width*24/750)
+        content.font = UIFont(name: "OpenSans", size: view.frame.width*24/750)
         label2.backgroundColor = UIColor(red: 17/255, green: 42/255, blue: 76/255, alpha: 1.0)
         if langugae{
             label2.frame.origin.x = view.frame.width*25/750
-            label2.text = "مصر"
+            content.text = "مصر"
         }
-        
+        let str = content.text
+        let height = str?.height(constraintedWidth: label2.frame.width, font:  UIFont(name: "OpenSans", size: view.frame.width*24/750)!)
+        content.frame.size = CGSize(width: label2.frame.width, height: height!)
+        label2.addSubview(content)
         container.addSubview(label2)
         scrollView.addSubview(container)
         setsliderContainer(label1.frame.maxY+container.frame.minY)

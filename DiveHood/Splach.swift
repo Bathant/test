@@ -12,10 +12,11 @@
 import UIKit
 
 class Splach: UIViewController {
-
+    var language:  Bool  = AppDelegate.sharedInstance().language!
     override func viewDidLoad() {
         super.viewDidLoad()
         setbackground()
+        
         print("##############****************################")
         print(UIScreen.main.bounds.width*2)
         print(UIScreen.main.bounds.height*2)
@@ -46,6 +47,9 @@ class Splach: UIViewController {
          view.addConstraint(NSLayoutConstraint(item: CopyrightLabel, attribute: .bottom , relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -1*(view.frame.height*0.02) ))
          view.addConstraint(NSLayoutConstraint(item: CopyrightLabel, attribute: .centerX , relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant:0 ))
         CopyrightLabel.text = "Copyright © 2017 Divey Inc. All rights reserved."
+        if language{
+             CopyrightLabel.text = "جميع الحقوق محفوظة لشركة Divey لعام ٢٠١٧"
+        }
         CopyrightLabel.font = UIFont(name: "OpenSans", size: 24)
         CopyrightLabel.textColor = .white
         CopyrightLabel.textAlignment = .center
@@ -73,6 +77,9 @@ class Splach: UIViewController {
         
         label.frame.origin = CGPoint(x: view.frame.width*0.05, y: contanier.frame.origin.y+contanier.frame.height*0.7)
         label.text = "The Best diving Booking Services"
+        if language{
+              label.text = "أفضل الخدمات للحجز والاستمتاع بالغوص "
+        }
         label.textColor = .white
        
         label.font = UIFont(name: "OpenSans-Bold", size: view.frame.height*0.024)
